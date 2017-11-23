@@ -8,22 +8,52 @@
 
 /* Begin PBXBuildFile section */
 		6876139A579BF38C8F73277E /* Pods_Golf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD995BA08F58A4FFD8D88EB6 /* Pods_Golf.framework */; };
+		9D6C2D0E1FC6897C00C0E25A /* LKActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6C2D0D1FC6897C00C0E25A /* LKActivity.swift */; };
+		9D8E1B691FC4040900FCFD71 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E1B681FC4040900FCFD71 /* ContactUsViewController.swift */; };
+		9DF18EE01FC3E84100B71DE7 /* DonorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF18EDF1FC3E84100B71DE7 /* DonorsViewController.swift */; };
+		9DF257831FC4261800ED0404 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF257821FC4261800ED0404 /* EventViewController.swift */; };
 		9DF44A751FC2B4400063D804 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF44A741FC2B4400063D804 /* AppDelegate.swift */; };
-		9DF44A771FC2B4400063D804 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF44A761FC2B4400063D804 /* ViewController.swift */; };
+		9DF44A771FC2B4400063D804 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF44A761FC2B4400063D804 /* MainViewController.swift */; };
 		9DF44A7A1FC2B4400063D804 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF44A781FC2B4400063D804 /* Main.storyboard */; };
 		9DF44A7C1FC2B4400063D804 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DF44A7B1FC2B4400063D804 /* Assets.xcassets */; };
 		9DF44A7F1FC2B4400063D804 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF44A7D1FC2B4400063D804 /* LaunchScreen.storyboard */; };
+		9DF44A881FC2BBD20063D804 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF44A871FC2BBD20063D804 /* BaseViewController.swift */; };
+		9DF44A8B1FC2CC140063D804 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF44A8A1FC2CC140063D804 /* Extension.swift */; };
+		9DF5463A1FC65C8400850EDC /* ListInfotmatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF546391FC65C8400850EDC /* ListInfotmatchViewController.swift */; };
+		9DF70F131FC55EA800774BA6 /* HoleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF70F121FC55EA800774BA6 /* HoleListViewController.swift */; };
+		9DF70F171FC55FB400774BA6 /* HoleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF70F151FC55FB400774BA6 /* HoleViewCell.swift */; };
+		9DF70F181FC55FB400774BA6 /* HoleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF70F161FC55FB400774BA6 /* HoleViewCell.xib */; };
+		9DF70F1A1FC5623D00774BA6 /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF70F191FC5623D00774BA6 /* Define.swift */; };
+		9DF70F1C1FC56D1000774BA6 /* DetailHoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF70F1B1FC56D1000774BA6 /* DetailHoleViewController.swift */; };
+		9DF881EF1FC3CAE100FADA1B /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF881EE1FC3CAE100FADA1B /* AboutUsViewController.swift */; };
+		9DF881F21FC3CFA400FADA1B /* StoryBoardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF881F11FC3CFA400FADA1B /* StoryBoardHelper.swift */; };
+		9DF881F41FC3D43300FADA1B /* AboutTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF881F31FC3D43300FADA1B /* AboutTourViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		464E30B328C8B59C9C3E97DA /* Pods-Golf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Golf.release.xcconfig"; path = "Pods/Target Support Files/Pods-Golf/Pods-Golf.release.xcconfig"; sourceTree = "<group>"; };
+		9D6C2D0D1FC6897C00C0E25A /* LKActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LKActivity.swift; sourceTree = "<group>"; };
+		9D8E1B681FC4040900FCFD71 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
+		9DF18EDF1FC3E84100B71DE7 /* DonorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonorsViewController.swift; sourceTree = "<group>"; };
+		9DF257821FC4261800ED0404 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		9DF44A711FC2B4400063D804 /* Golf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Golf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF44A741FC2B4400063D804 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9DF44A761FC2B4400063D804 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9DF44A761FC2B4400063D804 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9DF44A791FC2B4400063D804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9DF44A7B1FC2B4400063D804 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DF44A7E1FC2B4400063D804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DF44A801FC2B4400063D804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DF44A871FC2BBD20063D804 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		9DF44A8A1FC2CC140063D804 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		9DF546391FC65C8400850EDC /* ListInfotmatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInfotmatchViewController.swift; sourceTree = "<group>"; };
+		9DF70F121FC55EA800774BA6 /* HoleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleListViewController.swift; sourceTree = "<group>"; };
+		9DF70F151FC55FB400774BA6 /* HoleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleViewCell.swift; sourceTree = "<group>"; };
+		9DF70F161FC55FB400774BA6 /* HoleViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HoleViewCell.xib; sourceTree = "<group>"; };
+		9DF70F191FC5623D00774BA6 /* Define.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
+		9DF70F1B1FC56D1000774BA6 /* DetailHoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHoleViewController.swift; sourceTree = "<group>"; };
+		9DF881EE1FC3CAE100FADA1B /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		9DF881F11FC3CFA400FADA1B /* StoryBoardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardHelper.swift; sourceTree = "<group>"; };
+		9DF881F31FC3D43300FADA1B /* AboutTourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTourViewController.swift; sourceTree = "<group>"; };
 		BD995BA08F58A4FFD8D88EB6 /* Pods_Golf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Golf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4FA910DD8DD93D47F17CE51 /* Pods-Golf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Golf.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Golf/Pods-Golf.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,13 +109,52 @@
 			isa = PBXGroup;
 			children = (
 				9DF44A741FC2B4400063D804 /* AppDelegate.swift */,
-				9DF44A761FC2B4400063D804 /* ViewController.swift */,
 				9DF44A781FC2B4400063D804 /* Main.storyboard */,
+				9DF44A871FC2BBD20063D804 /* BaseViewController.swift */,
+				9DF881F11FC3CFA400FADA1B /* StoryBoardHelper.swift */,
+				9DF70F141FC55F9500774BA6 /* Views */,
+				9DF881F01FC3CAE700FADA1B /* Controller */,
+				9DF44A891FC2BBD70063D804 /* Util */,
+			);
+			path = Golf;
+			sourceTree = "<group>";
+		};
+		9DF44A891FC2BBD70063D804 /* Util */ = {
+			isa = PBXGroup;
+			children = (
 				9DF44A7B1FC2B4400063D804 /* Assets.xcassets */,
 				9DF44A7D1FC2B4400063D804 /* LaunchScreen.storyboard */,
 				9DF44A801FC2B4400063D804 /* Info.plist */,
+				9DF44A8A1FC2CC140063D804 /* Extension.swift */,
+				9DF70F191FC5623D00774BA6 /* Define.swift */,
+				9D6C2D0D1FC6897C00C0E25A /* LKActivity.swift */,
 			);
-			path = Golf;
+			path = Util;
+			sourceTree = "<group>";
+		};
+		9DF70F141FC55F9500774BA6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9DF70F151FC55FB400774BA6 /* HoleViewCell.swift */,
+				9DF70F161FC55FB400774BA6 /* HoleViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9DF881F01FC3CAE700FADA1B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9DF44A761FC2B4400063D804 /* MainViewController.swift */,
+				9DF881EE1FC3CAE100FADA1B /* AboutUsViewController.swift */,
+				9DF881F31FC3D43300FADA1B /* AboutTourViewController.swift */,
+				9DF18EDF1FC3E84100B71DE7 /* DonorsViewController.swift */,
+				9D8E1B681FC4040900FCFD71 /* ContactUsViewController.swift */,
+				9DF257821FC4261800ED0404 /* EventViewController.swift */,
+				9DF70F121FC55EA800774BA6 /* HoleListViewController.swift */,
+				9DF70F1B1FC56D1000774BA6 /* DetailHoleViewController.swift */,
+				9DF546391FC65C8400850EDC /* ListInfotmatchViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,6 +170,7 @@
 				9DF44A6F1FC2B43F0063D804 /* Resources */,
 				D4941FAB6389BA4A56F6055F /* [CP] Embed Pods Frameworks */,
 				798B805B7C3561915ACFCA71 /* [CP] Copy Pods Resources */,
+				9DF44A861FC2B8060063D804 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -150,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF70F181FC55FB400774BA6 /* HoleViewCell.xib in Resources */,
 				9DF44A7F1FC2B4400063D804 /* LaunchScreen.storyboard in Resources */,
 				9DF44A7C1FC2B4400063D804 /* Assets.xcassets in Resources */,
 				9DF44A7A1FC2B4400063D804 /* Main.storyboard in Resources */,
@@ -165,14 +236,32 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Golf/Pods-Golf-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Golf/Pods-Golf-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9DF44A861FC2B8060063D804 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 		};
 		A3098C43E7B192FE1099A819 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -219,8 +308,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DF44A771FC2B4400063D804 /* ViewController.swift in Sources */,
+				9DF881F21FC3CFA400FADA1B /* StoryBoardHelper.swift in Sources */,
+				9DF881EF1FC3CAE100FADA1B /* AboutUsViewController.swift in Sources */,
+				9DF44A771FC2B4400063D804 /* MainViewController.swift in Sources */,
+				9D6C2D0E1FC6897C00C0E25A /* LKActivity.swift in Sources */,
+				9DF18EE01FC3E84100B71DE7 /* DonorsViewController.swift in Sources */,
 				9DF44A751FC2B4400063D804 /* AppDelegate.swift in Sources */,
+				9DF257831FC4261800ED0404 /* EventViewController.swift in Sources */,
+				9DF70F131FC55EA800774BA6 /* HoleListViewController.swift in Sources */,
+				9DF44A881FC2BBD20063D804 /* BaseViewController.swift in Sources */,
+				9DF70F171FC55FB400774BA6 /* HoleViewCell.swift in Sources */,
+				9DF70F1C1FC56D1000774BA6 /* DetailHoleViewController.swift in Sources */,
+				9DF881F41FC3D43300FADA1B /* AboutTourViewController.swift in Sources */,
+				9DF70F1A1FC5623D00774BA6 /* Define.swift in Sources */,
+				9DF44A8B1FC2CC140063D804 /* Extension.swift in Sources */,
+				9D8E1B691FC4040900FCFD71 /* ContactUsViewController.swift in Sources */,
+				9DF5463A1FC65C8400850EDC /* ListInfotmatchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +463,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HDNMHL7M4Y;
-				INFOPLIST_FILE = Golf/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Golf/Util/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ctvtrans.kien.Golf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -376,7 +479,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HDNMHL7M4Y;
-				INFOPLIST_FILE = Golf/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Golf/Util/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ctvtrans.kien.Golf;
 				PRODUCT_NAME = "$(TARGET_NAME)";

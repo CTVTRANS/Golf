@@ -7,6 +7,8 @@ target 'Golf' do
   pod 'SwiftLint'
   pod 'SwiftyJSON'
   pod 'Alamofire', '~> 4.5'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 
   # Pods for Golf
 
