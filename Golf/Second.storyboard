@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Jackpot View Controller-->
+        <scene sceneID="3S1-wk-ZSl">
+            <objects>
+                <viewController storyboardIdentifier="JackpotViewController" id="Par-OW-arY" customClass="JackpotViewController" customModule="Golf" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ize-bh-JOh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_background" translatesAutoresizingMaskIntoConstraints="NO" id="H5E-2A-pce">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nB-HQ-ypq">
+                                <rect key="frame" x="146.5" y="102" width="83" height="105"/>
+                                <state key="normal" image="ic_jackpot_qr_scan"/>
+                                <connections>
+                                    <action selector="pressedScan:" destination="Par-OW-arY" eventType="touchUpInside" id="cbE-r5-GsS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEi-CU-gXE">
+                                <rect key="frame" x="144" y="231" width="86" height="106"/>
+                                <state key="normal" image="ic_jackpot_listproduct"/>
+                                <connections>
+                                    <action selector="pressedListproduct:" destination="Par-OW-arY" eventType="touchUpInside" id="dvf-zn-NNf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1N-QJ-iEc">
+                                <rect key="frame" x="144" y="361" width="96" height="105"/>
+                                <state key="normal" image="ic_jackpot_scaned"/>
+                                <connections>
+                                    <action selector="pressedShowScaned:" destination="Par-OW-arY" eventType="touchUpInside" id="L4T-2C-KNW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.47843137250000001" green="0.75686274509999996" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cEi-CU-gXE" firstAttribute="centerX" secondItem="Ize-bh-JOh" secondAttribute="centerX" id="5Im-qq-xhi"/>
+                            <constraint firstItem="7nB-HQ-ypq" firstAttribute="centerX" secondItem="Ize-bh-JOh" secondAttribute="centerX" id="KQo-PJ-mPh"/>
+                            <constraint firstItem="P1N-QJ-iEc" firstAttribute="top" secondItem="cEi-CU-gXE" secondAttribute="bottom" constant="24" id="NNu-Dn-qp4"/>
+                            <constraint firstItem="gMz-32-qaQ" firstAttribute="bottom" secondItem="H5E-2A-pce" secondAttribute="bottom" id="TFu-KO-fP9"/>
+                            <constraint firstItem="P1N-QJ-iEc" firstAttribute="leading" secondItem="cEi-CU-gXE" secondAttribute="leading" id="YWb-vz-yqi"/>
+                            <constraint firstItem="H5E-2A-pce" firstAttribute="top" secondItem="gMz-32-qaQ" secondAttribute="top" id="ZZn-U7-B2m"/>
+                            <constraint firstItem="7nB-HQ-ypq" firstAttribute="top" secondItem="gMz-32-qaQ" secondAttribute="top" constant="82" id="hex-1w-4r2"/>
+                            <constraint firstItem="cEi-CU-gXE" firstAttribute="top" secondItem="7nB-HQ-ypq" secondAttribute="bottom" constant="24" id="mpx-CV-50e"/>
+                            <constraint firstItem="H5E-2A-pce" firstAttribute="leading" secondItem="gMz-32-qaQ" secondAttribute="leading" id="oqS-gW-yhV"/>
+                            <constraint firstItem="gMz-32-qaQ" firstAttribute="trailing" secondItem="H5E-2A-pce" secondAttribute="trailing" id="wZ1-ve-18O"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gMz-32-qaQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HIH-aD-nsQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-119" y="106"/>
+        </scene>
+        <!--Discount View Controller-->
+        <scene sceneID="vG2-x4-Rjm">
+            <objects>
+                <viewController storyboardIdentifier="DiscountViewController" id="pLN-5E-nOp" customClass="DiscountViewController" customModule="Golf" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="awr-pd-lhJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_background" translatesAutoresizingMaskIntoConstraints="NO" id="qMa-iG-jR2">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5f-6V-3e5">
+                                <rect key="frame" x="146.5" y="145" width="83" height="115"/>
+                                <state key="normal" image="ic_discount_produc"/>
+                                <connections>
+                                    <action selector="pressedDiscountProduct:" destination="pLN-5E-nOp" eventType="touchUpInside" id="z7D-3c-0EL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRe-wF-2Es">
+                                <rect key="frame" x="135.5" y="290" width="86" height="104"/>
+                                <state key="normal" image="ic_discount_store"/>
+                                <connections>
+                                    <action selector="pressedDisCountStore:" destination="pLN-5E-nOp" eventType="touchUpInside" id="577-co-0w0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.47843137250000001" green="0.75686274509999996" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="TRe-wF-2Es" firstAttribute="top" secondItem="I5f-6V-3e5" secondAttribute="bottom" constant="30" id="2ZW-CZ-YjZ"/>
+                            <constraint firstItem="I5f-6V-3e5" firstAttribute="top" secondItem="HTf-7b-trG" secondAttribute="top" constant="125" id="6J8-lf-rd4"/>
+                            <constraint firstItem="I5f-6V-3e5" firstAttribute="centerX" secondItem="awr-pd-lhJ" secondAttribute="centerX" id="LOm-lS-D6f"/>
+                            <constraint firstItem="HTf-7b-trG" firstAttribute="bottom" secondItem="qMa-iG-jR2" secondAttribute="bottom" id="Txr-zb-YXt"/>
+                            <constraint firstItem="TRe-wF-2Es" firstAttribute="trailing" secondItem="I5f-6V-3e5" secondAttribute="trailing" constant="-8" id="YgA-73-JXe"/>
+                            <constraint firstItem="HTf-7b-trG" firstAttribute="trailing" secondItem="qMa-iG-jR2" secondAttribute="trailing" id="Z0Y-wI-BF0"/>
+                            <constraint firstItem="qMa-iG-jR2" firstAttribute="leading" secondItem="HTf-7b-trG" secondAttribute="leading" id="kZf-PD-GJX"/>
+                            <constraint firstItem="qMa-iG-jR2" firstAttribute="top" secondItem="HTf-7b-trG" secondAttribute="top" id="yPz-my-mGo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HTf-7b-trG"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jyG-g0-Nqo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="690" y="106"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_background" width="375" height="611"/>
+        <image name="ic_discount_produc" width="83" height="115"/>
+        <image name="ic_discount_store" width="86" height="104"/>
+        <image name="ic_jackpot_listproduct" width="86" height="106"/>
+        <image name="ic_jackpot_qr_scan" width="83" height="105"/>
+        <image name="ic_jackpot_scaned" width="96" height="105"/>
+    </resources>
+</document>

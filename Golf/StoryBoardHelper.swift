@@ -20,3 +20,11 @@ extension MainStoryBoard {
         return myStoryBoard.instantiateViewController(withIdentifier: String(describing: self.self))
     }
 }
+
+protocol SecondSroyBoard: StoryBoardHelper {}
+extension SecondSroyBoard {
+    static func instance() -> UIViewController {
+        let myStoryBoard = UIStoryboard(name: "Second", bundle: nil)
+        return myStoryBoard.instantiateViewController(withIdentifier: String(describing: self.self))
+    }
+}

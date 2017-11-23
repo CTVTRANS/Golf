@@ -35,10 +35,6 @@ class ListInfotmatchViewController: BaseViewController, MainStoryBoard {
         webview.loadRequest(URLRequest(url: URL(string: "https://stackoverflow.com/questions/24019707/using-iskindofclass-with-swift")!))
 //        webview.loadHTMLString("alo alo", baseURL: nil)
     }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
 }
 
 extension ListInfotmatchViewController: UIWebViewDelegate {

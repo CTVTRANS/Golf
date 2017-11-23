@@ -28,19 +28,25 @@ class MainViewController: BaseViewController {
     
     @IBAction func pressedEvent(_ sender: Any) {
         if let vc = EventViewController.instance() as? EventViewController {
-            navigationController?.pushViewController(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: false)
         }
     }
     
     @IBAction func pressedDiscount(_ sender: Any) {
-        
+        if let vc = DiscountViewController.instance() as? DiscountViewController {
+            navigationController?.pushViewController(vc, animated: false)
+        }
     }
     
-    @IBAction func pressedRegister(_ sender: Any) {
-        
+    @IBAction func pressedAttendance(_ sender: Any) {
+        if let vc = AttendanceViewController.instance() as? AttendanceViewController {
+            navigationController?.pushViewController(vc, animated: false)
+        }
     }
     
     @IBAction func pressedJackpot(_ sender: Any) {
-        
+        if let vc = JackpotViewController.instance() as? JackpotViewController {
+            navigationController?.pushViewController(vc, animated: false)
+        }
     }
 }
