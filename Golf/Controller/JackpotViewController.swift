@@ -20,10 +20,16 @@ class JackpotViewController: BaseViewController, SecondSroyBoard {
     }
     
     @IBAction func pressedListproduct(_ sender: Any) {
-        
+        if let vc = ListproductViewController.instance() as? ListproductViewController {
+            vc.statusProduct = .all
+            navigationController?.pushViewController(vc, animated: false)
+        }
     }
     
     @IBAction func pressedShowScaned(_ sender: Any) {
-        
+        if let vc = ListproductViewController.instance() as? ListproductViewController {
+            vc.statusProduct = .all
+            navigationController?.pushViewController(vc, animated: false)
+        }
     }
 }
