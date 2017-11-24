@@ -32,8 +32,11 @@ class BaseViewController: UIViewController {
     }
     
     @objc func pressedMember() {
+        isAuthor = !isAuthor
         if isAuthor {
-            
+            if let vc = ForgotPassViewController.instance() as? ForgotPassViewController {
+                navigationController?.pushViewController(vc, animated: false)
+            }
         } else {
             if let vc = SinginViewController.instance() as? SinginViewController {
                 navigationController?.pushViewController(vc, animated: false)

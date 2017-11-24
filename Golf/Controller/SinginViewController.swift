@@ -28,4 +28,8 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
     @IBAction func pressedOpenWeb(_ sender: Any) {
         
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }

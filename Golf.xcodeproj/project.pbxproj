@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		6876139A579BF38C8F73277E /* Pods_Golf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD995BA08F58A4FFD8D88EB6 /* Pods_Golf.framework */; };
+		9D04EAEA1FC7FB3E00028EF7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAE91FC7FB3E00028EF7 /* RegisterViewController.swift */; };
+		9D04EAEE1FC810EF00028EF7 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAED1FC810EE00028EF7 /* BaseModel.swift */; };
+		9D04EAF41FC81F4000028EF7 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAF31FC81F4000028EF7 /* MemberModel.swift */; };
 		9D6C2D0E1FC6897C00C0E25A /* LKActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6C2D0D1FC6897C00C0E25A /* LKActivity.swift */; };
 		9D8E1B691FC4040900FCFD71 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E1B681FC4040900FCFD71 /* ContactUsViewController.swift */; };
 		9D986A081FC7ACC40027D894 /* ListDiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D986A071FC7ACC40027D894 /* ListDiscountViewController.swift */; };
 		9D986A0C1FC7C6C50027D894 /* SinginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D986A0B1FC7C6C50027D894 /* SinginViewController.swift */; };
 		9D986A0E1FC7C8FA0027D894 /* DiscountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D986A0D1FC7C8FA0027D894 /* DiscountModel.swift */; };
 		9D986A101FC7C9740027D894 /* JackpotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D986A0F1FC7C9740027D894 /* JackpotModel.swift */; };
+		9D986A121FC7DBE50027D894 /* ForgotPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D986A111FC7DBE50027D894 /* ForgotPassViewController.swift */; };
 		9DF18EE01FC3E84100B71DE7 /* DonorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF18EDF1FC3E84100B71DE7 /* DonorsViewController.swift */; };
 		9DF257831FC4261800ED0404 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF257821FC4261800ED0404 /* EventViewController.swift */; };
 		9DF351301FC6BD9000696057 /* AttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3512F1FC6BD9000696057 /* AttendanceViewController.swift */; };
@@ -42,12 +46,16 @@
 
 /* Begin PBXFileReference section */
 		464E30B328C8B59C9C3E97DA /* Pods-Golf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Golf.release.xcconfig"; path = "Pods/Target Support Files/Pods-Golf/Pods-Golf.release.xcconfig"; sourceTree = "<group>"; };
+		9D04EAE91FC7FB3E00028EF7 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		9D04EAED1FC810EE00028EF7 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		9D04EAF31FC81F4000028EF7 /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		9D6C2D0D1FC6897C00C0E25A /* LKActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LKActivity.swift; sourceTree = "<group>"; };
 		9D8E1B681FC4040900FCFD71 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		9D986A071FC7ACC40027D894 /* ListDiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDiscountViewController.swift; sourceTree = "<group>"; };
 		9D986A0B1FC7C6C50027D894 /* SinginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinginViewController.swift; sourceTree = "<group>"; };
 		9D986A0D1FC7C8FA0027D894 /* DiscountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountModel.swift; sourceTree = "<group>"; };
 		9D986A0F1FC7C9740027D894 /* JackpotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JackpotModel.swift; sourceTree = "<group>"; };
+		9D986A111FC7DBE50027D894 /* ForgotPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassViewController.swift; sourceTree = "<group>"; };
 		9DF18EDF1FC3E84100B71DE7 /* DonorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonorsViewController.swift; sourceTree = "<group>"; };
 		9DF257821FC4261800ED0404 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		9DF3512F1FC6BD9000696057 /* AttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; };
@@ -117,8 +125,10 @@
 		9D986A0A1FC7B4A00027D894 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9D04EAED1FC810EE00028EF7 /* BaseModel.swift */,
 				9D986A0D1FC7C8FA0027D894 /* DiscountModel.swift */,
 				9D986A0F1FC7C9740027D894 /* JackpotModel.swift */,
+				9D04EAF31FC81F4000028EF7 /* MemberModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,6 +209,8 @@
 				9DF351371FC6D15B00696057 /* DiscountViewController.swift */,
 				9D986A071FC7ACC40027D894 /* ListDiscountViewController.swift */,
 				9D986A0B1FC7C6C50027D894 /* SinginViewController.swift */,
+				9D986A111FC7DBE50027D894 /* ForgotPassViewController.swift */,
+				9D04EAE91FC7FB3E00028EF7 /* RegisterViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -357,14 +369,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D04EAEA1FC7FB3E00028EF7 /* RegisterViewController.swift in Sources */,
 				9DF881F21FC3CFA400FADA1B /* StoryBoardHelper.swift in Sources */,
+				9D04EAEE1FC810EF00028EF7 /* BaseModel.swift in Sources */,
 				9DF351321FC6C43900696057 /* SubmitAttendanceViewController.swift in Sources */,
 				9D986A081FC7ACC40027D894 /* ListDiscountViewController.swift in Sources */,
 				9DF881EF1FC3CAE100FADA1B /* AboutUsViewController.swift in Sources */,
 				9DF44A771FC2B4400063D804 /* MainViewController.swift in Sources */,
 				9D6C2D0E1FC6897C00C0E25A /* LKActivity.swift in Sources */,
 				9DF351361FC6CDDB00696057 /* JackpotViewController.swift in Sources */,
+				9D04EAF41FC81F4000028EF7 /* MemberModel.swift in Sources */,
 				9DF18EE01FC3E84100B71DE7 /* DonorsViewController.swift in Sources */,
+				9D986A121FC7DBE50027D894 /* ForgotPassViewController.swift in Sources */,
 				9D986A0E1FC7C8FA0027D894 /* DiscountModel.swift in Sources */,
 				9DF44A751FC2B4400063D804 /* AppDelegate.swift in Sources */,
 				9DF257831FC4261800ED0404 /* EventViewController.swift in Sources */,
