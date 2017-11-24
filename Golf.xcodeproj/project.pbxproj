@@ -11,6 +11,11 @@
 		9D04EAEA1FC7FB3E00028EF7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAE91FC7FB3E00028EF7 /* RegisterViewController.swift */; };
 		9D04EAEE1FC810EF00028EF7 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAED1FC810EE00028EF7 /* BaseModel.swift */; };
 		9D04EAF41FC81F4000028EF7 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAF31FC81F4000028EF7 /* MemberModel.swift */; };
+		9D04EAFA1FC8222A00028EF7 /* HoleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAF91FC8222A00028EF7 /* HoleModel.swift */; };
+		9D04EAFC1FC822AB00028EF7 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAFB1FC822AB00028EF7 /* Company.swift */; };
+		9D05EB791FC823E5008943BF /* DonorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05EB781FC823E5008943BF /* DonorsModel.swift */; };
+		9D05EB7B1FC825EA008943BF /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05EB7A1FC825EA008943BF /* News.swift */; };
+		9D05EB7D1FC8262E008943BF /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05EB7C1FC8262E008943BF /* Map.swift */; };
 		9D6C2D0E1FC6897C00C0E25A /* LKActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6C2D0D1FC6897C00C0E25A /* LKActivity.swift */; };
 		9D8E1B691FC4040900FCFD71 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E1B681FC4040900FCFD71 /* ContactUsViewController.swift */; };
 		9D986A081FC7ACC40027D894 /* ListDiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D986A071FC7ACC40027D894 /* ListDiscountViewController.swift */; };
@@ -49,6 +54,11 @@
 		9D04EAE91FC7FB3E00028EF7 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9D04EAED1FC810EE00028EF7 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		9D04EAF31FC81F4000028EF7 /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
+		9D04EAF91FC8222A00028EF7 /* HoleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleModel.swift; sourceTree = "<group>"; };
+		9D04EAFB1FC822AB00028EF7 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		9D05EB781FC823E5008943BF /* DonorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonorsModel.swift; sourceTree = "<group>"; };
+		9D05EB7A1FC825EA008943BF /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		9D05EB7C1FC8262E008943BF /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		9D6C2D0D1FC6897C00C0E25A /* LKActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LKActivity.swift; sourceTree = "<group>"; };
 		9D8E1B681FC4040900FCFD71 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		9D986A071FC7ACC40027D894 /* ListDiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDiscountViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +139,10 @@
 				9D986A0D1FC7C8FA0027D894 /* DiscountModel.swift */,
 				9D986A0F1FC7C9740027D894 /* JackpotModel.swift */,
 				9D04EAF31FC81F4000028EF7 /* MemberModel.swift */,
+				9D04EAF91FC8222A00028EF7 /* HoleModel.swift */,
+				9D04EAFB1FC822AB00028EF7 /* Company.swift */,
+				9D05EB7A1FC825EA008943BF /* News.swift */,
+				9D05EB7C1FC8262E008943BF /* Map.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -211,6 +225,7 @@
 				9D986A0B1FC7C6C50027D894 /* SinginViewController.swift */,
 				9D986A111FC7DBE50027D894 /* ForgotPassViewController.swift */,
 				9D04EAE91FC7FB3E00028EF7 /* RegisterViewController.swift */,
+				9D05EB781FC823E5008943BF /* DonorsModel.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -373,8 +388,10 @@
 				9DF881F21FC3CFA400FADA1B /* StoryBoardHelper.swift in Sources */,
 				9D04EAEE1FC810EF00028EF7 /* BaseModel.swift in Sources */,
 				9DF351321FC6C43900696057 /* SubmitAttendanceViewController.swift in Sources */,
+				9D05EB7D1FC8262E008943BF /* Map.swift in Sources */,
 				9D986A081FC7ACC40027D894 /* ListDiscountViewController.swift in Sources */,
 				9DF881EF1FC3CAE100FADA1B /* AboutUsViewController.swift in Sources */,
+				9D05EB7B1FC825EA008943BF /* News.swift in Sources */,
 				9DF44A771FC2B4400063D804 /* MainViewController.swift in Sources */,
 				9D6C2D0E1FC6897C00C0E25A /* LKActivity.swift in Sources */,
 				9DF351361FC6CDDB00696057 /* JackpotViewController.swift in Sources */,
@@ -382,10 +399,12 @@
 				9DF18EE01FC3E84100B71DE7 /* DonorsViewController.swift in Sources */,
 				9D986A121FC7DBE50027D894 /* ForgotPassViewController.swift in Sources */,
 				9D986A0E1FC7C8FA0027D894 /* DiscountModel.swift in Sources */,
+				9D04EAFA1FC8222A00028EF7 /* HoleModel.swift in Sources */,
 				9DF44A751FC2B4400063D804 /* AppDelegate.swift in Sources */,
 				9DF257831FC4261800ED0404 /* EventViewController.swift in Sources */,
 				9DF70F131FC55EA800774BA6 /* HoleListViewController.swift in Sources */,
 				9DF44A881FC2BBD20063D804 /* BaseViewController.swift in Sources */,
+				9D05EB791FC823E5008943BF /* DonorsModel.swift in Sources */,
 				9DF70F171FC55FB400774BA6 /* HoleViewCell.swift in Sources */,
 				9D986A0C1FC7C6C50027D894 /* SinginViewController.swift in Sources */,
 				9DF351301FC6BD9000696057 /* AttendanceViewController.swift in Sources */,
@@ -398,6 +417,7 @@
 				9DF3513A1FC6D4CF00696057 /* ListJackpotViewController.swift in Sources */,
 				9D8E1B691FC4040900FCFD71 /* ContactUsViewController.swift in Sources */,
 				9DF5463A1FC65C8400850EDC /* ListInfotmatchViewController.swift in Sources */,
+				9D04EAFC1FC822AB00028EF7 /* Company.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
