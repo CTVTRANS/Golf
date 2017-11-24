@@ -1,73 +1,13 @@
 //
-//  Extension.swift
+//  Extension+UIDevice.swift
 //  Golf
 //
-//  Created by le kien on 11/20/17.
+//  Created by le kien on 11/24/17.
 //  Copyright © 2017 le kien. All rights reserved.
 //
 
+import Foundation
 import UIKit
-
-class Extension: NSObject {
-
-}
-
-extension UIColor {
-    static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat, apla: CGFloat) -> UIColor {
-        return UIColor.init(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: apla)
-    }
-}
-
-extension UIView {
-    @IBInspectable
-    var borderWidth: CGFloat {
-        get {
-            return layer.borderWidth
-        }
-        set {
-            layer.borderWidth = newValue
-        }
-    }
-    @IBInspectable
-    var borderColor: UIColor {
-        get {
-            return UIColor(cgColor: layer.borderColor!)
-        }
-        set {
-            layer.borderColor = newValue.cgColor
-        }
-    }
-    @IBInspectable
-    var cornerRadius: CGFloat {
-        get {
-            return layer.cornerRadius
-        }
-        set {
-            layer.cornerRadius = newValue
-            layer.masksToBounds = newValue > 0
-        }
-    }
-}
-
-extension NSLayoutConstraint {
-    @IBInspectable
-    var adjustSize: Bool {
-        set {
-            if newValue {
-                let currentConstant = self.constant
-                var sizeScale: CGFloat = 1
-                let device = UIDevice.current.modelName
-                if device == "iPhone 5" {
-                    sizeScale = 0.85
-                }
-                self.constant = currentConstant * sizeScale
-            }
-        }
-        get {
-            return false
-        }
-    }
-}
 
 extension UIDevice {
     var modelName: String {
