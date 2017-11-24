@@ -10,6 +10,10 @@
 		6876139A579BF38C8F73277E /* Pods_Golf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD995BA08F58A4FFD8D88EB6 /* Pods_Golf.framework */; };
 		9D6C2D0E1FC6897C00C0E25A /* LKActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6C2D0D1FC6897C00C0E25A /* LKActivity.swift */; };
 		9D8E1B691FC4040900FCFD71 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E1B681FC4040900FCFD71 /* ContactUsViewController.swift */; };
+		9D986A081FC7ACC40027D894 /* ListDiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D986A071FC7ACC40027D894 /* ListDiscountViewController.swift */; };
+		9D986A0C1FC7C6C50027D894 /* SinginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D986A0B1FC7C6C50027D894 /* SinginViewController.swift */; };
+		9D986A0E1FC7C8FA0027D894 /* DiscountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D986A0D1FC7C8FA0027D894 /* DiscountModel.swift */; };
+		9D986A101FC7C9740027D894 /* JackpotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D986A0F1FC7C9740027D894 /* JackpotModel.swift */; };
 		9DF18EE01FC3E84100B71DE7 /* DonorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF18EDF1FC3E84100B71DE7 /* DonorsViewController.swift */; };
 		9DF257831FC4261800ED0404 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF257821FC4261800ED0404 /* EventViewController.swift */; };
 		9DF351301FC6BD9000696057 /* AttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF3512F1FC6BD9000696057 /* AttendanceViewController.swift */; };
@@ -17,7 +21,7 @@
 		9DF351341FC6CDB300696057 /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF351331FC6CDB300696057 /* Second.storyboard */; };
 		9DF351361FC6CDDB00696057 /* JackpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF351351FC6CDDB00696057 /* JackpotViewController.swift */; };
 		9DF351381FC6D15B00696057 /* DiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF351371FC6D15B00696057 /* DiscountViewController.swift */; };
-		9DF3513A1FC6D4CF00696057 /* ListproductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF351391FC6D4CF00696057 /* ListproductViewController.swift */; };
+		9DF3513A1FC6D4CF00696057 /* ListJackpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF351391FC6D4CF00696057 /* ListJackpotViewController.swift */; };
 		9DF44A751FC2B4400063D804 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF44A741FC2B4400063D804 /* AppDelegate.swift */; };
 		9DF44A771FC2B4400063D804 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF44A761FC2B4400063D804 /* MainViewController.swift */; };
 		9DF44A7A1FC2B4400063D804 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF44A781FC2B4400063D804 /* Main.storyboard */; };
@@ -40,6 +44,10 @@
 		464E30B328C8B59C9C3E97DA /* Pods-Golf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Golf.release.xcconfig"; path = "Pods/Target Support Files/Pods-Golf/Pods-Golf.release.xcconfig"; sourceTree = "<group>"; };
 		9D6C2D0D1FC6897C00C0E25A /* LKActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LKActivity.swift; sourceTree = "<group>"; };
 		9D8E1B681FC4040900FCFD71 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
+		9D986A071FC7ACC40027D894 /* ListDiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDiscountViewController.swift; sourceTree = "<group>"; };
+		9D986A0B1FC7C6C50027D894 /* SinginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinginViewController.swift; sourceTree = "<group>"; };
+		9D986A0D1FC7C8FA0027D894 /* DiscountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountModel.swift; sourceTree = "<group>"; };
+		9D986A0F1FC7C9740027D894 /* JackpotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JackpotModel.swift; sourceTree = "<group>"; };
 		9DF18EDF1FC3E84100B71DE7 /* DonorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonorsViewController.swift; sourceTree = "<group>"; };
 		9DF257821FC4261800ED0404 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		9DF3512F1FC6BD9000696057 /* AttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; };
@@ -47,7 +55,7 @@
 		9DF351331FC6CDB300696057 /* Second.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
 		9DF351351FC6CDDB00696057 /* JackpotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JackpotViewController.swift; sourceTree = "<group>"; };
 		9DF351371FC6D15B00696057 /* DiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountViewController.swift; sourceTree = "<group>"; };
-		9DF351391FC6D4CF00696057 /* ListproductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListproductViewController.swift; sourceTree = "<group>"; };
+		9DF351391FC6D4CF00696057 /* ListJackpotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListJackpotViewController.swift; sourceTree = "<group>"; };
 		9DF44A711FC2B4400063D804 /* Golf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Golf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF44A741FC2B4400063D804 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DF44A761FC2B4400063D804 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +107,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9D986A091FC7B46D0027D894 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		9D986A0A1FC7B4A00027D894 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9D986A0D1FC7C8FA0027D894 /* DiscountModel.swift */,
+				9D986A0F1FC7C9740027D894 /* JackpotModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9DF44A681FC2B43F0063D804 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +151,8 @@
 				9DF881F11FC3CFA400FADA1B /* StoryBoardHelper.swift */,
 				9DF70F141FC55F9500774BA6 /* Views */,
 				9DF881F01FC3CAE700FADA1B /* Controller */,
+				9D986A0A1FC7B4A00027D894 /* Model */,
+				9D986A091FC7B46D0027D894 /* Network */,
 				9DF44A891FC2BBD70063D804 /* Util */,
 			);
 			path = Golf;
@@ -169,8 +195,10 @@
 				9DF3512F1FC6BD9000696057 /* AttendanceViewController.swift */,
 				9DF351311FC6C43900696057 /* SubmitAttendanceViewController.swift */,
 				9DF351351FC6CDDB00696057 /* JackpotViewController.swift */,
-				9DF351391FC6D4CF00696057 /* ListproductViewController.swift */,
+				9DF351391FC6D4CF00696057 /* ListJackpotViewController.swift */,
 				9DF351371FC6D15B00696057 /* DiscountViewController.swift */,
+				9D986A071FC7ACC40027D894 /* ListDiscountViewController.swift */,
+				9D986A0B1FC7C6C50027D894 /* SinginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -308,11 +336,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Golf/Pods-Golf-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,23 +359,27 @@
 			files = (
 				9DF881F21FC3CFA400FADA1B /* StoryBoardHelper.swift in Sources */,
 				9DF351321FC6C43900696057 /* SubmitAttendanceViewController.swift in Sources */,
+				9D986A081FC7ACC40027D894 /* ListDiscountViewController.swift in Sources */,
 				9DF881EF1FC3CAE100FADA1B /* AboutUsViewController.swift in Sources */,
 				9DF44A771FC2B4400063D804 /* MainViewController.swift in Sources */,
 				9D6C2D0E1FC6897C00C0E25A /* LKActivity.swift in Sources */,
 				9DF351361FC6CDDB00696057 /* JackpotViewController.swift in Sources */,
 				9DF18EE01FC3E84100B71DE7 /* DonorsViewController.swift in Sources */,
+				9D986A0E1FC7C8FA0027D894 /* DiscountModel.swift in Sources */,
 				9DF44A751FC2B4400063D804 /* AppDelegate.swift in Sources */,
 				9DF257831FC4261800ED0404 /* EventViewController.swift in Sources */,
 				9DF70F131FC55EA800774BA6 /* HoleListViewController.swift in Sources */,
 				9DF44A881FC2BBD20063D804 /* BaseViewController.swift in Sources */,
 				9DF70F171FC55FB400774BA6 /* HoleViewCell.swift in Sources */,
+				9D986A0C1FC7C6C50027D894 /* SinginViewController.swift in Sources */,
 				9DF351301FC6BD9000696057 /* AttendanceViewController.swift in Sources */,
 				9DF70F1C1FC56D1000774BA6 /* DetailHoleViewController.swift in Sources */,
+				9D986A101FC7C9740027D894 /* JackpotModel.swift in Sources */,
 				9DF881F41FC3D43300FADA1B /* AboutTourViewController.swift in Sources */,
 				9DF351381FC6D15B00696057 /* DiscountViewController.swift in Sources */,
 				9DF70F1A1FC5623D00774BA6 /* Define.swift in Sources */,
 				9DF44A8B1FC2CC140063D804 /* Extension.swift in Sources */,
-				9DF3513A1FC6D4CF00696057 /* ListproductViewController.swift in Sources */,
+				9DF3513A1FC6D4CF00696057 /* ListJackpotViewController.swift in Sources */,
 				9D8E1B691FC4040900FCFD71 /* ContactUsViewController.swift in Sources */,
 				9DF5463A1FC65C8400850EDC /* ListInfotmatchViewController.swift in Sources */,
 			);

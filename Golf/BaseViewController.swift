@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BaseViewController: UIViewController {
 
+    var isAuthor = false
     var buttonMap = UIButton()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,13 @@ class BaseViewController: UIViewController {
     }
     
     @objc func pressedMember() {
-        print("member")
+        if isAuthor {
+            
+        } else {
+            if let vc = SinginViewController.instance() as? SinginViewController {
+                navigationController?.pushViewController(vc, animated: false)
+            }
+        }
     }
     
     @objc func pressedHome() {

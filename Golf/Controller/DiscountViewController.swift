@@ -14,10 +14,18 @@ class DiscountViewController: BaseViewController, SecondSroyBoard {
         super.viewDidLoad()
 
     }
+    
     @IBAction func pressedDiscountProduct(_ sender: Any) {
-        
+        if let vc = ListDiscountViewController.instance() as? ListDiscountViewController {
+            vc.typeDiscount = .product
+            navigationController?.pushViewController(vc, animated: false)
+        }
     }
+    
     @IBAction func pressedDisCountStore(_ sender: Any) {
-        
+        if let vc = ListDiscountViewController.instance() as? ListDiscountViewController {
+            vc.typeDiscount = .store
+            navigationController?.pushViewController(vc, animated: false)
+        }
     }
 }
