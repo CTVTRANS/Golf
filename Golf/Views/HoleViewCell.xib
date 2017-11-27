@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -46,12 +45,11 @@
                 <constraint firstItem="dKO-sI-mzd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="mW4-j3-j7R"/>
                 <constraint firstAttribute="trailing" secondItem="dKO-sI-mzd" secondAttribute="trailing" id="rGR-pY-gR3"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="185" height="142"/>
             <connections>
                 <outlet property="indexHole" destination="HDU-rr-VSm" id="RWa-DY-kgQ"/>
             </connections>
-            <point key="canvasLocation" x="101.5" y="100"/>
+            <point key="canvasLocation" x="101" y="100"/>
         </collectionViewCell>
     </objects>
     <resources>

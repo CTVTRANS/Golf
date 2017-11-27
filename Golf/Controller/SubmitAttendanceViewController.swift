@@ -7,9 +7,6 @@
 //
 
 import UIKit
-enum TypeAttendance: Int {
-    case cup = 0, tour
-}
 
 class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
 

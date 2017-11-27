@@ -12,10 +12,10 @@ class ForgotPassViewController: BaseViewController, SecondSroyBoard {
 
     @IBOutlet weak var profileID: UITextField!
     @IBOutlet weak var phone: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func pressedButton(_ sender: Any) {

@@ -8,10 +8,6 @@
 
 import UIKit
 
-enum TypeShow: Int {
-    case listMatch = 0, activity, company
-}
-
 class ListInfotmatchViewController: BaseViewController, MainStoryBoard {
 
     @IBOutlet weak var background: UIImageView!

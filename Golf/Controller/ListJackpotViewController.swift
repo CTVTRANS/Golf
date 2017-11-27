@@ -7,9 +7,6 @@
 //
 
 import UIKit
-enum TypeJackpotProduct: Int {
-    case all = 0, scaned
-}
 
 class ProductCell: UITableViewCell {
     

@@ -12,11 +12,12 @@ class JackpotViewController: BaseViewController, SecondSroyBoard {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     @IBAction func pressedScan(_ sender: Any) {
-        
+        if let vc = QRScanViewController.instance() as? QRScanViewController {
+            navigationController?.pushViewController(vc, animated: false)
+        }
     }
     
     @IBAction func pressedListproduct(_ sender: Any) {

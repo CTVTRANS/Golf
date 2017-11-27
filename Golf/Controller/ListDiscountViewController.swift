@@ -8,10 +8,6 @@
 
 import UIKit
 
-enum TypeDiscount: Int {
-    case product = 0, store
-}
-
 class DiscountCell: UITableViewCell {
     
     @IBOutlet weak var price: UILabel!
