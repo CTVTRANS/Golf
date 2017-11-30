@@ -8,23 +8,35 @@
 
 import Foundation
 
-enum TypeJackpotProduct {
-    case all
-    case scaned
+enum TypeDonors {
+    case older2018
+    case thisYear
 }
 
+enum TypeJackpotProduct {
+    case all // show all profuct
+    case scaned // show all product was scaned
+}
+
+// Screen show event
 enum TypeShow {
-    case listMatch
-    case activity
-    case company
+    case listMatch // show match of event
+    case activity // show activity of event
+    case company // show infimation company
 }
 
 enum TypeAttendance {
-    case cup
-    case tour
+    case cup // show screen attendance cup
+    case tour // show screen attendance tour
 }
 
 enum TypeDiscount: Int {
-    case product
-    case store
+    case product // show all product discount
+    case store // show product in store discount
+}
+
+enum TravelModes: Int {
+    case driving
+    case walking
+    case bicycling
 }

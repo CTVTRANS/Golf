@@ -14,6 +14,12 @@ class MainViewController: BaseViewController {
         super.viewDidLoad()
     }
     
+    @IBAction func pressShowDetailNews(_ sender: Any) {
+        if let vc = NewsDetailViewController.instance() as? NewsDetailViewController {
+            navigationController?.pushViewController(vc, animated: false)
+        }
+    }
+    
     @IBAction func pressedAboutUs(_ sender: Any) {
         if let vc = AboutUsViewController.instance() as? AboutUsViewController {
             navigationController?.pushViewController(vc, animated: false)

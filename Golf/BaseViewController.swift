@@ -24,7 +24,9 @@ class BaseViewController: UIViewController {
         navigationItem.titleView = buttonMap
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_member"), style: .done, target: self, action: #selector(pressedMember))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_home"), style: .done, target: self, action: #selector(pressedHome))
+        let homeBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_home"), style: .done, target: self, action: #selector(pressedHome))
+        let backbutton = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_back"), style: .done, target: self, action: #selector(pressedBack))
+        navigationItem.leftBarButtonItems = [homeBarButton, backbutton]
     }
     
     @objc func pressedMap() {
@@ -44,7 +46,11 @@ class BaseViewController: UIViewController {
         }
     }
     
-    @objc func pressedHome() {
+    @objc func pressedBack() {
         navigationController?.popViewController(animated: false)
+    }
+    
+    @objc func pressedHome() {
+        navigationController?.popToRootViewController(animated: false)
     }
 }

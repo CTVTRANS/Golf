@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 extension NSLayoutConstraint {
-    @IBInspectable
-    var adjustSize: Bool {
+    
+    @IBInspectable var adjustSize: Bool {
         set {
             if newValue {
                 let currentConstant = self.constant

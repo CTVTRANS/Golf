@@ -12,6 +12,7 @@ import AVFoundation
 class QRScanViewController: BaseViewController, SecondSroyBoard {
 
     @IBOutlet weak var scannerPreview: UIView!
+    var reultScan: String!
     
     fileprivate lazy var qrCodeFrameView: UIView = {
         let qrView = UIView()
@@ -35,18 +36,25 @@ class QRScanViewController: BaseViewController, SecondSroyBoard {
         QRMetadataManager.shared.startScan()
         previewLayer = QRMetadataManager.shared.previewLayer
         
-        QRMetadataManager.shared.resultScan = {[weak self] metadataObjects in
-            if let metadataObj = metadataObjects[0] as? AVMetadataMachineReadableCodeObject {
-                let barCodeObject = self?.previewLayer?.transformedMetadataObject(for: metadataObj)
-                self?.qrCodeFrameView.frame = barCodeObject!.bounds
-                self?.qrCodeFrameView.superview?.bringSubview(toFront: (self?.qrCodeFrameView)!)
-                if let resultString = metadataObj.stringValue {
-                    // send id product to server
-                    
-                    
-                    QRMetadataManager.shared.stopScan()
-                }
+        QRMetadataManager.shared.resultScan = {[unowned self] metadataObjects in
+            guard let metadataObj = metadataObjects[0] as? AVMetadataMachineReadableCodeObject else {
+                return
             }
+            let barCodeObject = self.previewLayer?.transformedMetadataObject(for: metadataObj)
+            self.qrCodeFrameView.frame = barCodeObject!.bounds
+            self.qrCodeFrameView.superview?.bringSubview(toFront: self.qrCodeFrameView)
+            if let resultString = metadataObj.stringValue {
+                self.reultScan = resultString
+                QRMetadataManager.shared.stopScan()
+                _ = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(self.showResult), userInfo: nil, repeats: false)
+            }
+        }
+    }
+    
+    @objc func showResult() {
+        if let vc = ResultScanViewController.instance() as? ResultScanViewController {
+            vc.resutl = reultScan
+            navigationController?.pushViewController(vc, animated: false)
         }
     }
     
@@ -57,6 +65,8 @@ class QRScanViewController: BaseViewController, SecondSroyBoard {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.qrCodeFrameView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        QRMetadataManager.shared.startScan()
     }
     
     deinit {

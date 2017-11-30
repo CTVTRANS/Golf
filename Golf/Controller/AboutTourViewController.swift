@@ -10,8 +10,22 @@ import UIKit
 
 class AboutTourViewController: BaseViewController, MainStoryBoard {
 
+    @IBOutlet weak var webView: UIWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLoading()
+        webView.delegate = self
+        getAoutMap()
+    }
+    
+    func getAoutMap() {
+        webView.loadHTMLString("ok", baseURL: nil)
+    }
+}
 
+extension AboutTourViewController: UIWebViewDelegate {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        hideLoading()
     }
 }

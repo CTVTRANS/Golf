@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6876139A579BF38C8F73277E /* Pods_Golf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD995BA08F58A4FFD8D88EB6 /* Pods_Golf.framework */; };
 		9D01BD5C1FC9203400C69211 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01BD5B1FC9203400C69211 /* Enum.swift */; };
+		9D0333E11FD0154A00F87B0D /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0333E01FD0154A00F87B0D /* NewsDetailViewController.swift */; };
 		9D04EAEA1FC7FB3E00028EF7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAE91FC7FB3E00028EF7 /* RegisterViewController.swift */; };
 		9D04EAEE1FC810EF00028EF7 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAED1FC810EE00028EF7 /* BaseModel.swift */; };
 		9D04EAF41FC81F4000028EF7 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAF31FC81F4000028EF7 /* MemberModel.swift */; };
@@ -23,6 +24,9 @@
 		9D05EB851FC82A78008943BF /* Extension+UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05EB841FC82A78008943BF /* Extension+UIDevice.swift */; };
 		9D05EB871FC82BA9008943BF /* Extension+UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05EB861FC82BA9008943BF /* Extension+UILabel.swift */; };
 		9D05EB891FC82BCF008943BF /* Extension+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05EB881FC82BCF008943BF /* Extension+UIButton.swift */; };
+		9D0CA5441FCD0B7B00AB4D97 /* ResultScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0CA5431FCD0B7B00AB4D97 /* ResultScanViewController.swift */; };
+		9D3D01C41FCD738300540E94 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D01C31FCD738300540E94 /* Router.swift */; };
+		9D4BFF851FCC26F1001ACFD1 /* 華康方圓體W7.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 9D4BFF841FCC26EF001ACFD1 /* 華康方圓體W7.ttc */; };
 		9D6C2D0E1FC6897C00C0E25A /* LKActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6C2D0D1FC6897C00C0E25A /* LKActivity.swift */; };
 		9D8E1B691FC4040900FCFD71 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E1B681FC4040900FCFD71 /* ContactUsViewController.swift */; };
 		9D986A081FC7ACC40027D894 /* ListDiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D986A071FC7ACC40027D894 /* ListDiscountViewController.swift */; };
@@ -60,6 +64,7 @@
 /* Begin PBXFileReference section */
 		464E30B328C8B59C9C3E97DA /* Pods-Golf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Golf.release.xcconfig"; path = "Pods/Target Support Files/Pods-Golf/Pods-Golf.release.xcconfig"; sourceTree = "<group>"; };
 		9D01BD5B1FC9203400C69211 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		9D0333E01FD0154A00F87B0D /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		9D04EAE91FC7FB3E00028EF7 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9D04EAED1FC810EE00028EF7 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		9D04EAF31FC81F4000028EF7 /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
@@ -74,6 +79,9 @@
 		9D05EB841FC82A78008943BF /* Extension+UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIDevice.swift"; sourceTree = "<group>"; };
 		9D05EB861FC82BA9008943BF /* Extension+UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UILabel.swift"; sourceTree = "<group>"; };
 		9D05EB881FC82BCF008943BF /* Extension+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIButton.swift"; sourceTree = "<group>"; };
+		9D0CA5431FCD0B7B00AB4D97 /* ResultScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScanViewController.swift; sourceTree = "<group>"; };
+		9D3D01C31FCD738300540E94 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		9D4BFF841FCC26EF001ACFD1 /* 華康方圓體W7.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "華康方圓體W7.ttc"; sourceTree = "<group>"; };
 		9D6C2D0D1FC6897C00C0E25A /* LKActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LKActivity.swift; sourceTree = "<group>"; };
 		9D8E1B681FC4040900FCFD71 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		9D986A071FC7ACC40027D894 /* ListDiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDiscountViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +152,7 @@
 		9D986A091FC7B46D0027D894 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				9D3D01C31FCD738300540E94 /* Router.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -151,6 +160,7 @@
 		9D986A0A1FC7B4A00027D894 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9DA594551FCBB46A00C31CBC /* QRManager.swift */,
 				9D05EB781FC823E5008943BF /* DonorsModel.swift */,
 				9D04EAED1FC810EE00028EF7 /* BaseModel.swift */,
 				9D986A0D1FC7C8FA0027D894 /* DiscountModel.swift */,
@@ -203,6 +213,7 @@
 		9DF44A891FC2BBD70063D804 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				9D4BFF841FCC26EF001ACFD1 /* 華康方圓體W7.ttc */,
 				9DF44A7B1FC2B4400063D804 /* Assets.xcassets */,
 				9DF44A7D1FC2B4400063D804 /* LaunchScreen.storyboard */,
 				9DF44A801FC2B4400063D804 /* Info.plist */,
@@ -233,6 +244,7 @@
 				9DF44A761FC2B4400063D804 /* MainViewController.swift */,
 				9DF881EE1FC3CAE100FADA1B /* AboutUsViewController.swift */,
 				9DF881F31FC3D43300FADA1B /* AboutTourViewController.swift */,
+				9D0333E01FD0154A00F87B0D /* NewsDetailViewController.swift */,
 				9DF18EDF1FC3E84100B71DE7 /* DonorsViewController.swift */,
 				9D8E1B681FC4040900FCFD71 /* ContactUsViewController.swift */,
 				9DF257821FC4261800ED0404 /* EventViewController.swift */,
@@ -242,14 +254,14 @@
 				9DF3512F1FC6BD9000696057 /* AttendanceViewController.swift */,
 				9DF351311FC6C43900696057 /* SubmitAttendanceViewController.swift */,
 				9DF351351FC6CDDB00696057 /* JackpotViewController.swift */,
+				9DA594531FCBB44C00C31CBC /* QRScanViewController.swift */,
+				9D0CA5431FCD0B7B00AB4D97 /* ResultScanViewController.swift */,
 				9DF351391FC6D4CF00696057 /* ListJackpotViewController.swift */,
 				9DF351371FC6D15B00696057 /* DiscountViewController.swift */,
 				9D986A071FC7ACC40027D894 /* ListDiscountViewController.swift */,
 				9D986A0B1FC7C6C50027D894 /* SinginViewController.swift */,
 				9D986A111FC7DBE50027D894 /* ForgotPassViewController.swift */,
 				9D04EAE91FC7FB3E00028EF7 /* RegisterViewController.swift */,
-				9DA594531FCBB44C00C31CBC /* QRScanViewController.swift */,
-				9DA594551FCBB46A00C31CBC /* QRManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -319,6 +331,7 @@
 			files = (
 				9DF70F181FC55FB400774BA6 /* HoleViewCell.xib in Resources */,
 				9DF44A7F1FC2B4400063D804 /* LaunchScreen.storyboard in Resources */,
+				9D4BFF851FCC26F1001ACFD1 /* 華康方圓體W7.ttc in Resources */,
 				9DF44A7C1FC2B4400063D804 /* Assets.xcassets in Resources */,
 				9DF351341FC6CDB300696057 /* Second.storyboard in Resources */,
 				9DF44A7A1FC2B4400063D804 /* Main.storyboard in Resources */,
@@ -408,10 +421,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D3D01C41FCD738300540E94 /* Router.swift in Sources */,
 				9D04EAEA1FC7FB3E00028EF7 /* RegisterViewController.swift in Sources */,
 				9DF881F21FC3CFA400FADA1B /* StoryBoardHelper.swift in Sources */,
 				9D04EAEE1FC810EF00028EF7 /* BaseModel.swift in Sources */,
 				9DF351321FC6C43900696057 /* SubmitAttendanceViewController.swift in Sources */,
+				9D0CA5441FCD0B7B00AB4D97 /* ResultScanViewController.swift in Sources */,
 				9D05EB7D1FC8262E008943BF /* Map.swift in Sources */,
 				9D05EB831FC82A43008943BF /* Extension+NSLayoutConstraint.swift in Sources */,
 				9D986A081FC7ACC40027D894 /* ListDiscountViewController.swift in Sources */,
@@ -430,6 +445,7 @@
 				9D986A0E1FC7C8FA0027D894 /* DiscountModel.swift in Sources */,
 				9D04EAFA1FC8222A00028EF7 /* HoleModel.swift in Sources */,
 				9D05EB7F1FC8299D008943BF /* Extension+UIColor.swift in Sources */,
+				9D0333E11FD0154A00F87B0D /* NewsDetailViewController.swift in Sources */,
 				9DF44A751FC2B4400063D804 /* AppDelegate.swift in Sources */,
 				9DF257831FC4261800ED0404 /* EventViewController.swift in Sources */,
 				9DF70F131FC55EA800774BA6 /* HoleListViewController.swift in Sources */,

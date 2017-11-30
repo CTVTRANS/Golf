@@ -15,6 +15,9 @@
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
         </array>
+        <array key="華康方圓體W7.ttc">
+            <string>DFFangYuan-W7-WINP-BF</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Jackpot View Controller-->
@@ -89,19 +92,27 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1V-FH-y9c">
-                                <rect key="frame" x="152.5" y="37" width="70" height="24"/>
+                                <rect key="frame" x="154.5" y="37" width="67.5" height="24"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oww-zf-xCb">
-                                        <rect key="frame" x="27" y="0.0" width="16" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="27" y="0.0" width="13.5" height="24"/>
+                                        <fontDescription key="fontDescription" name="DFFangYuan-W7-WINP-BF" family="DFPFangYuanW7-B5" pointSize="17"/>
+                                        <color key="textColor" red="0.44705882349999998" green="0.35294117650000001" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="outlineWidth">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="outlineColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_cup" translatesAutoresizingMaskIntoConstraints="NO" id="kOO-mV-sg9">
                                         <rect key="frame" x="0.0" y="0.0" width="22" height="24"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_cup" translatesAutoresizingMaskIntoConstraints="NO" id="4ii-NB-ZQU">
-                                        <rect key="frame" x="48" y="0.0" width="22" height="24"/>
+                                        <rect key="frame" x="45.5" y="0.0" width="22" height="24"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -223,6 +234,45 @@
             </objects>
             <point key="canvasLocation" x="-119.2" y="813.64317841079469"/>
         </scene>
+        <!--Result Scan View Controller-->
+        <scene sceneID="NPP-8a-lf9">
+            <objects>
+                <viewController storyboardIdentifier="ResultScanViewController" id="m51-sl-az9" customClass="ResultScanViewController" customModule="Golf" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mwu-qZ-BI8"/>
+                        <viewControllerLayoutGuide type="bottom" id="YQm-3B-dJW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="veA-Mn-DmT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_background" translatesAutoresizingMaskIntoConstraints="NO" id="MiK-Yj-iBp">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GGT-0h-9mm">
+                                <rect key="frame" x="60" y="180" width="255" height="251"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.47843137250000001" green="0.75686274509999996" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GGT-0h-9mm" secondAttribute="trailing" constant="60" id="024-jm-haL"/>
+                            <constraint firstItem="MiK-Yj-iBp" firstAttribute="leading" secondItem="veA-Mn-DmT" secondAttribute="leading" id="8ej-FZ-6Hm"/>
+                            <constraint firstItem="YQm-3B-dJW" firstAttribute="top" secondItem="GGT-0h-9mm" secondAttribute="bottom" constant="236" id="Eld-Qn-LBt"/>
+                            <constraint firstItem="YQm-3B-dJW" firstAttribute="top" secondItem="MiK-Yj-iBp" secondAttribute="bottom" id="LB0-Sh-rfU"/>
+                            <constraint firstItem="MiK-Yj-iBp" firstAttribute="top" secondItem="mwu-qZ-BI8" secondAttribute="bottom" id="V5M-tU-oOS"/>
+                            <constraint firstItem="GGT-0h-9mm" firstAttribute="top" secondItem="mwu-qZ-BI8" secondAttribute="bottom" constant="160" id="j3I-ic-buH"/>
+                            <constraint firstItem="GGT-0h-9mm" firstAttribute="leading" secondItem="veA-Mn-DmT" secondAttribute="leading" constant="60" id="mIb-Dr-JEE"/>
+                            <constraint firstAttribute="trailing" secondItem="MiK-Yj-iBp" secondAttribute="trailing" id="wC4-7x-kvz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageResult" destination="GGT-0h-9mm" id="bJH-My-VVc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zIm-Ep-3fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-119" y="1484"/>
+        </scene>
         <!--List Discount View Controller-->
         <scene sceneID="B2X-kT-lbr">
             <objects>
@@ -239,19 +289,19 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lVp-nK-FOn">
-                                <rect key="frame" x="158.5" y="37" width="58" height="22"/>
+                                <rect key="frame" x="160" y="37" width="55.5" height="22"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ntv-Se-cPW">
-                                        <rect key="frame" x="21" y="0.0" width="16" height="22"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="21" y="0.0" width="13.5" height="22"/>
+                                        <fontDescription key="fontDescription" name="DFFangYuan-W7-WINP-BF" family="DFPFangYuanW7-B5" pointSize="17"/>
+                                        <color key="textColor" red="0.44705882352941173" green="0.3529411764705882" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_ball" translatesAutoresizingMaskIntoConstraints="NO" id="saT-dI-ffm">
                                         <rect key="frame" x="0.0" y="0.0" width="16" height="22"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_ball" translatesAutoresizingMaskIntoConstraints="NO" id="bzc-Ad-hkW">
-                                        <rect key="frame" x="42" y="0.0" width="16" height="22"/>
+                                        <rect key="frame" x="39.5" y="0.0" width="16" height="22"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
