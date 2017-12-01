@@ -13,7 +13,7 @@ struct MapModel: BaseModel {
     
     var content = ""
     
-    static func decodeJSON(json: JSON) throws -> MapModel {
+    static func decodeJSON(json: JSON) -> MapModel {
         return MapModel(content: json[""].stringValue)
     }
 }

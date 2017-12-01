@@ -13,7 +13,7 @@ struct NewsModel: BaseModel {
     
     var content = ""
     
-    static func decodeJSON(json: JSON) throws -> NewsModel {
+    static func decodeJSON(json: JSON) -> NewsModel {
         return NewsModel(content: json[""].stringValue)
     }
 }

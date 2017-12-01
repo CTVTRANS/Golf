@@ -14,18 +14,19 @@ struct CompanyModel: BaseModel {
     var name = ""
     var adress = ""
     var website = ""
-    var phone = 0
-    var latitude = 0.0
-    var lontitude = 0.0
+    var phone = ""
+    var latitude = 21.0062876
+    var lontitude = 105.8423921
+    var info = ""
     
-    static func decodeJSON(json: JSON) throws -> CompanyModel {
-        
+    static func decodeJSON(json: JSON) -> CompanyModel {
         return CompanyModel(name: json[""].stringValue,
                             adress: json[""].stringValue,
                             website: json[""].stringValue,
-                            phone: json[""].intValue,
+                            phone: json[""].stringValue,
                             latitude: json[""].doubleValue,
-                            lontitude: json[""].doubleValue
+                            lontitude: json[""].doubleValue,
+                            info: json[""].stringValue
         )
     }
 }

@@ -249,24 +249,76 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_background" translatesAutoresizingMaskIntoConstraints="NO" id="MiK-Yj-iBp">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GGT-0h-9mm">
-                                <rect key="frame" x="60" y="180" width="255" height="251"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWn-70-hET">
+                                <rect key="frame" x="68" y="207" width="239" height="253"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_jackpot_winnings" translatesAutoresizingMaskIntoConstraints="NO" id="GGT-0h-9mm">
+                                        <rect key="frame" x="0.0" y="0.0" width="239" height="253"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ONd-QW-HTa">
+                                        <rect key="frame" x="0.0" y="0.0" width="239" height="253"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ONd-QW-HTa" firstAttribute="top" secondItem="eWn-70-hET" secondAttribute="top" id="9BJ-kX-hpG"/>
+                                    <constraint firstAttribute="trailing" secondItem="GGT-0h-9mm" secondAttribute="trailing" id="9fx-pf-G7j"/>
+                                    <constraint firstItem="GGT-0h-9mm" firstAttribute="top" secondItem="eWn-70-hET" secondAttribute="top" id="Fcg-4O-hXG"/>
+                                    <constraint firstAttribute="trailing" secondItem="ONd-QW-HTa" secondAttribute="trailing" id="H9h-2N-Gfz"/>
+                                    <constraint firstAttribute="bottom" secondItem="GGT-0h-9mm" secondAttribute="bottom" id="Qqj-Pa-Sra"/>
+                                    <constraint firstItem="ONd-QW-HTa" firstAttribute="leading" secondItem="eWn-70-hET" secondAttribute="leading" id="f8D-E6-Gnv"/>
+                                    <constraint firstItem="GGT-0h-9mm" firstAttribute="leading" secondItem="eWn-70-hET" secondAttribute="leading" id="fKS-Zu-XX6"/>
+                                    <constraint firstAttribute="bottom" secondItem="ONd-QW-HTa" secondAttribute="bottom" id="gQM-qB-h9n"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title_jackpot_winnings" translatesAutoresizingMaskIntoConstraints="NO" id="blZ-Kp-l89">
+                                <rect key="frame" x="53" y="52" width="270" height="66"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2b-G8-W9Q">
+                                <rect key="frame" x="167" y="162" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lyj-9x-tci">
+                                <rect key="frame" x="167" y="484" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auk-we-0SK">
+                                <rect key="frame" x="164.5" y="529" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="pressedButton:" destination="m51-sl-az9" eventType="touchUpInside" id="VPK-Om-YVI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.47843137250000001" green="0.75686274509999996" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="GGT-0h-9mm" secondAttribute="trailing" constant="60" id="024-jm-haL"/>
+                            <constraint firstItem="eWn-70-hET" firstAttribute="centerY" secondItem="veA-Mn-DmT" secondAttribute="centerY" id="35P-5c-Vg1"/>
+                            <constraint firstItem="eWn-70-hET" firstAttribute="top" secondItem="c2b-G8-W9Q" secondAttribute="bottom" constant="24" id="6oT-WH-MVt"/>
                             <constraint firstItem="MiK-Yj-iBp" firstAttribute="leading" secondItem="veA-Mn-DmT" secondAttribute="leading" id="8ej-FZ-6Hm"/>
-                            <constraint firstItem="YQm-3B-dJW" firstAttribute="top" secondItem="GGT-0h-9mm" secondAttribute="bottom" constant="236" id="Eld-Qn-LBt"/>
+                            <constraint firstItem="Lyj-9x-tci" firstAttribute="centerX" secondItem="veA-Mn-DmT" secondAttribute="centerX" id="Fr5-Hk-i1B"/>
+                            <constraint firstItem="eWn-70-hET" firstAttribute="centerX" secondItem="veA-Mn-DmT" secondAttribute="centerX" id="IAy-OQ-iUO"/>
+                            <constraint firstItem="auk-we-0SK" firstAttribute="top" secondItem="Lyj-9x-tci" secondAttribute="bottom" constant="24" id="Irg-DG-H45"/>
+                            <constraint firstItem="blZ-Kp-l89" firstAttribute="centerX" secondItem="veA-Mn-DmT" secondAttribute="centerX" id="JrG-4I-5ht"/>
                             <constraint firstItem="YQm-3B-dJW" firstAttribute="top" secondItem="MiK-Yj-iBp" secondAttribute="bottom" id="LB0-Sh-rfU"/>
                             <constraint firstItem="MiK-Yj-iBp" firstAttribute="top" secondItem="mwu-qZ-BI8" secondAttribute="bottom" id="V5M-tU-oOS"/>
-                            <constraint firstItem="GGT-0h-9mm" firstAttribute="top" secondItem="mwu-qZ-BI8" secondAttribute="bottom" constant="160" id="j3I-ic-buH"/>
-                            <constraint firstItem="GGT-0h-9mm" firstAttribute="leading" secondItem="veA-Mn-DmT" secondAttribute="leading" constant="60" id="mIb-Dr-JEE"/>
+                            <constraint firstItem="c2b-G8-W9Q" firstAttribute="centerX" secondItem="veA-Mn-DmT" secondAttribute="centerX" id="b8X-nF-Vg7"/>
+                            <constraint firstItem="blZ-Kp-l89" firstAttribute="top" secondItem="mwu-qZ-BI8" secondAttribute="bottom" constant="32" id="cBA-rt-Z8a"/>
+                            <constraint firstItem="auk-we-0SK" firstAttribute="centerX" secondItem="veA-Mn-DmT" secondAttribute="centerX" id="due-TC-tXj"/>
+                            <constraint firstItem="Lyj-9x-tci" firstAttribute="top" secondItem="eWn-70-hET" secondAttribute="bottom" constant="24" id="iuP-V8-n43"/>
                             <constraint firstAttribute="trailing" secondItem="MiK-Yj-iBp" secondAttribute="trailing" id="wC4-7x-kvz"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="button" destination="auk-we-0SK" id="aAh-6F-UiZ"/>
+                        <outlet property="imageProduct" destination="ONd-QW-HTa" id="Gdr-gO-ZlE"/>
                         <outlet property="imageResult" destination="GGT-0h-9mm" id="bJH-My-VVc"/>
+                        <outlet property="nameProduct" destination="c2b-G8-W9Q" id="2x2-oR-PQM"/>
+                        <outlet property="productID" destination="Lyj-9x-tci" id="eSd-hk-aXD"/>
+                        <outlet property="titleWinings" destination="blZ-Kp-l89" id="Uul-o5-et4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zIm-Ep-3fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -417,6 +469,61 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yVb-oc-y9g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="688.79999999999995" y="813.64317841079469"/>
+        </scene>
+        <!--Attend Success View Controller-->
+        <scene sceneID="AYH-Tu-bgg">
+            <objects>
+                <viewController storyboardIdentifier="AttendSuccessViewController" id="zZJ-qN-LtO" customClass="AttendSuccessViewController" customModule="Golf" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nf3-eZ-gLN"/>
+                        <viewControllerLayoutGuide type="bottom" id="0yb-ty-ddB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ldu-lF-Py8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_background" translatesAutoresizingMaskIntoConstraints="NO" id="bbc-jT-rF8">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDG-IX-OwQ">
+                                <rect key="frame" x="167.5" y="55" width="42" height="20"/>
+                                <fontDescription key="fontDescription" name="DFFangYuan-W7-WINP-BF" family="DFPFangYuanW7-B5" pointSize="17"/>
+                                <color key="textColor" red="0.44705882349999998" green="0.35294117650000001" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_attend_success" translatesAutoresizingMaskIntoConstraints="NO" id="k56-PV-LBk">
+                                <rect key="frame" x="79" y="110" width="217" height="231"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMf-s5-80E">
+                                <rect key="frame" x="77.5" y="373" width="220.5" height="43"/>
+                                <string key="text">恭喜完成報名！！！
+等候專員與您聯繫候續細節</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.44705882349999998" green="0.35294117650000001" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.47843137250000001" green="0.75686274509999996" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tDG-IX-OwQ" firstAttribute="centerX" secondItem="ldu-lF-Py8" secondAttribute="centerX" id="168-BJ-Isk"/>
+                            <constraint firstItem="cMf-s5-80E" firstAttribute="top" secondItem="k56-PV-LBk" secondAttribute="bottom" constant="32" id="30d-lp-Juo"/>
+                            <constraint firstItem="k56-PV-LBk" firstAttribute="centerX" secondItem="ldu-lF-Py8" secondAttribute="centerX" id="Cag-6V-5xD"/>
+                            <constraint firstItem="bbc-jT-rF8" firstAttribute="top" secondItem="Nf3-eZ-gLN" secondAttribute="bottom" id="GgG-nJ-LPL"/>
+                            <constraint firstItem="tDG-IX-OwQ" firstAttribute="top" secondItem="Nf3-eZ-gLN" secondAttribute="bottom" constant="35" id="R1K-wc-U9D"/>
+                            <constraint firstItem="bbc-jT-rF8" firstAttribute="leading" secondItem="ldu-lF-Py8" secondAttribute="leading" id="SzI-fn-yhQ"/>
+                            <constraint firstAttribute="trailing" secondItem="bbc-jT-rF8" secondAttribute="trailing" id="hu5-Cc-euG"/>
+                            <constraint firstItem="k56-PV-LBk" firstAttribute="top" secondItem="tDG-IX-OwQ" secondAttribute="bottom" constant="35" id="mj5-EZ-odv"/>
+                            <constraint firstItem="0yb-ty-ddB" firstAttribute="top" secondItem="bbc-jT-rF8" secondAttribute="bottom" id="q1e-nk-7Dx"/>
+                            <constraint firstItem="cMf-s5-80E" firstAttribute="centerX" secondItem="ldu-lF-Py8" secondAttribute="centerX" id="tJX-t2-inT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="name" destination="tDG-IX-OwQ" id="BSj-Lh-CZP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0zo-nK-ybk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="689" y="1484"/>
         </scene>
         <!--Forgot Pass View Controller-->
         <scene sceneID="p0I-2R-euP">
@@ -886,6 +993,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_attend_success" width="217" height="231"/>
         <image name="ic_background" width="375" height="611"/>
         <image name="ic_ball" width="16" height="22"/>
         <image name="ic_cup" width="22" height="24"/>
@@ -894,6 +1002,8 @@
         <image name="ic_jackpot_listproduct" width="86" height="106"/>
         <image name="ic_jackpot_qr_scan" width="83" height="105"/>
         <image name="ic_jackpot_scaned" width="96" height="105"/>
+        <image name="ic_jackpot_winnings" width="239" height="253"/>
         <image name="ic_person" width="25" height="40"/>
+        <image name="title_jackpot_winnings" width="270" height="66"/>
     </resources>
 </document>

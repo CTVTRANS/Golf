@@ -21,20 +21,19 @@ class EventViewController: BaseViewController, MainStoryBoard {
     }
     @IBAction func pressedShowMath(_ sender: Any) {
         if let vc = ListInfotmatchViewController.instance() as? ListInfotmatchViewController {
-            vc.typeShow = .listMatch
             navigationController?.pushViewController(vc, animated: false)
         }
     }
     @IBAction func pressedShowEvent(_ sender: Any) {
         // Change content for webview
-        if let vc = ListInfotmatchViewController.instance() as? ListInfotmatchViewController {
+        if let vc = EventActivityViewController.instance() as? EventActivityViewController {
             vc.typeShow = .activity
             navigationController?.pushViewController(vc, animated: false)
         }
     }
     @IBAction func pressedShowCompany(_ sender: Any) {
-        // Change background, hiddien webview
-        if let vc = ListInfotmatchViewController.instance() as? ListInfotmatchViewController {
+        // Change background, hiddien view
+        if let vc = EventActivityViewController.instance() as? EventActivityViewController {
             vc.typeShow = .company
             navigationController?.pushViewController(vc, animated: false)
         }

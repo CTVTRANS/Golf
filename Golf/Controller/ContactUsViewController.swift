@@ -14,34 +14,60 @@ import SwiftyJSON
 class ContactUsViewController: BaseViewController, MainStoryBoard {
 
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var phone: UILabel!
+    @IBOutlet weak var website: UILabel!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
+    
     var locationManager = CLLocationManager()
     var didFindMyLocation = false
+    var showpath = false
+    var company: CompanyModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoading()
-        mapView.delegate = self
-        let camera = GMSCameraPosition.camera(withLatitude: 21.004148, longitude: 105.846233, zoom: 12.0)
-        mapView.camera = camera
-
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 21.004148, longitude: 105.846233)
-        marker.title = "Hanoi University of science And Technology"
-        marker.snippet = "Ha Noi"
-        marker.map = mapView
-        
+        drawMaker()
+        showInfoCompany()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
+    func drawMaker() {
+        mapView.delegate = self
+        company = CompanyModel(name: "hanoi university of seience and technology", adress: "so 1 dai co viet", website: "www.hust.edu.vn", phone: "842436231732", latitude: 21.0062876, lontitude: 105.8423921, info: "alo alo")
+        let camera = GMSCameraPosition.camera(withLatitude: (company?.latitude)!, longitude: (company?.lontitude)!, zoom: 15.0)
+        mapView.camera = camera
+        
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: (company?.latitude)!, longitude: (company?.lontitude)!)
+        marker.title = "Hanoi University of Science and Technology"
+        marker.snippet = "Ha Noi"
+        marker.map = mapView
+    }
+    
+    func showInfoCompany() {
+        phone.text = company?.phone
+        website.text = company?.website
+        address.text = company?.adress
+        infoLabel.text = company?.info
+    }
+    
+    @IBAction func pressedShowPath(_ sender: Any) {
         mapView.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
+        showpath = true
+        locationManager.startUpdatingLocation()
     }
     
     func drawPathFromMylocation(_ startLocation: CLLocation, to endLocation: CLLocation) {
         let origin = String(startLocation.coordinate.latitude) + "," + String(startLocation.coordinate.longitude)
         let destination = String(endLocation.coordinate.latitude) + "," + String(endLocation.coordinate.longitude)
-        let params = ["origin": origin, "destination": destination, "mode": "driving", "key": apiDirection, "sensor": "true"]
+        let params = ["origin": origin,
+                      "destination": destination,
+                      "mode": "driving",
+                      "key": apiDirection,
+                      "sensor": "true"]
       
         Alamofire.request(baseURLDirections, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { (responseData) in
             debugPrint(responseData)
@@ -62,7 +88,9 @@ class ContactUsViewController: BaseViewController, MainStoryBoard {
     }
     
     deinit {
-        mapView.removeObserver(self, forKeyPath: "myLocation", context: nil)
+        if showpath {
+            mapView.removeObserver(self, forKeyPath: "myLocation", context: nil)
+        }
         NotificationCenter.default.removeObserver(self)
     }
 }
@@ -72,15 +100,14 @@ extension ContactUsViewController: GMSMapViewDelegate, CLLocationManagerDelegate
         hideLoading()
     }
     
-//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-//        if !didFindMyLocation {
-//            if let myLocation: CLLocation = change![NSKeyValueChangeKey.newKey] as? CLLocation {
-//                mapView.camera = GMSCameraPosition.camera(withTarget: myLocation.coordinate, zoom: 15.0)
-//                mapView.settings.myLocationButton = true
-//                didFindMyLocation = true
-//            }
-//        }
-//    }
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        if !didFindMyLocation {
+            if let myLocation: CLLocation = change![NSKeyValueChangeKey.newKey] as? CLLocation {
+                mapView.camera = GMSCameraPosition.camera(withTarget: myLocation.coordinate, zoom: 13.0)
+                didFindMyLocation = true
+            }
+        }
+    }
     
     // Handle authorization for the location manager.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -93,7 +120,7 @@ extension ContactUsViewController: GMSMapViewDelegate, CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
-        let enlocation = CLLocation(latitude: 21.004148, longitude: 105.846233)
-        drawPathFromMylocation(location!, to: enlocation)
+        let endLocation = CLLocation(latitude: (company?.latitude)!, longitude: (company?.lontitude)!)
+        drawPathFromMylocation(location!, to: endLocation)
     }
 }

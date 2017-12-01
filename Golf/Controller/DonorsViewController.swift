@@ -10,8 +10,13 @@ import UIKit
 
 class DonorsCell: UITableViewCell {
     
-    func load() {
-        
+    @IBOutlet weak var content: UILabel!
+    @IBOutlet weak var titleDonors: UILabel!
+    @IBOutlet weak var year: UILabel!
+    func load(_ donors: DonorsModel) {
+        year.text = donors.year.description
+        titleDonors.text = donors.name
+        content.text = donors.description
     }
 }
 
@@ -21,6 +26,7 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var table: UITableView!
     var type = TypeDonors.thisYear
+    var listDonors = [DonorsModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,12 +59,12 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
 
 extension DonorsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return listDonors.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? DonorsCell
-        cell?.load()
+        cell?.load(listDonors[indexPath.row])
         return cell!
     }
     

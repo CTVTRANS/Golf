@@ -12,7 +12,7 @@ import AVFoundation
 class QRScanViewController: BaseViewController, SecondSroyBoard {
 
     @IBOutlet weak var scannerPreview: UIView!
-    var reultScan: String!
+    var product: JackpotModel?
     
     fileprivate lazy var qrCodeFrameView: UIView = {
         let qrView = UIView()
@@ -44,16 +44,20 @@ class QRScanViewController: BaseViewController, SecondSroyBoard {
             self.qrCodeFrameView.frame = barCodeObject!.bounds
             self.qrCodeFrameView.superview?.bringSubview(toFront: self.qrCodeFrameView)
             if let resultString = metadataObj.stringValue {
-                self.reultScan = resultString
                 QRMetadataManager.shared.stopScan()
-                _ = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(self.showResult), userInfo: nil, repeats: false)
+                self.checkProduct(qrID: resultString)
             }
         }
     }
     
-    @objc func showResult() {
+    func checkProduct(qrID: String) {
+        //call api check product
+        showResult()
+    }
+    
+    func showResult() {
         if let vc = ResultScanViewController.instance() as? ResultScanViewController {
-            vc.resutl = reultScan
+            vc.product = self.product
             navigationController?.pushViewController(vc, animated: false)
         }
     }

@@ -17,7 +17,7 @@ struct DonorsModel: BaseModel {
     var description = ""
     var year = 0
     
-    static func decodeJSON(json: JSON) throws -> DonorsModel {
+    static func decodeJSON(json: JSON) -> DonorsModel {
         return DonorsModel(idDonors: json[""].intValue,
                            name: json[""].stringValue,
                            description: json[""].stringValue,

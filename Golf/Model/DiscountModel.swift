@@ -16,7 +16,7 @@ struct DiscountModel: BaseModel {
     var imageURL = ""
     var price = 0
     
-    static func decodeJSON(json: JSON) throws -> DiscountModel {
+    static func decodeJSON(json: JSON) -> DiscountModel {
         return DiscountModel(idDiscount: json[""].intValue,
                              name: json[""].stringValue,
                              imageURL: json[""].stringValue,

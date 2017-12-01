@@ -14,7 +14,7 @@ struct HoleModel: BaseModel {
     var index = 1
     var content = ""
     
-    static func decodeJSON(json: JSON) throws -> HoleModel {
+    static func decodeJSON(json: JSON) -> HoleModel {
         return HoleModel(index: json[""].intValue,
                          content: json[""].stringValue)
     }

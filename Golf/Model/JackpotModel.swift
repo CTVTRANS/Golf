@@ -15,7 +15,7 @@ struct JackpotModel: BaseModel {
     var imageURL = ""
     var amount = 0
     
-    static func decodeJSON(json: JSON) throws -> JackpotModel {
+    static func decodeJSON(json: JSON) -> JackpotModel {
         return JackpotModel(idJackpit: json[""].intValue,
                             name: json[""].stringValue,
                             imageURL: json[""].stringValue,

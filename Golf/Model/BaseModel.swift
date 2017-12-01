@@ -14,7 +14,7 @@ public enum BaseModelError: Error {
 }
 
 public protocol BaseModel {
-    static func decodeJSON(json: JSON) throws -> Self
+    static func decodeJSON(json: JSON) -> Self
 }
 
 public extension JSON {
