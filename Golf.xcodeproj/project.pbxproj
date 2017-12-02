@@ -64,6 +64,7 @@
 		9DF881EF1FC3CAE100FADA1B /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF881EE1FC3CAE100FADA1B /* AboutUsViewController.swift */; };
 		9DF881F21FC3CFA400FADA1B /* StoryBoardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF881F11FC3CFA400FADA1B /* StoryBoardHelper.swift */; };
 		9DF881F41FC3D43300FADA1B /* AboutTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF881F31FC3D43300FADA1B /* AboutTourViewController.swift */; };
+		9DFC799D1FD256EB002CA3F5 /* InfomationMemberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFC799C1FD256EB002CA3F5 /* InfomationMemberController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +127,7 @@
 		9DF881EE1FC3CAE100FADA1B /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		9DF881F11FC3CFA400FADA1B /* StoryBoardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardHelper.swift; sourceTree = "<group>"; };
 		9DF881F31FC3D43300FADA1B /* AboutTourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTourViewController.swift; sourceTree = "<group>"; };
+		9DFC799C1FD256EB002CA3F5 /* InfomationMemberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfomationMemberController.swift; sourceTree = "<group>"; };
 		BD995BA08F58A4FFD8D88EB6 /* Pods_Golf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Golf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4FA910DD8DD93D47F17CE51 /* Pods-Golf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Golf.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Golf/Pods-Golf.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -277,6 +279,7 @@
 				9D986A0B1FC7C6C50027D894 /* SinginViewController.swift */,
 				9D986A111FC7DBE50027D894 /* ForgotPassViewController.swift */,
 				9D04EAE91FC7FB3E00028EF7 /* RegisterViewController.swift */,
+				9DFC799C1FD256EB002CA3F5 /* InfomationMemberController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				9DF351381FC6D15B00696057 /* DiscountViewController.swift in Sources */,
 				9DF70F1A1FC5623D00774BA6 /* Define.swift in Sources */,
 				9D05EB851FC82A78008943BF /* Extension+UIDevice.swift in Sources */,
+				9DFC799D1FD256EB002CA3F5 /* InfomationMemberController.swift in Sources */,
 				9DF3513A1FC6D4CF00696057 /* ListJackpotViewController.swift in Sources */,
 				9D8E1B691FC4040900FCFD71 /* ContactUsViewController.swift in Sources */,
 				9DF5463A1FC65C8400850EDC /* ListInfotmatchViewController.swift in Sources */,

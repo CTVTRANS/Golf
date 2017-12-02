@@ -14,19 +14,32 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        disableRightBarButton()
+    }
+    
+    func showInfomationMember() {
+        if let vc = InfomationMemberController.instance() as? InfomationMemberController {
+            navigationController?.pushViewController(vc, animated: false)
+        }
     }
     
     @IBAction func pressedSigin(_ sender: Any) {
         let phone = phoneTexField.text
         let pass = passTextField.text
         if phone != "" && pass != "" {
-            
+            debugPrint("call api")
         }
     }
     
-    @IBAction func pressedOpenWeb(_ sender: Any) {
-        
+    @IBAction func forgotPassPress(_ sender: Any) {
+        if let vc = ForgotPassViewController.instance() as? ForgotPassViewController {
+            navigationController?.pushViewController(vc, animated: false)
+        }
+    }
+    @IBAction func sigupPressed(_ sender: Any) {
+        if let vc = RegisterViewController.instance() as? RegisterViewController {
+            navigationController?.pushViewController(vc, animated: false)
+        }
     }
     
     deinit {

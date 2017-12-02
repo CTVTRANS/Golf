@@ -13,7 +13,6 @@ class AttendSuccessViewController: BaseViewController, SecondSroyBoard {
     @IBOutlet weak var name: UILabel!
     var titleName: String!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         name.text = titleName

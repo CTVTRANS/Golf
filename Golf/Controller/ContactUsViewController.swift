@@ -45,6 +45,7 @@ class ContactUsViewController: BaseViewController, MainStoryBoard {
         marker.title = "Hanoi University of Science and Technology"
         marker.snippet = "Ha Noi"
         marker.map = mapView
+        mapView.isMyLocationEnabled = true
     }
     
     func showInfoCompany() {
@@ -55,9 +56,12 @@ class ContactUsViewController: BaseViewController, MainStoryBoard {
     }
     
     @IBAction func pressedShowPath(_ sender: Any) {
-        mapView.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
-        showpath = true
-        locationManager.startUpdatingLocation()
+        if !showpath {
+            mapView.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
+            showpath = true
+            locationManager.startUpdatingLocation()
+            
+        }
     }
     
     func drawPathFromMylocation(_ startLocation: CLLocation, to endLocation: CLLocation) {

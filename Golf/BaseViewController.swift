@@ -26,16 +26,17 @@ class BaseViewController: UIViewController {
         navigationItem.leftBarButtonItems = [homeBarButton, backbutton]
     }
     
+    func disableRightBarButton() {
+        navigationItem.rightBarButtonItem?.isEnabled = false
+    }
+    
     @objc func pressedMember() {
-        isAuthor = !isAuthor
-        if isAuthor {
-            if let vc = ForgotPassViewController.instance() as? ForgotPassViewController {
-                navigationController?.pushViewController(vc, animated: false)
-            }
-        } else {
+        if !isAuthor {
             if let vc = SinginViewController.instance() as? SinginViewController {
                 navigationController?.pushViewController(vc, animated: false)
             }
+        } else {
+           
         }
     }
     

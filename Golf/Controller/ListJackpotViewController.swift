@@ -13,21 +13,31 @@ class ProductCell: UITableViewCell {
     @IBOutlet weak var amountJactpot: UILabel!
     @IBOutlet weak var imageJackpot: UIImageView!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var status: UILabel!
     
-    func load(_ jackpot: JackpotModel, _ type: TypeJackpotProduct) {
+    func load(_ jackpot: JackpotModel) {
         imageJackpot.kf.setImage(with: URL(string: jackpot.imageURL))
         name.text = jackpot.name
-        if type == .all {
-            amountJactpot.text = jackpot.amount.description
-            status.isHidden = true
-            imageJackpot.isHidden = false
-        } else {
-            amountJactpot.text = "XYZ"
-            status.text = jackpot.amount.description
-            status.isHidden = false
-            imageJackpot.isHidden = true
-        }
+        amountJactpot.text = jackpot.amount.description
+    }
+}
+
+class ProductScanedCell: UITableViewCell {
+    
+    @IBOutlet weak var numberHole: UILabel!
+    @IBOutlet weak var nameProduct: UILabel!
+    @IBOutlet weak var status: UILabel!
+    var product: JackpotModel!
+    var callBack:((_ idProduct: Int) -> Void) = {_ in }
+    
+    func load(_ jackpotScaned: JackpotModel) {
+        product = jackpotScaned
+        nameProduct.text = jackpotScaned.name
+        status.text = jackpotScaned.status.description
+        numberHole.text = jackpotScaned.numberHole.description
+    }
+    
+    @IBAction func pressedReward(_ sender: Any) {
+        callBack(product.idJackpit)
     }
 }
 
@@ -50,7 +60,7 @@ extension ListJackpotViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? ProductCell
-        cell?.load(listJackpot[indexPath.row], statusProduct)
+        cell?.load(listJackpot[indexPath.row])
         return cell!
     }
     
