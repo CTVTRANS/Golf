@@ -33,18 +33,10 @@ struct CompanyModel: BaseModel {
     }
 }
 
-class CompanyCoreData: NSManagedObject {
-    @NSManaged var name: String
-    @NSManaged var address: String
-    @NSManaged var website: String
-    @NSManaged var phone: String
-    @NSManaged var lat: Double
-    @NSManaged var lon: Double
-    @NSManaged var info: String
-
+extension CompanyCore {
     var company: CompanyModel {
         get {
-            return CompanyModel(name: self.name, adress: self.address, website: self.website, phone: self.phone, latitude: self.lat, lontitude: self.lon, info: self.info)
+            return CompanyModel(name: self.name!, adress: self.address!, website: self.website!, phone: self.phone!, latitude: self.lat, lontitude: self.lon, info: self.info!)
         }
         set {
             self.name = newValue.name
@@ -57,3 +49,4 @@ class CompanyCoreData: NSManagedObject {
         }
     }
 }
+

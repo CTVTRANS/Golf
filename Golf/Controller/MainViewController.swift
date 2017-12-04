@@ -21,24 +21,21 @@ class MainViewController: BaseViewController {
         }
         let managerContext = StorageManager.shared.managedObjectContext
         let entity = NSEntityDescription.entity(forEntityName: companyEntity, in: managerContext)
-        
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
-        //request.predicate = NSPredicate(format: "age = %@", "12")
         request.returnsObjectsAsFaults = false
-        
         do {
             let result = try managerContext.fetch(request)
-            for data in (result as? [NSManagedObject])! {
-                print(data.value(forKey: "name") as? String)
+            for data in (result as? [CompanyCore])! {
+                print(data.name)
+                print(data.info)
             }
         } catch {
             print("Failed")
         }
         
-        let newUser = NSManagedObject(entity: entity!, insertInto: managerContext)
-        newUser.setValue("Shashikant", forKey: "name")
-        newUser.setValue("1234", forKey: "info")
-        newUser.setValue(12.8, forKey: "lat")
+        if let newUser = NSManagedObject(entity: entity!, insertInto: managerContext) as? CompanyCore {
+            newUser.info = "asdfasdf"
+        }
         
         do {
            try  managerContext.save()
