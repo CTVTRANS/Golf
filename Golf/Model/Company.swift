@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import CoreData
 
 struct CompanyModel: BaseModel {
     
@@ -29,5 +30,30 @@ struct CompanyModel: BaseModel {
                             lontitude: json[""].doubleValue,
                             info: json[""].stringValue
         )
+    }
+}
+
+class CompanyCoreData: NSManagedObject {
+    @NSManaged var name: String
+    @NSManaged var address: String
+    @NSManaged var website: String
+    @NSManaged var phone: String
+    @NSManaged var lat: Double
+    @NSManaged var lon: Double
+    @NSManaged var info: String
+
+    var company: CompanyModel {
+        get {
+            return CompanyModel(name: self.name, adress: self.address, website: self.website, phone: self.phone, latitude: self.lat, lontitude: self.lon, info: self.info)
+        }
+        set {
+            self.name = newValue.name
+            self.address = newValue.adress
+            self.website = newValue.website
+            self.phone = newValue.phone
+            self.lat = newValue.latitude
+            self.lon = newValue.lontitude
+            self.info = newValue.info
+        }
     }
 }
