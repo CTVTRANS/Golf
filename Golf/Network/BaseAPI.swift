@@ -41,7 +41,6 @@ class BaseAPI: APIRequest, APIResponse {
         let path: String = getPath()
         let url = URL(string: baseRUL + path)
 
-        
         Alamofire.request(url!, method: method, parameters: parameter, encoding: URLEncoding.default, headers: nil).responseJSON { (jsonResponseData) in
             guard jsonResponseData.result.value != nil else {
                 return

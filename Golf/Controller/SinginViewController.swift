@@ -24,12 +24,20 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
     }
     
     @IBAction func pressedSigin(_ sender: Any) {
-        let phone = phoneTexField.text
-        let pass = passTextField.text
-        if phone != "" && pass != "" {
-            debugPrint("call api")
-          
+        guard let phone = Int(phoneTexField.text!) else {
+            UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)
+            return
         }
+        guard let pass = passTextField.text, pass != "" else {
+            UIAlertController.showAlertWith(title: "", message: ErrorMember.passwordEmty.rawValue, in: self)
+            return
+        }
+        let task = MemberSigin(userName: phone, pass: pass)
+        dataWithTask(task, onCompeted: { (data) in
+            
+        }, onError: { (error) in
+            
+        })
     }
     
     @IBAction func forgotPassPress(_ sender: Any) {

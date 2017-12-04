@@ -40,3 +40,65 @@ enum TravelModes: Int {
     case walking
     case bicycling
 }
+
+enum ErrorMember: String {
+    case passwordConfirmEmty = "密码及重打密码不能空白"
+    case confirmCodeEmty = "验证码不能空白"
+    case numberPhoneEmty = "电话号码不能空白"
+    case nameEmty = "名称不能空白"
+    case passwordEmty = "密码不能空白"
+    case passwordHasSpace = "密码不能有空格"
+    case idCardEmty = "emty"
+}
+
+enum ErrorCode: Int {
+    case success = 200
+    case emailError = 201
+    case passwordShort = 204
+    case confirmPassError = 205
+    case passwordConfirmEmty = 206
+    case passwordError = 207
+    case numberPhoneError = 208
+    case confirmCodeError = 209
+    case confirmCodeEmty = 210
+    case numberPhoneEmty = 211
+    case nameEmty = 212
+    case passwordEmty = 213
+    case numberPhoneExists = 214
+    case accountError = 215
+}
+
+extension ErrorCode {
+    func decodeError() -> String {
+        switch self {
+        case .success:
+            return "成功！"
+        case .emailError:
+            return "邮箱格式不对"
+        case .passwordShort:
+            return "密码太短（一定要从8个符号以上）"
+        case .confirmPassError:
+            return "密码及重打密码不重叠"
+        case .passwordConfirmEmty:
+            return "密码及重打密码不能空白"
+        case .passwordError:
+            return "密码吗不对"
+        case .numberPhoneError:
+            return "电话号码不对"
+        case .confirmCodeError:
+            return "验证码不对"
+        case .confirmCodeEmty:
+            return "验证码不能空白"
+        case .numberPhoneEmty:
+            return "电话号码不能空白"
+        case .nameEmty:
+            return "名称不能空白"
+        case .passwordEmty:
+            return "密码不能空白"
+        case .numberPhoneExists:
+            return "手机号码已经被注册了"
+        case .accountError:
+            return "帐号不存在"
+        }
+    }
+}

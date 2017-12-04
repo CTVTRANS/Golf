@@ -21,6 +21,15 @@ class MainViewController: BaseViewController {
         debugPrint(cahe.fetchObject())
     }
     
+    func getCompany() {
+        let task = CompanyGetInfo()
+        dataWithTask(task, onCompeted: { (data) in
+            
+        }) { (error) in
+            
+        }
+    }
+    
     @IBAction func pressShowDetailNews(_ sender: Any) {
         if let vc = NewsDetailViewController.instance() as? NewsDetailViewController {
             navigationController?.pushViewController(vc, animated: false)

@@ -26,6 +26,7 @@ let memberScanProductURL = ""
 let memberAttend = ""
 
 let companyInfoURL = ""
+let companyNews = ""
 let produtcListURL = ""
 let dealProductURL = ""
 

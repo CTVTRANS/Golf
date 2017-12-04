@@ -21,11 +21,23 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
         super.viewDidLoad()
         disableRightBarButton()
     }
+    
     @IBAction func pressedLogout(_ sender: Any) {
         
     }
     
     @IBAction func pressedEdit(_ sender: Any) {
-        
+        let idCardMember: Int? = idCard.text == "" ? nil: Int(idCard.text!)
+        let phone: Int? = telephone.text == "" ? nil: Int(telephone.text!)
+        let task = MemberUpdate(birthDay: birthDay.text,
+                                idCard: idCardMember,
+                                address: address.text,
+                                email: mail.text,
+                                phone: phone)
+        dataWithTask(task, onCompeted: { (data) in
+            
+        }) { (error) in
+            
+        }
     }
 }

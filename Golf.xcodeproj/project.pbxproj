@@ -27,6 +27,9 @@
 		9D08DAAC1FD4DF2D00F08289 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D08DAAB1FD4DF2D00F08289 /* BaseAPI.swift */; };
 		9D08DAAE1FD4E25100F08289 /* Member+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D08DAAD1FD4E25100F08289 /* Member+Router.swift */; };
 		9D08DAB01FD4FCF300F08289 /* Company+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D08DAAF1FD4FCF300F08289 /* Company+Router.swift */; };
+		9D08DAB41FD5074800F08289 /* Extension+UIAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D08DAB31FD5074800F08289 /* Extension+UIAlert.swift */; };
+		9D0A2AD81FD52756007A4EAF /* News+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0A2AD71FD52756007A4EAF /* News+Router.swift */; };
+		9D0A2ADB1FD5291C007A4EAF /* Golf.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D0A2AD91FD5291C007A4EAF /* Golf.xcdatamodeld */; };
 		9D0CA5441FCD0B7B00AB4D97 /* ResultScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0CA5431FCD0B7B00AB4D97 /* ResultScanViewController.swift */; };
 		9D0F1F9F1FD1484D0094EB26 /* Cahe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0F1F9E1FD1484D0094EB26 /* Cahe.swift */; };
 		9D0F1FA11FD163040094EB26 /* AttendSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0F1FA01FD163040094EB26 /* AttendSuccessViewController.swift */; };
@@ -90,6 +93,9 @@
 		9D08DAAB1FD4DF2D00F08289 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		9D08DAAD1FD4E25100F08289 /* Member+Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Member+Router.swift"; sourceTree = "<group>"; };
 		9D08DAAF1FD4FCF300F08289 /* Company+Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Company+Router.swift"; sourceTree = "<group>"; };
+		9D08DAB31FD5074800F08289 /* Extension+UIAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIAlert.swift"; sourceTree = "<group>"; };
+		9D0A2AD71FD52756007A4EAF /* News+Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "News+Router.swift"; sourceTree = "<group>"; };
+		9D0A2ADA1FD5291C007A4EAF /* Golf.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Golf.xcdatamodel; sourceTree = "<group>"; };
 		9D0CA5431FCD0B7B00AB4D97 /* ResultScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScanViewController.swift; sourceTree = "<group>"; };
 		9D0F1F9E1FD1484D0094EB26 /* Cahe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cahe.swift; sourceTree = "<group>"; };
 		9D0F1FA01FD163040094EB26 /* AttendSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendSuccessViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +177,7 @@
 				9D08DAAB1FD4DF2D00F08289 /* BaseAPI.swift */,
 				9D08DAAD1FD4E25100F08289 /* Member+Router.swift */,
 				9D08DAAF1FD4FCF300F08289 /* Company+Router.swift */,
+				9D0A2AD71FD52756007A4EAF /* News+Router.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -190,6 +197,7 @@
 				9D05EB7C1FC8262E008943BF /* Map.swift */,
 				9D56169F1FD10AB000D72CD0 /* EventAvtivityModel.swift */,
 				9D5616A11FD10B8700D72CD0 /* Activity.swift */,
+				9D0A2AD91FD5291C007A4EAF /* Golf.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -244,6 +252,7 @@
 				9D05EB841FC82A78008943BF /* Extension+UIDevice.swift */,
 				9D05EB861FC82BA9008943BF /* Extension+UILabel.swift */,
 				9D05EB881FC82BCF008943BF /* Extension+UIButton.swift */,
+				9D08DAB31FD5074800F08289 /* Extension+UIAlert.swift */,
 				9D01BD5B1FC9203400C69211 /* Enum.swift */,
 				9D0F1F9E1FD1484D0094EB26 /* Cahe.swift */,
 			);
@@ -461,6 +470,7 @@
 				9D01BD5C1FC9203400C69211 /* Enum.swift in Sources */,
 				9D05EB7B1FC825EA008943BF /* News.swift in Sources */,
 				9DF44A771FC2B4400063D804 /* MainViewController.swift in Sources */,
+				9D08DAB41FD5074800F08289 /* Extension+UIAlert.swift in Sources */,
 				9D6C2D0E1FC6897C00C0E25A /* LKActivity.swift in Sources */,
 				9DA594561FCBB46A00C31CBC /* QRManager.swift in Sources */,
 				9D05EB891FC82BCF008943BF /* Extension+UIButton.swift in Sources */,
@@ -472,6 +482,7 @@
 				9D986A0E1FC7C8FA0027D894 /* DiscountModel.swift in Sources */,
 				9D04EAFA1FC8222A00028EF7 /* HoleModel.swift in Sources */,
 				9D05EB7F1FC8299D008943BF /* Extension+UIColor.swift in Sources */,
+				9D0A2AD81FD52756007A4EAF /* News+Router.swift in Sources */,
 				9D56169E1FD0FC5D00D72CD0 /* EventActivityViewController.swift in Sources */,
 				9D0F1FA11FD163040094EB26 /* AttendSuccessViewController.swift in Sources */,
 				9D0333E11FD0154A00F87B0D /* NewsDetailViewController.swift in Sources */,
@@ -484,6 +495,7 @@
 				9D986A0C1FC7C6C50027D894 /* SinginViewController.swift in Sources */,
 				9DA594541FCBB44C00C31CBC /* QRScanViewController.swift in Sources */,
 				9DF351301FC6BD9000696057 /* AttendanceViewController.swift in Sources */,
+				9D0A2ADB1FD5291C007A4EAF /* Golf.xcdatamodeld in Sources */,
 				9DF70F1C1FC56D1000774BA6 /* DetailHoleViewController.swift in Sources */,
 				9D5616A21FD10B8700D72CD0 /* Activity.swift in Sources */,
 				9D0F1F9F1FD1484D0094EB26 /* Cahe.swift in Sources */,
@@ -686,6 +698,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9D0A2AD91FD5291C007A4EAF /* Golf.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9D0A2ADA1FD5291C007A4EAF /* Golf.xcdatamodel */,
+			);
+			currentVersion = 9D0A2ADA1FD5291C007A4EAF /* Golf.xcdatamodel */;
+			path = Golf.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9DF44A691FC2B43F0063D804 /* Project object */;
 }
