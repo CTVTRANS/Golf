@@ -25,9 +25,9 @@ enum TypeShow {
     case company // show infimation company
 }
 
-enum TypeAttendance {
-    case cup // show screen attendance cup
-    case tour // show screen attendance tour
+enum TypeAttendance: Int {
+    case cup = 0 // show screen attendance cup
+    case tour = 1 // show screen attendance tour
 }
 
 enum TypeDiscount: Int {

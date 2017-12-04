@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSCameraUsageDescription</key>
-	<string>QRcode scan</string>
+	<string>Camera use for scan QR code</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Allowing access to your location, you can spot your position on the map</string>
 	<key>NSAppTransportSecurity</key>

@@ -12,6 +12,13 @@ class MainViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let cahe = Cache<MemberModel>()
+        var member = cahe.fetchObject()
+        if member == nil {
+            member = MemberModel(idMember: 1, name: "kien", phone: "123", email: "lekien@gmail.com", sex: 0, age: 24, birthDay: "1994/03/08", idCard: "142664602")
+            cahe.save(object: member!)
+        }
+        debugPrint(cahe.fetchObject())
     }
     
     @IBAction func pressShowDetailNews(_ sender: Any) {

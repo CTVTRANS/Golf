@@ -10,18 +10,16 @@ import Foundation
 
 protocol Encoded {
     associatedtype Encoder: NSCoding
-    
     var encoder: Encoder { get }
 }
 
 protocol Encodable {
     associatedtype Value
-    
     var value: Value? { get }
 }
 
 class Cache<T: Encoded> where T.Encoder: Encodable, T.Encoder.Value == T {
-    let file = "member"
+    let file = String(describing: T.self)
     func save(object: T) {
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: object.encoder)
         UserDefaults.standard.set(encodedData, forKey: file)

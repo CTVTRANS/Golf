@@ -28,6 +28,7 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
         let pass = passTextField.text
         if phone != "" && pass != "" {
             debugPrint("call api")
+          
         }
     }
     

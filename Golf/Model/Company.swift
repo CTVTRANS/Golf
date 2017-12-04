@@ -18,6 +18,7 @@ struct CompanyModel: BaseModel {
     var latitude = 21.0062876
     var lontitude = 105.8423921
     var info = ""
+//    var listDonors = [DonorsModel]()
     
     static func decodeJSON(json: JSON) -> CompanyModel {
         return CompanyModel(name: json[""].stringValue,

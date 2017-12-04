@@ -59,7 +59,21 @@ extension ListJackpotViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if statusProduct == .all {
+            return productCell(indexPath: indexPath)
+        } else {
+            return productScanedCell(indexPath: indexPath)
+        }
+    }
+    
+    func productCell(indexPath: IndexPath) -> ProductCell {
         let cell = table.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? ProductCell
+        cell?.load(listJackpot[indexPath.row])
+        return cell!
+    }
+    
+    func productScanedCell(indexPath: IndexPath) -> ProductScanedCell {
+        let cell = table.dequeueReusableCell(withIdentifier: "ProductScanedCell", for: indexPath) as? ProductScanedCell
         cell?.load(listJackpot[indexPath.row])
         return cell!
     }
