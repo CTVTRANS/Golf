@@ -21,9 +21,27 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
     @IBOutlet weak var telephone: UITextField!
     @IBOutlet weak var confirmCode: UITextField!
     
+    @IBOutlet weak var topContrains: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         disableRightBarButton()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        topContrains.constant = -60
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        topContrains.constant = 40
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     @IBAction func sigupPressed(_ sender: Any) {

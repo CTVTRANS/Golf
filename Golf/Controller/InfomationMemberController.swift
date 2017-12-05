@@ -24,6 +24,8 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
         super.viewDidLoad()
         disableRightBarButton()
         setupUI()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
     }
     
     func setupUI() {
@@ -33,6 +35,25 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
         address.text = member.address
         mail.text = member.email
         telephone.text = member.phone
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        topContrains.constant = -48
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0 {
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+//        }
+    }
+    
+   @objc func keyboardWillHide(_ notification: Notification) {
+        topContrains.constant = 40
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     @IBAction func pressedLogout(_ sender: Any) {
@@ -56,4 +77,8 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
             
         }
     }
+}
+
+extension InfomationMemberController: UITextViewDelegate {
+    
 }
