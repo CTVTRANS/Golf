@@ -33,4 +33,8 @@ class Cache<T: Encoded> where T.Encoder: Encodable, T.Encoder.Value == T {
         }
         return nil
     }
+    
+    func remove() {
+        UserDefaults.standard.set(nil, forKey: file)
+    }
 }

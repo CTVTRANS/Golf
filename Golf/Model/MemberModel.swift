@@ -13,6 +13,7 @@ struct MemberModel: BaseModel {
     static let kIdMember = "idMember"
     static let kName = "name"
     static let kPhone = "phone"
+    static let kAddress = "address"
     static let kEmail = "email"
     static let kSex = "sex"
     static let kAge = "age"
@@ -22,6 +23,7 @@ struct MemberModel: BaseModel {
     var idMember = 0
     var name = ""
     var phone = ""
+    var address = ""
     var email = ""
     var sex = 0
     var age = 0
@@ -32,6 +34,7 @@ struct MemberModel: BaseModel {
         return MemberModel(idMember: json[""].intValue,
                            name: json[""].stringValue,
                            phone: json[""].stringValue,
+                           address: json[""].stringValue,
                            email: json[""].stringValue,
                            sex: json[""].intValue,
                            age: json[""].intValue,
@@ -58,6 +61,7 @@ class HeperMember: NSObject, NSCoding {
         aCoder.encode(member?.idMember, forKey: MemberModel.kIdMember)
         aCoder.encode(member?.name, forKey: MemberModel.kName)
         aCoder.encode(member?.phone, forKey: MemberModel.kPhone)
+        aCoder.encode(member?.address, forKey: MemberModel.kAddress)
         aCoder.encode(member?.email, forKey: MemberModel.kEmail)
         aCoder.encode(member?.sex, forKey: MemberModel.kSex)
         aCoder.encode(member?.age, forKey: MemberModel.kAge)
@@ -76,6 +80,7 @@ class HeperMember: NSObject, NSCoding {
         guard let idMember = aDecoder.decodeObject(forKey: MemberModel.kIdMember) as? Int,
             let name = aDecoder.decodeObject(forKey: MemberModel.kName) as? String,
             let phone = aDecoder.decodeObject(forKey: MemberModel.kPhone) as? String,
+            let address = aDecoder.decodeObject(forKey: MemberModel.kAddress) as? String,
             let email = aDecoder.decodeObject(forKey: MemberModel.kEmail) as? String,
             let sex = aDecoder.decodeObject(forKey: MemberModel.kSex) as? Int,
             let age = aDecoder.decodeObject(forKey: MemberModel.kAge) as? Int,
@@ -86,7 +91,7 @@ class HeperMember: NSObject, NSCoding {
                 return nil
         }
     
-        member = MemberModel(idMember: idMember, name: name, phone: phone, email: email, sex: sex, age: age, birthDay: birthDay, idCard: idCard)
+        member = MemberModel(idMember: idMember, name: name, phone: phone, address: address, email: email, sex: sex, age: age, birthDay: birthDay, idCard: idCard)
         super.init()
     }
 }

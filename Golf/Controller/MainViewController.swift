@@ -10,33 +10,71 @@ import UIKit
 import CoreData
 
 class MainViewController: BaseViewController {
+    
+    let managerContext = StorageManager.shared.managedObjectContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let cahe = Cache<MemberModel>()
-        var member = cahe.fetchObject()
-        if member == nil {
-            member = MemberModel(idMember: 1, name: "kien", phone: "123", email: "lekien@gmail.com", sex: 0, age: 24, birthDay: "1994/03/08", idCard: "142664602")
-            cahe.save(object: member!)
-        }
-        let managerContext = StorageManager.shared.managedObjectContext
-        let entity = NSEntityDescription.entity(forEntityName: companyEntity, in: managerContext)
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try managerContext.fetch(request)
-            for data in (result as? [CompanyCore])! {
-                print(data.name)
-                print(data.info)
+        getCompany()
+        getDonors()
+    }
+    
+    // MARK: API request
+    
+    func getCompany() {
+        let task = GetCompanyInfo()
+        dataWithTask(task, onCompeted: { (data) in
+            guard let commapny = data as? CompanyModel else {
+                return
             }
-        } catch {
-            print("Failed")
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
+            request.returnsObjectsAsFaults = false
+            do {
+                if let result = try self.managerContext.fetch(request) as? [CompanyCore] {
+                    if result.first != nil {
+                        return
+                    }
+                    self.saveCompany(companyModel: commapny)
+                }
+            } catch {
+                print("Failed")
+            }
+        }) { (_) in
+             let companytest = CompanyModel(name: "hanoi university of seience and technology", adress: "so 1 dai co viet", website: "www.hust.edu.vn", phone: "842436231732", latitude: 21.0062876, lontitude: 105.8423921, info: "alo alo", mapInfo: "bloblobloblo", currentDonor: "okokokok")
+             self.saveCompany(companyModel: companytest)
         }
-        
-        if let newUser = NSManagedObject(entity: entity!, insertInto: managerContext) as? CompanyCore {
-            newUser.info = "asdfasdf"
+    }
+    
+    func getDonors() {
+        let task = DonorsList()
+        dataWithTask(task, onCompeted: { (data) in
+            guard let listDonors = data as? [DonorsModel] else {
+                return
+            }
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: donorsEntity)
+            request.returnsObjectsAsFaults = false
+            do {
+                if let result = try self.managerContext.fetch(request) as? [DonorsCore] {
+                    if result.first != nil {
+                        return
+                    }
+                    self.saveListDonors(donors: listDonors)
+                }
+            } catch {
+                print("Failed")
+            }
+        }) { (_) in
+            
         }
-        
+    }
+    
+    // MARK: Save company and donors to core data
+    
+    func saveCompany(companyModel: CompanyModel) {
+        let entity = NSEntityDescription.entity(forEntityName: companyEntity, in: self.managerContext)
+        if let companyCore = NSManagedObject(entity: entity!, insertInto: managerContext) as? CompanyCore {
+            companyCore.company = companyModel
+        }
         do {
            try  managerContext.save()
         } catch {
@@ -44,14 +82,21 @@ class MainViewController: BaseViewController {
         }
     }
     
-    func getCompany() {
-        let task = CompanyGetInfo()
-        dataWithTask(task, onCompeted: { (data) in
-            
-        }) { (error) in
-            
+    func saveListDonors(donors: [DonorsModel]) {
+         let entity = NSEntityDescription.entity(forEntityName: donorsEntity, in: self.managerContext)
+        for donor in donors {
+            if let donorCore = NSManagedObject(entity: entity!, insertInto: managerContext) as? DonorsCore {
+                donorCore.donors = donor
+            }
+        }
+        do {
+            try  managerContext.save()
+        } catch {
+            print("Failed saving")
         }
     }
+    
+    // MARK: Action control
     
     @IBAction func pressShowDetailNews(_ sender: Any) {
         if let vc = NewsDetailViewController.instance() as? NewsDetailViewController {

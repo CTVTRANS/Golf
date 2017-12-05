@@ -27,21 +27,31 @@ class EventActivityViewController: BaseViewController, MainStoryBoard {
         super.viewDidLoad()
 
         switch typeShow {
-        case .company:
+        case .company:  // show image of donors
             backgroundImage.image = #imageLiteral(resourceName: "ic_info_company")
             contentAvtivityView.isHidden = true
             titleView.text = "公益夥伴"
-        case .activity:
+        case .activity: // show activity
             backgroundImage.image = #imageLiteral(resourceName: "ic_background")
             contentAvtivityView.isHidden = false
             titleView.text = "活動內容"
+            getEvent()
         default:
             break
         }
     }
     
-    func getEvetn() {
-        setupUI()
+    func getEvent() {
+        let task = EventActivityInfo()
+        dataWithTask(task, onCompeted: { (data) in
+            guard let eventModel = data as? EventActivityModel else {
+                return
+            }
+            self.event = eventModel
+            self.setupUI()
+        }) { (_) in
+            
+        }
     }
     
     func setupUI() {

@@ -7,20 +7,35 @@
 //
 
 import UIKit
+import CoreData
 
 class AboutTourViewController: BaseViewController, MainStoryBoard {
 
     @IBOutlet weak var webView: UIWebView!
+    let managerContext = StorageManager.shared.managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoading()
         webView.delegate = self
-        getAoutMap()
+        getAboutMap()
     }
     
-    func getAoutMap() {
-        webView.loadHTMLString("ok", baseURL: nil)
+    func getAboutMap() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
+        request.returnsObjectsAsFaults = false
+        do {
+            if let result = try self.managerContext.fetch(request) as? [CompanyCore] {
+                guard let company = result.first?.company else {
+                    hideLoading()
+                    return
+                }
+                webView.loadHTMLString(company.mapInfo, baseURL: nil)
+            }
+        } catch {
+            print("Failed")
+        }
+       
     }
 }
 

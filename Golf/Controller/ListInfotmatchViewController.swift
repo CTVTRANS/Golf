@@ -16,7 +16,18 @@ class ListInfotmatchViewController: BaseViewController, MainStoryBoard {
         super.viewDidLoad()
         showLoading()
         webView.delegate = self
-        webView.loadHTMLString("ok", baseURL: nil)
+        getInfoActivity()
+    }
+    
+    func getInfoActivity() {
+        let task = GetCompanyInfoMatch()
+        dataWithTask(task, onCompeted: { (data) in
+            if let content = data as? String {
+                self.webView.loadHTMLString(content, baseURL: nil)
+            }
+        }) { (_) in
+            
+        }
     }
 }
 

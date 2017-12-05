@@ -23,21 +23,19 @@ class ProductCell: UITableViewCell {
 
 class ProductScanedCell: UITableViewCell {
     
-    @IBOutlet weak var numberHole: UILabel!
     @IBOutlet weak var nameProduct: UILabel!
     @IBOutlet weak var status: UILabel!
     var product: JackpotModel!
-    var callBack:((_ idProduct: Int) -> Void) = {_ in }
+    var callBack:((_ idProduct: JackpotModel) -> Void) = {_ in }
     
     func load(_ jackpotScaned: JackpotModel) {
         product = jackpotScaned
         nameProduct.text = jackpotScaned.name
         status.text = jackpotScaned.status.description
-        numberHole.text = jackpotScaned.numberHole.description
     }
     
     @IBAction func pressedReward(_ sender: Any) {
-        callBack(product.idJackpit)
+        callBack(product)
     }
 }
 
@@ -46,10 +44,41 @@ class ListJackpotViewController: BaseViewController, SecondSroyBoard {
     @IBOutlet weak var table: UITableView!
     var statusProduct: TypeJackpotProduct = .all
     var listJackpot = [JackpotModel]()
+    var member: MemberModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         table.estimatedRowHeight = 140
+        switch statusProduct {
+        case .all:
+            getAllProduct()
+        case .scaned:
+            getProductScan()
+        }
+    }
+    
+    func getAllProduct() {
+        let task = ProductAll()
+        dataWithTask(task, onCompeted: { (data) in
+            if let array = data as? [JackpotModel] {
+                self.listJackpot = array
+                self.table.reloadData()
+            }
+        }) { (_) in
+            
+        }
+    }
+    
+    func getProductScan() {
+        let task = ProductScaned(idCard: member.idCard, type: .scaned)
+        dataWithTask(task, onCompeted: { (data) in
+            if let array = data as? [JackpotModel] {
+                self.listJackpot = array
+                self.table.reloadData()
+            }
+        }) { (_) in
+            
+        }
     }
 }
 
@@ -75,6 +104,13 @@ extension ListJackpotViewController: UITableViewDelegate, UITableViewDataSource 
     func productScanedCell(indexPath: IndexPath) -> ProductScanedCell {
         let cell = table.dequeueReusableCell(withIdentifier: "ProductScanedCell", for: indexPath) as? ProductScanedCell
         cell?.load(listJackpot[indexPath.row])
+        cell?.callBack = { [unowned self] (myProduct) in
+            if let vc = ResultScanViewController.instance() as? ResultScanViewController {
+                vc.product = myProduct
+                vc.isHiddenButton = true
+                self.navigationController?.pushViewController(vc, animated: false)
+            }
+        }
         return cell!
     }
     

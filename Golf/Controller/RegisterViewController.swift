@@ -59,8 +59,14 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
         }
         let task = MemberSigup(userName: userName, pass: passWord, confirmPass: passWordConfirm, mobile: phoneNumber, birthDay: birDay!, idCard: idMember, address: adressMember!, email: emailMember!, phone: telephoneMember, code: code)
         dataWithTask(task, onCompeted: { (data) in
-            
-        }) { (error) in
+            guard let member = data as? MemberModel else {
+                return
+            }
+            if let vc = InfomationMemberController.instance() as? InfomationMemberController {
+                vc.member = member
+                self.navigationController?.pushViewController(vc, animated: false)
+            }
+        }) { (_) in
             
         }
     }

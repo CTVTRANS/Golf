@@ -19,7 +19,7 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
     @IBOutlet weak var spaceTopButton: NSLayoutConstraint!
     
     var type: TypeAttendance = .cup
-    fileprivate var member: MemberModel!
+    var member: MemberModel!
     var isshowMember = true
     
     override func viewDidLoad() {
@@ -33,19 +33,25 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
         } else {
             name.text = "2018球場活動報名"
         }
-        getMember()
+        loadMember()
         getContent()
     }
     
-    func getMember() {
-        member = MemberModel(idMember: 123, name: "kien", phone: "123456789", email: "abc@gmail.com", sex: 1, age: 24, birthDay: "1994-08-03", idCard: "1234456")
+    func loadMember() {
         email.text = member.email
         idUser.text = member.idCard
         nameUser.text = member.name
     }
     
     func getContent() {
-        webView.loadHTMLString("@@", baseURL: nil)
+        let task = MemberGetTermOfUse()
+        dataWithTask(task, onCompeted: { (data) in
+            if let content = data as? String {
+                 self.webView.loadHTMLString(content, baseURL: nil)
+            }
+        }) { (_) in
+            
+        }
     }
     
     @IBAction func pressedSubmit(_ sender: Any) {

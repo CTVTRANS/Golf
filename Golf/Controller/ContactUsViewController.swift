@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import Alamofire
 import SwiftyJSON
+import CoreData
 
 class ContactUsViewController: BaseViewController, MainStoryBoard {
 
@@ -18,6 +19,7 @@ class ContactUsViewController: BaseViewController, MainStoryBoard {
     @IBOutlet weak var website: UILabel!
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
+    let managerContext = StorageManager.shared.managedObjectContext
     
     var locationManager = CLLocationManager()
     var didFindMyLocation = false
@@ -27,16 +29,30 @@ class ContactUsViewController: BaseViewController, MainStoryBoard {
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoading()
-        drawMaker()
+        getCompany()
         showInfoCompany()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
+    func getCompany() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
+        request.returnsObjectsAsFaults = false
+        do {
+            if let result = try self.managerContext.fetch(request) as? [CompanyCore] {
+                if let companyCore = result.first {
+                    company = companyCore.company
+                    drawMaker()
+                }
+            }
+        } catch {
+            print("Failed")
+        }
+    }
+    
     func drawMaker() {
         mapView.delegate = self
-        company = CompanyModel(name: "hanoi university of seience and technology", adress: "so 1 dai co viet", website: "www.hust.edu.vn", phone: "842436231732", latitude: 21.0062876, lontitude: 105.8423921, info: "alo alo")
         let camera = GMSCameraPosition.camera(withLatitude: (company?.latitude)!, longitude: (company?.lontitude)!, zoom: 15.0)
         mapView.camera = camera
         
@@ -49,7 +65,7 @@ class ContactUsViewController: BaseViewController, MainStoryBoard {
     }
     
     func showInfoCompany() {
-        phone.text = company?.phone
+        phone.text = company?.phone.description
         website.text = company?.website
         address.text = company?.adress
         infoLabel.text = company?.info

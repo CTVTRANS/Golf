@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class CompanyGetInfo: BaseAPI {
+class GetCompanyInfo: BaseAPI {
 
     override func getPath() -> String { return companyInfoURL}
     override func getParams() -> [String: Any] {
@@ -22,29 +22,13 @@ class CompanyGetInfo: BaseAPI {
     }
 }
 
-class DealProduct: BaseAPI {
-    let type: TypeDiscount!
-    init(typeDeal: TypeDiscount) {
-        self.type = typeDeal
-    }
-    
-    override func getPath() -> String { return dealProductURL}
+// webView
+class GetCompanyInfoMatch: BaseAPI {
+    override func getPath() -> String { return compamyInfoMatch}
     override func getParams() -> [String: Any] {
         return ["": ""]
     }
-    override func getMethod() -> HTTPMethod { return .post}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
-    }
-}
-
-class Productlist: BaseAPI {
-    
-    override func getPath() -> String { return produtcListURL}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
-    }
-    override func getMethod() -> HTTPMethod { return .post}
+    override func getMethod() -> HTTPMethod { return .get}
     override func dataWithResponse(_ response: JSON) -> Any {
         return response
     }

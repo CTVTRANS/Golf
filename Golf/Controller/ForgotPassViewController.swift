@@ -29,22 +29,31 @@ class ForgotPassViewController: BaseViewController, SecondSroyBoard {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)
             return
         }
-        let task = MemberGetCode(idCard: idCard, phone: phoneNumber)
-        dataWithTask(task, onCompeted: { (data) in
+        let task = MemberGetCodeSms(idCard: idCard, phone: phoneNumber)
+        dataWithTask(task, onCompeted: { (_) in
             
-        }) { (error) in
+        }) { (_) in
             
         }
     }
     
     @IBAction func pressedButton(_ sender: Any) {
-        guard let idCard = Int(profileID.text!), let phoneNumber = Int(phone.text!), let code = confirmCode.text, code != "" else {
+        guard let idCard = Int(profileID.text!) else {
+            UIAlertController.showAlertWith(title: "", message: ErrorMember.idCardEmty.rawValue, in: self)
+            return
+        }
+        guard let phoneNumber = Int(phone.text!) else {
+            UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)
+            return
+        }
+        guard let code = confirmCode.text, code != "" else {
+            UIAlertController.showAlertWith(title: "", message: ErrorMember.confirmCodeEmty.rawValue, in: self)
             return
         }
         let task = MemberForgotPass(phone: phoneNumber, idCard: idCard, code: code)
-        dataWithTask(task, onCompeted: { (data) in
-            
-        }) { (error) in
+        dataWithTask(task, onCompeted: { (_) in
+            UIAlertController.showAlertWith(title: "", message: "new Pass send to phone number", in: self)
+        }) { (_) in
             
         }
     }

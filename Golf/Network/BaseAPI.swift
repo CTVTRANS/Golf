@@ -43,6 +43,8 @@ class BaseAPI: APIRequest, APIResponse {
 
         Alamofire.request(url!, method: method, parameters: parameter, encoding: URLEncoding.default, headers: nil).responseJSON { (jsonResponseData) in
             guard jsonResponseData.result.value != nil else {
+                let error = jsonResponseData.result.error?.localizedDescription
+                onError(error!)
                 return
             }
             let json = JSON(jsonResponseData.result.value!)

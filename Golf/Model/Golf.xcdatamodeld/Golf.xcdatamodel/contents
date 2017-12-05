@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CompanyCore" representedClassName="CompanyCore" syncable="YES" codeGenerationType="class">
-        <attribute name="address" optional="YES" attributeType="String" defaultValueString="my dinh" syncable="YES"/>
-        <attribute name="info" optional="YES" attributeType="String" defaultValueString="ios" syncable="YES"/>
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currentDonor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lon" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" defaultValueString="kien" syncable="YES"/>
-        <attribute name="phone" optional="YES" attributeType="String" defaultValueString="abc" syncable="YES"/>
-        <attribute name="website" optional="YES" attributeType="String" defaultValueString="apple" syncable="YES"/>
+        <attribute name="mapInfo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="DonorsCore" representedClassName="DonorsCore" syncable="YES" codeGenerationType="class">
+        <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CompanyCore" positionX="-36" positionY="9" width="128" height="148"/>
+        <element name="CompanyCore" positionX="-36" positionY="9" width="128" height="178"/>
+        <element name="DonorsCore" positionX="124" positionY="18" width="128" height="105"/>
     </elements>
 </model>

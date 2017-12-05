@@ -12,25 +12,37 @@ let widthScreen = UIScreen.main.bounds.width
 let heightScreen = UIScreen.main.bounds.height
 
 let companyEntity = "CompanyCore"
+let donorsEntity = "DonorsCore"
 
 let baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
 let apiMap = "AIzaSyBZ840yCSeH3DTwps5f9Aj031wawRcQP8k"  // key for google map
 let apiDirection = "AIzaSyAm99Jv13nXVpPJOLSWaIDVCTMA1VTqilU"    //key for gooele direction
 
-let baseRUL = ""
+let baseRUL = "http://golf.transoftvietnam.com/api/page/"
 
 let memberSiginURL = ""
 let memberSigupURL = ""
 let memberUpdateInfoURL = ""
 let memberForgotPassURL = ""
-let memberGetProductURL = ""
 let memberScanProductURL = ""
-let memberAttend = ""
+let memberGetCodeSms = ""
+let memberAttendURL = ""
+let memberTermOfUse = ""
 
 let companyInfoURL = ""
-let companyNews = ""
-let produtcListURL = ""
-let dealProductURL = ""
+let compamyInfoMatch = ""
+
+let productAllURL = ""
+let productDealURL = ""
+let productScanedURL = ""
+
+let donorsListURL = ""
+
+let holeDetailURL = ""
+
+let newsListURL = ""
+
+let eventInfo = ""
 
 class Define: NSObject {
 

@@ -10,9 +10,30 @@ import UIKit
 
 class NewsDetailViewController: BaseViewController, MainStoryBoard {
 
+    @IBOutlet weak var webView: UIWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLoading()
+        webView.delegate = self
+        getNews()
+    }
+    
+    func getNews() {
+        let task = NewsList()
+        dataWithTask(task, onCompeted: { (data) in
+            guard let data = data as? NewsModel else {
+                return
+            }
+            self.webView.loadHTMLString(data.content, baseURL: nil)
+        }) { (_) in
+            
+        }
+    }
+}
 
-        // Do any additional setup after loading the view.
+extension NewsDetailViewController: UIWebViewDelegate {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        hideLoading()
     }
 }

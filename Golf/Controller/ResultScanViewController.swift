@@ -18,18 +18,20 @@ class ResultScanViewController: BaseViewController, SecondSroyBoard {
     @IBOutlet weak var button: UIButton!
     
     var product: JackpotModel?
+    var isHiddenButton = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoading()
         showResult()
+        button.isHidden = isHiddenButton
     }
     
     func showResult() {
         if product != nil {
             productID.text = product?.idJackpit.description
             nameProduct.text = product?.name
-            button.setTitle("show list scand", for: .normal)
+            button.setTitle("show list scaned", for: .normal)
             imageProduct.kf.setImage(with: URL(string: (product?.imageURL)!))
             imageResult.image = #imageLiteral(resourceName: "ic_jackpot_winnings")
         } else {
@@ -45,7 +47,11 @@ class ResultScanViewController: BaseViewController, SecondSroyBoard {
     
     @IBAction func pressedButton(_ sender: Any) {
         if product != nil {
-            debugPrint("show list scaned")
+            if let member = checkMember(), let vc = ListJackpotViewController.instance() as? ListJackpotViewController {
+                vc.statusProduct = .scaned
+                vc.member = member
+                navigationController?.pushViewController(vc, animated: false)
+            }
         } else {
             navigationController?.popViewController(animated: false)
         }

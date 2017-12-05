@@ -141,7 +141,7 @@ class MemberAttend: BaseAPI {
         self.type = type
     }
     
-    override func getPath() -> String { return memberAttend}
+    override func getPath() -> String { return memberAttendURL}
     override func getParams() -> [String: Any] {
         return ["": ""]
     }
@@ -151,16 +151,16 @@ class MemberAttend: BaseAPI {
     }
 }
 
-class MemberGetProduct: BaseAPI {
+class MemberGetCodeSms: BaseAPI {
     let idCard: Int!
-    let type: TypeJackpotProduct!
+    let phone: Int!
     
-    init(idCard: Int, type: TypeJackpotProduct) {
+    init(idCard: Int, phone: Int) {
         self.idCard = idCard
-        self.type = type
+        self.phone = phone
     }
     
-    override func getPath() -> String { return memberGetProductURL}
+    override func getPath() -> String { return memberGetCodeSms}
     override func getParams() -> [String: Any] {
         return ["": ""]
     }
@@ -170,16 +170,8 @@ class MemberGetProduct: BaseAPI {
     }
 }
 
-class MemberGetCode: BaseAPI {
-    let idCard: Int!
-    let phone: Int!
-    
-    init(idCard: Int, phone: Int) {
-        self.idCard = idCard
-        self.phone = phone
-    }
-    
-    override func getPath() -> String { return memberGetProductURL}
+class MemberGetTermOfUse: BaseAPI {
+    override func getPath() -> String { return memberTermOfUse}
     override func getParams() -> [String: Any] {
         return ["": ""]
     }

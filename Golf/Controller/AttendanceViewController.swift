@@ -17,20 +17,17 @@ class AttendanceViewController: BaseViewController, MainStoryBoard {
     }
     
     @IBAction func pressAttendanceCup(_ sender: Any) {
-        let member = self.member?.idMember
-        guard member != 0, member != nil else {
-            debugPrint("need sigin")
-            return
-        }
-        if let vc = SubmitAttendanceViewController.instance() as? SubmitAttendanceViewController {
+        if let member = checkMember(), let vc = SubmitAttendanceViewController.instance() as? SubmitAttendanceViewController {
             vc.type = .cup
+            vc.member = member
             navigationController?.pushViewController(vc, animated: false)
         }
     }
     
     @IBAction func pressedAttendanceTour(_ sender: Any) {
-        if let vc = SubmitAttendanceViewController.instance() as? SubmitAttendanceViewController {
+        if let member = checkMember(), let vc = SubmitAttendanceViewController.instance() as? SubmitAttendanceViewController {
             vc.type = .tour
+            vc.member = member
             navigationController?.pushViewController(vc, animated: false)
         }
     }

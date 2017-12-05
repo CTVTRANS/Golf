@@ -24,6 +24,19 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
     }
     
     @IBAction func pressedSigin(_ sender: Any) {
+        //
+        let cahe = Cache<MemberModel>()
+        var memberTest = cahe.fetchObject()
+        if memberTest == nil {
+            memberTest = MemberModel(idMember: 1, name: "kien", phone: "123", address: "my dinh", email: "lekien@gmail.com", sex: 0, age: 24, birthDay: "1994/03/08", idCard: "142664602")
+            cahe.save(object: memberTest!)
+        }
+        if let vc = InfomationMemberController.instance() as? InfomationMemberController {
+            vc.member = memberTest
+            self.navigationController?.pushViewController(vc, animated: false)
+        }
+        
+        /*
         guard let phone = Int(phoneTexField.text!) else {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)
             return
@@ -34,10 +47,17 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
         }
         let task = MemberSigin(userName: phone, pass: pass)
         dataWithTask(task, onCompeted: { (data) in
-            
-        }, onError: { (error) in
+            guard let member = data as? MemberModel else {
+                return
+            }
+            if let vc = InfomationMemberController.instance() as? InfomationMemberController {
+                vc.member = member
+                self.navigationController?.pushViewController(vc, animated: false)
+            }
+        }, onError: { (_) in
             
         })
+         */
     }
     
     @IBAction func forgotPassPress(_ sender: Any) {

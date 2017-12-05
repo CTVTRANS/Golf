@@ -35,6 +35,19 @@ class ListDiscountViewController: BaseViewController, SecondSroyBoard {
         } else {
             name.text = "廠商優惠資訊"
         }
+        getDealProduct()
+    }
+    
+    func getDealProduct() {
+        let task = ProductDeal(type: typeDiscount)
+        dataWithTask(task, onCompeted: { (data) in
+            if let array = data as? [DiscountModel] {
+                self.listDiscount = array
+                self.table.reloadData()
+            }
+        }) { (_) in
+            
+        }
     }
 }
 

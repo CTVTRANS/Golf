@@ -15,21 +15,24 @@ class JackpotViewController: BaseViewController, SecondSroyBoard {
     }
     
     @IBAction func pressedScan(_ sender: Any) {
-        if let vc = QRScanViewController.instance() as? QRScanViewController {
+        if let member = checkMember(), let vc = QRScanViewController.instance() as? QRScanViewController {
+            vc.member = member
             navigationController?.pushViewController(vc, animated: false)
         }
     }
     
     @IBAction func pressedListproduct(_ sender: Any) {
-        if let vc = ListJackpotViewController.instance() as? ListJackpotViewController {
+        if let member = checkMember(), let vc = ListJackpotViewController.instance() as? ListJackpotViewController {
             vc.statusProduct = .all
+            vc.member = member
             navigationController?.pushViewController(vc, animated: false)
         }
     }
     
     @IBAction func pressedShowScaned(_ sender: Any) {
-        if let vc = ListJackpotViewController.instance() as? ListJackpotViewController {
-            vc.statusProduct = .all
+        if let member = checkMember(), let vc = ListJackpotViewController.instance() as? ListJackpotViewController {
+            vc.statusProduct = .scaned
+            vc.member = member
             navigationController?.pushViewController(vc, animated: false)
         }
     }

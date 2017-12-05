@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DonorsCell: UITableViewCell {
     
@@ -27,6 +28,7 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
     @IBOutlet weak var table: UITableView!
     var type = TypeDonors.thisYear
     var listDonors = [DonorsModel]()
+    let managerContext = StorageManager.shared.managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +51,37 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
     }
     
     func getOlderDonors() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: donorsEntity)
+        request.returnsObjectsAsFaults = false
+        do {
+            if let result = try self.managerContext.fetch(request) as? [DonorsCore] {
+                if result.first != nil {
+                    return
+                }
+                for donorsCore in result {
+                    listDonors.append(donorsCore.donors)
+                }
+                table.reloadData()
+            }
+        } catch {
+            print("Failed")
+        }
         hideLoading()
     }
     
     func getThisYearDonors() {
-        webView.loadRequest(URLRequest(url: URL(string: "https://www.raywenderlich.com/156966/push-notifications-tutorial-getting-started")!))
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
+        request.returnsObjectsAsFaults = false
+        do {
+            if let result = try self.managerContext.fetch(request) as? [CompanyCore] {
+                if let companyCore = result.first {
+                    webView.loadHTMLString(companyCore.currentDonor!, baseURL: nil)
+                }
+            }
+        } catch {
+            print("Failed")
+        }
+        hideLoading()
     }
 }
 

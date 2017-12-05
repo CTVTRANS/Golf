@@ -25,3 +25,17 @@ struct DonorsModel: BaseModel {
         )
     }
 }
+
+extension DonorsCore {
+    var donors: DonorsModel {
+        get {
+            return DonorsModel(idDonors: Int(self.id), name: self.name!, description: self.detail!, year: Int(self.year))
+        }
+        set {
+            self.id = Int16(newValue.idDonors)
+            self.name = newValue.name
+            self.detail = newValue.description
+            self.year = Int16(newValue.year)
+        }
+    }
+}

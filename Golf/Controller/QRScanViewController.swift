@@ -13,6 +13,7 @@ class QRScanViewController: BaseViewController, SecondSroyBoard {
 
     @IBOutlet weak var scannerPreview: UIView!
     var product: JackpotModel?
+    var member: MemberModel!
     
     fileprivate lazy var qrCodeFrameView: UIView = {
         let qrView = UIView()
@@ -51,7 +52,14 @@ class QRScanViewController: BaseViewController, SecondSroyBoard {
     }
     
     func checkProduct(qrID: String) {
-        //call api check product
+        let task = MemberScan(userName: "", idCard: 0, code: "")
+        dataWithTask(task, onCompeted: { (data) in
+            if let product = data as? JackpotModel {
+                self.product = product
+            }
+        }) { (_) in
+            
+        }
         showResult()
     }
     
