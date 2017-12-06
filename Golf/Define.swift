@@ -29,14 +29,14 @@ let memberGetCodeSms = ""
 let memberAttendURL = ""
 let memberTermOfUse = ""
 
-let companyInfoURL = ""
+let companyInfoURL = "about-us"
 let compamyInfoMatch = ""
 
 let productAllURL = ""
 let productDealURL = ""
 let productScanedURL = ""
 
-let donorsListURL = ""
+let donorsListURL = "history-sponsors"
 
 let holeDetailURL = ""
 

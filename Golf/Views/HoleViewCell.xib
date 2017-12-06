@@ -26,22 +26,32 @@
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <color key="textColor" red="0.29803921568627451" green="0.29803921568627451" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustFont" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDU-rr-VSm">
-                        <rect key="frame" x="33" y="33" width="35" height="36"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                        <rect key="frame" x="36" y="30" width="28" height="29"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                         <color key="textColor" red="0.82745098039215681" green="0.62352941176470589" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustFont" value="NO"/>
+                        </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="BhJ-dl-w9B" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="1TM-Af-NL8"/>
+                <constraint firstItem="BhJ-dl-w9B" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="1TM-Af-NL8">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adjustSize" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
                 <constraint firstItem="HDU-rr-VSm" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="1xj-ra-0u8"/>
                 <constraint firstAttribute="bottom" secondItem="dKO-sI-mzd" secondAttribute="bottom" id="3LX-AM-R7a"/>
                 <constraint firstItem="dKO-sI-mzd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="DRA-zM-ndZ"/>
                 <constraint firstItem="BhJ-dl-w9B" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Dkc-C3-K93"/>
-                <constraint firstItem="HDU-rr-VSm" firstAttribute="top" secondItem="BhJ-dl-w9B" secondAttribute="bottom" constant="3" id="gXp-FK-rrd"/>
+                <constraint firstItem="HDU-rr-VSm" firstAttribute="top" secondItem="BhJ-dl-w9B" secondAttribute="bottom" id="gXp-FK-rrd"/>
                 <constraint firstItem="dKO-sI-mzd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="mW4-j3-j7R"/>
                 <constraint firstAttribute="trailing" secondItem="dKO-sI-mzd" secondAttribute="trailing" id="rGR-pY-gR3"/>
             </constraints>

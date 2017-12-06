@@ -48,7 +48,7 @@ class BaseAPI: APIRequest, APIResponse {
                 return
             }
             let json = JSON(jsonResponseData.result.value!)
-            onCompelete(self.dataWithResponse(json))
+            onCompelete(self.dataWithResponse(json["data"]))
         }
     }
     

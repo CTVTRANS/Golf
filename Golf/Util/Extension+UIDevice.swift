@@ -55,6 +55,7 @@ extension UIDevice {
         case "AppleTV6,2":                              return "Apple TV 4K"
         case "AudioAccessory1,1":                       return "HomePod"
         case "i386", "x86_64":                          return "Simulator"
+//        case "i386", "x86_64":                          return "iPhone 5"
         default:                                        return identifier
         }
     }

@@ -29,7 +29,7 @@ extension HoleListViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = ((widthScreen - 171) / 3)
+        let width = ((widthScreen - 150) / 3)
         return CGSize(width: width, height: width + 5)
     }
     
