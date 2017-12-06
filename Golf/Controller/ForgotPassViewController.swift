@@ -32,7 +32,7 @@ class ForgotPassViewController: BaseViewController, SecondSroyBoard {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)
             return
         }
-        let task = MemberGetCodeSms(idCard: idCard, phone: phoneNumber)
+        let task = MemberModel.GetCodeSms(idCard: idCard, phone: phoneNumber)
         dataWithTask(task, onCompeted: { (_) in
             
         }) { (_) in
@@ -53,7 +53,7 @@ class ForgotPassViewController: BaseViewController, SecondSroyBoard {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.confirmCodeEmty.rawValue, in: self)
             return
         }
-        let task = MemberForgotPass(phone: phoneNumber, idCard: idCard, code: code)
+        let task = MemberModel.ForgotPass(phone: phoneNumber, idCard: idCard, code: code)
         dataWithTask(task, onCompeted: { (_) in
             UIAlertController.showAlertWith(title: "", message: "new Pass send to phone number", in: self)
         }) { (_) in

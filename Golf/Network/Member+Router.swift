@@ -10,173 +10,151 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class MemberSigin: BaseAPI {
-    let userName: Int!
-    let pass: String!
-    
-    init(userName: Int, pass: String) {
-        self.userName = userName
-        self.pass = pass
+extension MemberModel {
+    struct Sigin: APIRequest {
+        let userName: Int!
+        let pass: String!
+        init(userName: Int, pass: String) {
+            self.userName = userName
+            self.pass = pass
+        }
+        var method: HTTPMethod {get { return .post}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return memberSiginURL}}
+        
+        func dataWithResponse(_ response: JSON) -> Any {
+            return response
+        }
     }
     
-    override func getPath() -> String { return memberSiginURL}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
-    }
-    override func getMethod() -> HTTPMethod { return .post}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
-    }
-}
-
-class MemberSigup: BaseAPI {
-    let userName: String!
-    let pass: String!
-    let confirmPass: String!
-    let mobiPhone: Int!
-    let birthDay: String?
-    let idCard: Int!
-    let adress: String?
-    let email: String?
-    let phone: Int?
-    let code: String!
+    struct Sigup: APIRequest {
+        let userName: String!
+        let pass: String!
+        let confirmPass: String!
+        let mobiPhone: Int!
+        let birthDay: String?
+        let idCard: Int!
+        let adress: String?
+        let email: String?
+        let phone: Int?
+        let code: String!
+        init(userName: String, pass: String, confirmPass: String, mobile: Int, birthDay: String?, idCard: Int, address: String?, email: String?, phone: Int?, code: String) {
+            self.userName = userName
+            self.pass = pass
+            self.confirmPass = confirmPass
+            self.mobiPhone = mobile
+            self.birthDay = birthDay
+            self.idCard = idCard
+            self.adress = address
+            self.phone = phone
+            self.email = email
+            self.code = code
+        }
+        var method: HTTPMethod {get { return .post}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return memberSigupURL}}
     
-    init(userName: String, pass: String, confirmPass: String, mobile: Int, birthDay: String?, idCard: Int, address: String?, email: String?, phone: Int?, code: String) {
-        self.userName = userName
-        self.pass = pass
-        self.confirmPass = confirmPass
-        self.mobiPhone = mobile
-        self.birthDay = birthDay
-        self.idCard = idCard
-        self.adress = address
-        self.phone = phone
-        self.email = email
-        self.code = code
+        func dataWithResponse(_ response: JSON) -> Any {
+            return response
+        }
     }
     
-    override func getPath() -> String { return memberSigupURL}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
-    }
-    override func getMethod() -> HTTPMethod { return .post}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
-    }
-}
-
-class MemberForgotPass: BaseAPI {
-    let userName: Int!
-    let idCard: Int!
-    let code: String!
-    
-    init(phone: Int, idCard: Int, code: String) {
-        self.userName = phone
-        self.idCard = idCard
-        self.code = code
+    struct ForgotPass: APIRequest {
+        let userName: Int!
+        let idCard: Int!
+        let code: String!
+        init(phone: Int, idCard: Int, code: String) {
+            self.userName = phone
+            self.idCard = idCard
+            self.code = code
+        }
+        var method: HTTPMethod {get { return .post}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return memberForgotPassURL}}
+        
+        func dataWithResponse(_ response: JSON) -> Any {
+            return response
+        }
     }
     
-    override func getPath() -> String { return memberForgotPassURL}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
-    }
-    override func getMethod() -> HTTPMethod { return .post}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
-    }
-}
-
-class MemberUpdate: BaseAPI {
-
-    let birthDay: String?
-    let idCard: Int?
-    let adress: String?
-    let email: String?
-    let phone: Int?
-    
-    init( birthDay: String?, idCard: Int?, address: String?, email: String?, phone: Int?) {
-        self.birthDay = birthDay
-        self.idCard = idCard
-        self.adress = address
-        self.phone = phone
-        self.email = email
+    struct Update: APIRequest {
+        let birthDay: String?
+        let idCard: Int?
+        let adress: String?
+        let email: String?
+        let phone: Int?
+        init( birthDay: String?, idCard: Int?, address: String?, email: String?, phone: Int?) {
+            self.birthDay = birthDay
+            self.idCard = idCard
+            self.adress = address
+            self.phone = phone
+            self.email = email
+        }
+        var method: HTTPMethod {get { return .post}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return memberUpdateInfoURL}}
+        
+        func dataWithResponse(_ response: JSON) -> Any {
+            return response
+        }
     }
     
-    override func getPath() -> String { return memberUpdateInfoURL}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
-    }
-    override func getMethod() -> HTTPMethod { return .post}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
-    }
-}
-
-class MemberScan: BaseAPI {
-    let userName: String!
-    let idCard: Int!
-    let code: String!
-    
-    init(userName: String, idCard: Int, code: String) {
-        self.userName = userName
-        self.idCard = idCard
-        self.code = code
+    struct ScanProduct: APIRequest {
+        let userName: String!
+        let idCard: Int!
+        let code: String!
+        init(userName: String, idCard: Int, code: String) {
+            self.userName = userName
+            self.idCard = idCard
+            self.code = code
+        }
+        var method: HTTPMethod {get { return .post}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return memberScanProductURL}}
+        func dataWithResponse(_ response: JSON) -> Any {
+            return response
+        }
     }
     
-    override func getPath() -> String { return memberScanProductURL}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
-    }
-    override func getMethod() -> HTTPMethod { return .post}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
-    }
-}
-
-class MemberAttend: BaseAPI {
-    let idCard: Int!
-    let type: TypeAttendance!
-    
-    init(idCard: Int, type: TypeAttendance) {
-        self.idCard = idCard
-        self.type = type
+    struct Attend: APIRequest {
+        let idCard: Int!
+        let type: TypeAttendance!
+        init(idCard: Int, type: TypeAttendance) {
+            self.idCard = idCard
+            self.type = type
+        }
+        var method: HTTPMethod {get { return .post}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return memberAttendURL}}
+        
+        func dataWithResponse(_ response: JSON) -> Any {
+            return response
+        }
     }
     
-    override func getPath() -> String { return memberAttendURL}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
-    }
-    override func getMethod() -> HTTPMethod { return .post}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
-    }
-}
-
-class MemberGetCodeSms: BaseAPI {
-    let idCard: Int!
-    let phone: Int!
-    
-    init(idCard: Int, phone: Int) {
-        self.idCard = idCard
-        self.phone = phone
+    struct GetCodeSms: APIRequest {
+        let idCard: Int!
+        let phone: Int!
+        init(idCard: Int, phone: Int) {
+            self.idCard = idCard
+            self.phone = phone
+        }
+        var method: HTTPMethod {get { return .get}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return memberGetCodeSms}}
+        
+        func dataWithResponse(_ response: JSON) -> Any {
+            return response
+        }
     }
     
-    override func getPath() -> String { return memberGetCodeSms}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
-    }
-    override func getMethod() -> HTTPMethod { return .get}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
-    }
-}
-
-class MemberGetTermOfUse: BaseAPI {
-    override func getPath() -> String { return memberTermOfUse}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
-    }
-    override func getMethod() -> HTTPMethod { return .get}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
+    struct GetTermOfUse: APIRequest {
+        var method: HTTPMethod {get { return .get}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return memberTermOfUse}}
+        
+        func dataWithResponse(_ response: JSON) -> Any {
+            return response
+        }
     }
 }

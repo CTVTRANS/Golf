@@ -10,20 +10,18 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class GetHoleDetail: BaseAPI {
-    
-    let index: Int!
-    
-    init(index: Int) {
-        self.index = index
-    }
-    
-    override func getPath() -> String { return holeDetailURL}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
-    }
-    override func getMethod() -> HTTPMethod { return .get}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
+extension HoleModel {
+    struct GetDetail: APIRequest {
+        let index: Int!
+        init(index: Int) {
+            self.index = index
+        }
+        var method: HTTPMethod {get { return .get}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return holeDetailURL}}
+        
+        func dataWithResponse(_ response: JSON) -> Any {
+            return response
+        }
     }
 }

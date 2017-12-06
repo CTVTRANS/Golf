@@ -90,7 +90,7 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.confirmCodeEmty.rawValue, in: self)
             return
         }
-        let task = MemberSigup(userName: userName, pass: passWord, confirmPass: passWordConfirm, mobile: phoneNumber, birthDay: birDay!, idCard: idMember, address: adressMember!, email: emailMember!, phone: telephoneMember, code: code)
+        let task = MemberModel.Sigup(userName: userName, pass: passWord, confirmPass: passWordConfirm, mobile: phoneNumber, birthDay: birDay, idCard: idMember, address: adressMember, email: emailMember, phone: telephoneMember, code: code)
         dataWithTask(task, onCompeted: { (data) in
             guard let member = data as? MemberModel else {
                 return

@@ -18,10 +18,12 @@ struct DonorsModel: BaseModel {
     var year = 0
     
     static func decodeJSON(json: JSON) -> DonorsModel {
+        let name = json["title"].stringValue.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+        let description = json["description"].stringValue.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         return DonorsModel(idDonors: json[""].intValue,
-                           name: json[""].stringValue,
-                           description: json[""].stringValue,
-                           year: json[""].intValue
+                           name: name,
+                           description: description,
+                           year: json["year"].intValue
         )
     }
 }

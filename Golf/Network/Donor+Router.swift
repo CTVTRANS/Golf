@@ -10,13 +10,33 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class DonorsList: BaseAPI {
-    override func getPath() -> String { return donorsListURL}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
+extension DonorsModel {
+    struct GetList: APIRequest {
+        var method: HTTPMethod {get { return .get}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return donorsListURL}}
+        
+        func dataWithResponse(_ response: JSON) -> Any {
+            var listDonors = [DonorsModel]()
+            guard let jsons = response.array else {
+                return response
+            }
+            for json in jsons {
+                let donors = DonorsModel.decodeJSON(json: json)
+                listDonors.append(donors)
+            }
+            return listDonors
+        }
     }
-    override func getMethod() -> HTTPMethod { return .get}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
+    
+    struct GetCurrent: APIRequest {
+        var method: HTTPMethod {get { return .get}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return donorsCurrentURL}}
+        
+        func dataWithResponse(_ response: JSON) -> Any {
+            let content = response["content"].stringValue
+            return content
+        }
     }
 }

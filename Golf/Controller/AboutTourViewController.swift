@@ -30,7 +30,7 @@ class AboutTourViewController: BaseViewController, MainStoryBoard {
                     hideLoading()
                     return
                 }
-                webView.loadHTMLString(company.mapInfo, baseURL: nil)
+                webView.loadHTMLString(company.info, baseURL: nil)
             }
         } catch {
             print("Failed")

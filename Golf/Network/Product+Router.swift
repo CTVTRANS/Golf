@@ -10,50 +10,44 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class ProductAll: BaseAPI {
-    override func getPath() -> String { return productAllURL}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
-    }
-    override func getMethod() -> HTTPMethod { return .get}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
-    }
-}
-
-class ProductDeal: BaseAPI {
-    
-    let type: TypeDiscount!
-    
-    init(type: TypeDiscount) {
-        self.type = type
+extension JackpotModel {
+    struct GetAll: APIRequest {
+        var method: HTTPMethod {get { return .get}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return productAllURL}}
+        
+        func dataWithResponse(_ response: JSON) -> Any {
+            return response
+        }
     }
     
-    override func getPath() -> String { return productDealURL}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
-    }
-    override func getMethod() -> HTTPMethod { return .get}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
-    }
-}
-
-class ProductScaned: BaseAPI {
-    let idCard: String!
-    let type: TypeJackpotProduct!
-    
-    init(idCard: String, type: TypeJackpotProduct) {
-        self.idCard = idCard
-        self.type = type
+    struct GetProductDeal: APIRequest {
+        let type: TypeDiscount!
+        init(type: TypeDiscount) {
+            self.type = type
+        }
+        var method: HTTPMethod {get { return .get}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return productDealURL}}
+        
+        func dataWithResponse(_ response: JSON) -> Any {
+            return response
+        }
     }
     
-    override func getPath() -> String { return productScanedURL}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
-    }
-    override func getMethod() -> HTTPMethod { return .get}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
+    struct GetProductScaned: APIRequest {
+        let idCard: String!
+        let type: TypeJackpotProduct!
+        init(idCard: String, type: TypeJackpotProduct) {
+            self.idCard = idCard
+            self.type = type
+        }
+        var method: HTTPMethod {get { return .get}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return productScanedURL}}
+        
+        func dataWithResponse(_ response: JSON) -> Any {
+            return response
+        }
     }
 }

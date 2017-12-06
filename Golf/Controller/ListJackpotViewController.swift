@@ -58,7 +58,7 @@ class ListJackpotViewController: BaseViewController, SecondSroyBoard {
     }
     
     func getAllProduct() {
-        let task = ProductAll()
+        let task = JackpotModel.GetAll()
         dataWithTask(task, onCompeted: { (data) in
             if let array = data as? [JackpotModel] {
                 self.listJackpot = array
@@ -70,7 +70,7 @@ class ListJackpotViewController: BaseViewController, SecondSroyBoard {
     }
     
     func getProductScan() {
-        let task = ProductScaned(idCard: member.idCard, type: .scaned)
+        let task = JackpotModel.GetProductScaned(idCard: member.idCard, type: .scaned)
         dataWithTask(task, onCompeted: { (data) in
             if let array = data as? [JackpotModel] {
                 self.listJackpot = array

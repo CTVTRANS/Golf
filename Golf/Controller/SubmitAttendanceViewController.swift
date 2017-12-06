@@ -44,7 +44,7 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
     }
     
     func getContent() {
-        let task = MemberGetTermOfUse()
+        let task = MemberModel.GetTermOfUse()
         dataWithTask(task, onCompeted: { (data) in
             if let content = data as? String {
                  self.webView.loadHTMLString(content, baseURL: nil)

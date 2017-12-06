@@ -42,7 +42,7 @@ class EventActivityViewController: BaseViewController, MainStoryBoard {
     }
     
     func getEvent() {
-        let task = EventActivityInfo()
+        let task = EventActivityModel.GetActivityInfo()
         dataWithTask(task, onCompeted: { (data) in
             guard let eventModel = data as? EventActivityModel else {
                 return

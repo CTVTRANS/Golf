@@ -32,7 +32,7 @@ class DetailHoleViewController: BaseViewController, MainStoryBoard {
     }
     
     func getDetailHole() {
-        let task = GetHoleDetail(index: index)
+        let task = HoleModel.GetDetail(index: index)
         dataWithTask(task, onCompeted: { (data) in
             guard let hole = data as? HoleModel else {
                 return

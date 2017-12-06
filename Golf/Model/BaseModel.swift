@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import Alamofire
 
 public enum BaseModelError: Error {
     case decodeJSONFailed
@@ -17,6 +18,7 @@ public protocol BaseModel {
     static func decodeJSON(json: JSON) -> Self
 }
 
+/*
 public extension JSON {
     func model<T: BaseModel>(_ klass: T.Type) -> T? {
         guard self.type == .dictionary, self.count > 0 else {
@@ -41,3 +43,4 @@ public extension JSON {
         return self.arrayValue.flatMap { $0.model(klass) }
     }
 }
+ */

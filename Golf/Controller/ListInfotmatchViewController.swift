@@ -20,7 +20,7 @@ class ListInfotmatchViewController: BaseViewController, MainStoryBoard {
     }
     
     func getInfoActivity() {
-        let task = GetCompanyInfoMatch()
+        let task = CompanyModel.GetInfoMatch()
         dataWithTask(task, onCompeted: { (data) in
             if let content = data as? String {
                 self.webView.loadHTMLString(content, baseURL: nil)

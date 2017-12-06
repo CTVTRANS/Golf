@@ -10,26 +10,26 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class GetCompanyInfo: BaseAPI {
-
-    override func getPath() -> String { return companyInfoURL}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
+extension CompanyModel {
+    struct GetInfo: APIRequest {
+        var method: HTTPMethod {get { return .get}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return companyInfoURL}}
+        
+        func dataWithResponse(_ response: JSON) -> Any {
+            let company = CompanyModel.decodeJSON(json: response)
+            return company
+        }
     }
-    override func getMethod() -> HTTPMethod { return .get}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
-    }
-}
-
-// webView
-class GetCompanyInfoMatch: BaseAPI {
-    override func getPath() -> String { return compamyInfoMatch}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
-    }
-    override func getMethod() -> HTTPMethod { return .get}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
+    
+    // webView
+    struct GetInfoMatch: APIRequest {
+        var method: HTTPMethod {get { return .get}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return compamyInfoMatch}}
+        
+        func dataWithResponse(_ response: JSON) -> Any {
+            return response
+        }
     }
 }

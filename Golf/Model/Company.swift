@@ -24,12 +24,12 @@ struct CompanyModel: BaseModel {
     
     static func decodeJSON(json: JSON) -> CompanyModel {
         return CompanyModel(name: json[""].stringValue,
-                            adress: json[""].stringValue,
-                            website: json[""].stringValue,
-                            phone: json[""].stringValue,
-                            latitude: json[""].doubleValue,
-                            lontitude: json[""].doubleValue,
-                            info: json[""].stringValue,
+                            adress: json["contact_us"]["address"].stringValue,
+                            website: json["contact_us"]["website"].stringValue,
+                            phone: json["contact_us"]["phone_number"].stringValue,
+                            latitude: json["map"]["latitude"].doubleValue,
+                            lontitude: json["map"]["longitude"].doubleValue,
+                            info: json["about_us"].stringValue,
                             mapInfo: json[""].stringValue,
                             currentDonor: json[""].stringValue
         )

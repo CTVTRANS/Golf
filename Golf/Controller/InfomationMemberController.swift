@@ -71,11 +71,7 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
 
         let idCardMember: Int? = idCard.text == "" ? nil: Int(idCard.text!)
         let phone: Int? = telephone.text == "" ? nil: Int(telephone.text!)
-        let task = MemberUpdate(birthDay: birthDay.text,
-                                idCard: idCardMember,
-                                address: address.text,
-                                email: mail.text,
-                                phone: phone)
+        let task = MemberModel.Update(birthDay: birthDay.text, idCard: idCardMember, address: address.text, email: mail.text, phone: phone)
         dataWithTask(task, onCompeted: { (_) in
             UIAlertController.showAlertWith(title: "", message: "change suess", in: self)
         }) { (_) in

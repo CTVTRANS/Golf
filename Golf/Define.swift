@@ -29,7 +29,7 @@ let memberGetCodeSms = ""
 let memberAttendURL = ""
 let memberTermOfUse = ""
 
-let companyInfoURL = "about-us"
+let companyInfoURL = "contact-us"
 let compamyInfoMatch = ""
 
 let productAllURL = ""
@@ -37,6 +37,7 @@ let productDealURL = ""
 let productScanedURL = ""
 
 let donorsListURL = "history-sponsors"
+let donorsCurrentURL = "this-year-sponsors"
 
 let holeDetailURL = ""
 

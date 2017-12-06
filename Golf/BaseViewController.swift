@@ -48,7 +48,7 @@ class BaseViewController: UIViewController {
         navigationController?.popToRootViewController(animated: false)
     }
     
-    func dataWithTask(_ task: BaseAPI, onCompeted: @escaping BlookSuccess, onError: @escaping BlookFailure) {
+    func dataWithTask(_ task: APIRequest, onCompeted: @escaping BlookSuccess, onError: @escaping BlookFailure) {
         task.requestDataWith(onCompelete: { (data) in
             onCompeted(data)
         }) { (error) in

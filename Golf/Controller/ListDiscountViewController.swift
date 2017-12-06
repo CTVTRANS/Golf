@@ -39,7 +39,7 @@ class ListDiscountViewController: BaseViewController, SecondSroyBoard {
     }
     
     func getDealProduct() {
-        let task = ProductDeal(type: typeDiscount)
+        let task = JackpotModel.GetProductDeal(type: typeDiscount)
         dataWithTask(task, onCompeted: { (data) in
             if let array = data as? [DiscountModel] {
                 self.listDiscount = array

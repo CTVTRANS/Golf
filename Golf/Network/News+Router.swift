@@ -10,13 +10,14 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class NewsList: BaseAPI {
-    override func getPath() -> String { return newsListURL}
-    override func getParams() -> [String: Any] {
-        return ["": ""]
-    }
-    override func getMethod() -> HTTPMethod { return .get}
-    override func dataWithResponse(_ response: JSON) -> Any {
-        return response
+extension NewsModel {
+    struct GetList: APIRequest {
+        var method: HTTPMethod {get { return .get}}
+        var params: [String: Any] {get { return ["": ""]}}
+        var path: String {get { return newsListURL}}
+        
+        func dataWithResponse(_ response: JSON) -> Any {
+            return response
+        }
     }
 }

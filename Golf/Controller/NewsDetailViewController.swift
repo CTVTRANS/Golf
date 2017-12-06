@@ -20,7 +20,7 @@ class NewsDetailViewController: BaseViewController, MainStoryBoard {
     }
     
     func getNews() {
-        let task = NewsList()
+        let task = NewsModel.GetList()
         dataWithTask(task, onCompeted: { (data) in
             guard let data = data as? NewsModel else {
                 return

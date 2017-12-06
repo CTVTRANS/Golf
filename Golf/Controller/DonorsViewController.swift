@@ -55,7 +55,8 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
         request.returnsObjectsAsFaults = false
         do {
             if let result = try self.managerContext.fetch(request) as? [DonorsCore] {
-                if result.first != nil {
+                if result.first == nil {
+                    hideLoading()
                     return
                 }
                 for donorsCore in result {
@@ -92,7 +93,8 @@ extension DonorsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? DonorsCell
-        cell?.load(listDonors[indexPath.row])
+        let index = listDonors.count - 1 - indexPath.row
+        cell?.load(listDonors[index])
         return cell!
     }
     

@@ -12,6 +12,7 @@ import CoreData
 class MainViewController: BaseViewController {
     
     let managerContext = StorageManager.shared.managedObjectContext
+    var company: CompanyModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,23 +23,14 @@ class MainViewController: BaseViewController {
     // MARK: API request
     
     func getCompany() {
-        let task = GetCompanyInfo()
+        let task = CompanyModel.GetInfo()
         dataWithTask(task, onCompeted: { (data) in
-            guard let commapny = data as? CompanyModel else {
+            guard let companyResponse = data as? CompanyModel else {
                 return
             }
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
-            request.returnsObjectsAsFaults = false
-            do {
-                if let result = try self.managerContext.fetch(request) as? [CompanyCore] {
-                    if result.first != nil {
-                        return
-                    }
-                    self.saveCompany(companyModel: commapny)
-                }
-            } catch {
-                print("Failed")
-            }
+            self.company = companyResponse
+            self.getCurrentDonors()
+            
         }) { (_) in
              let companytest = CompanyModel(name: "hanoi university of seience and technology", adress: "so 1 dai co viet", website: "www.hust.edu.vn", phone: "842436231732", latitude: 21.0062876, lontitude: 105.8423921, info: "alo alo", mapInfo: "bloblobloblo", currentDonor: "okokokok")
              self.saveCompany(companyModel: companytest)
@@ -46,7 +38,7 @@ class MainViewController: BaseViewController {
     }
     
     func getDonors() {
-        let task = DonorsList()
+        let task = DonorsModel.GetList()
         dataWithTask(task, onCompeted: { (data) in
             guard let listDonors = data as? [DonorsModel] else {
                 return
@@ -55,13 +47,37 @@ class MainViewController: BaseViewController {
             request.returnsObjectsAsFaults = false
             do {
                 if let result = try self.managerContext.fetch(request) as? [DonorsCore] {
-                    if result.first != nil {
-                        return
+                    if listDonors.count > result.count {
+                        let donors = listDonors[result.count..<listDonors.count]
+                        let newDonors: [DonorsModel] = Array(donors)
+                        self.saveListDonors(donors: newDonors)
                     }
-                    self.saveListDonors(donors: listDonors)
                 }
             } catch {
                 print("Failed")
+            }
+        }) { (_) in
+            
+        }
+    }
+    
+    func getCurrentDonors() {
+        let task = DonorsModel.GetCurrent()
+        dataWithTask(task, onCompeted: { (data) in
+            if let content = data as? String {
+                self.company?.currentDonor = content
+                let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
+                request.returnsObjectsAsFaults = false
+                do {
+                    if let result = try self.managerContext.fetch(request) as? [CompanyCore] {
+                        if result.first != nil {
+                            return
+                        }
+                        self.saveCompany(companyModel: self.company!)
+                    }
+                } catch {
+                    print("Failed")
+                }
             }
         }) { (_) in
             

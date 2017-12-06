@@ -14,34 +14,17 @@ typealias BlookSuccess = (Any) -> Void
 typealias BlookFailure = (String) -> Void
 
 protocol APIRequest {
-
-    func requestDataWith(onCompelete: @escaping BlookSuccess, onError: @escaping BlookFailure)
-    func getMethod() -> HTTPMethod
-    func getParams() -> [String: Any]
-    func getPath() -> String
-}
-
-protocol APIResponse {
+    var method: HTTPMethod {get}
+    var params: [String: Any] {get}
+    var path: String {get}
     func dataWithResponse(_ response: JSON) -> Any
 }
 
 extension APIRequest {
-    
-}
-
-class BaseAPI: APIRequest, APIResponse {
-   
-    func dataWithResponse(_ response: JSON) -> Any {
-        return response
-    }
-    
     func requestDataWith(onCompelete: @escaping BlookSuccess, onError: @escaping BlookFailure) {
-        let parameter: [String: Any] = getParams()
-        let method: HTTPMethod = getMethod()
-        let path: String = getPath()
         let url = URL(string: baseRUL + path)
-
-        Alamofire.request(url!, method: method, parameters: parameter, encoding: URLEncoding.default, headers: nil).responseJSON { (jsonResponseData) in
+        
+        Alamofire.request(url!, method: method, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { (jsonResponseData) in
             guard jsonResponseData.result.value != nil else {
                 let error = jsonResponseData.result.error?.localizedDescription
                 onError(error!)
@@ -51,17 +34,4 @@ class BaseAPI: APIRequest, APIResponse {
             onCompelete(self.dataWithResponse(json["data"]))
         }
     }
-    
-    func getMethod() -> HTTPMethod {
-        return .get
-    }
-    
-    func getParams() -> [String: Any] {
-        return ["": ""]
-    }
-    
-    func getPath() -> String {
-        return ""
-    }
-    
 }
