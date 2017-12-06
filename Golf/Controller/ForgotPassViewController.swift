@@ -17,6 +17,9 @@ class ForgotPassViewController: BaseViewController, SecondSroyBoard {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        profileID.delegate = self
+        phone.delegate = self
+        confirmCode.delegate = self
         disableRightBarButton()
     }
     
@@ -60,5 +63,11 @@ class ForgotPassViewController: BaseViewController, SecondSroyBoard {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+}
+
+extension ForgotPassViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.endEditing(true)
     }
 }

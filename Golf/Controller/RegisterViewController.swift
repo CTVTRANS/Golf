@@ -26,6 +26,21 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
     override func viewDidLoad() {
         super.viewDidLoad()
         disableRightBarButton()
+        setupKeyBoard()
+    }
+    
+    func setupKeyBoard() {
+        phone.delegate = self
+        pass.delegate = self
+        confirmCode.delegate = self
+        name.delegate = self
+        birthDay.delegate = self
+        idCard.delegate = self
+        address.delegate = self
+        email.delegate = self
+        telephone.delegate = self
+        confirmPass.delegate = self
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
     }
@@ -87,5 +102,11 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
         }) { (_) in
             
         }
+    }
+}
+
+extension RegisterViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.endEditing(true)
     }
 }

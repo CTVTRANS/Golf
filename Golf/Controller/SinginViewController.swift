@@ -14,6 +14,8 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        phoneTexField.delegate = self
+        passTextField.delegate = self
         disableRightBarButton()
     }
     
@@ -73,5 +75,11 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+}
+
+extension SinginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.endEditing(true)
     }
 }
