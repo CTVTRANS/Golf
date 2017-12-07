@@ -11,24 +11,18 @@ import UIKit
 class NewsDetailViewController: BaseViewController, MainStoryBoard {
 
     @IBOutlet weak var webView: UIWebView!
+    var news: NewsModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoading()
         webView.delegate = self
-        getNews()
+        webView.scrollView.showsVerticalScrollIndicator = false
+        setupUI()
     }
     
-    func getNews() {
-        let task = NewsModel.GetList()
-        dataWithTask(task, onCompeted: { (data) in
-            guard let data = data as? NewsModel else {
-                return
-            }
-            self.webView.loadHTMLString(data.content, baseURL: nil)
-        }) { (_) in
-            
-        }
+    func setupUI() {
+       webView.loadHTMLString(news.content, baseURL: nil)
     }
 }
 

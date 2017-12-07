@@ -12,12 +12,22 @@ import SwiftyJSON
 
 extension NewsModel {
     struct GetList: APIRequest {
+        let page: Int!
+        init(pager: Int) {
+            self.page = pager
+        }
+        
         var method: HTTPMethod {get { return .get}}
-        var params: [String: Any] {get { return ["": ""]}}
+        var params: [String: Any] {get { return ["limit": 30, "page": page]}}
         var path: String {get { return newsListURL}}
         
         func dataWithResponse(_ response: JSON) -> Any {
-            return response
+            var listNews = [NewsModel]()
+            for json in response["data"].arrayValue {
+                let news = NewsModel.decodeJSON(json: json)
+                listNews.append(news)
+            }
+            return listNews
         }
     }
 }

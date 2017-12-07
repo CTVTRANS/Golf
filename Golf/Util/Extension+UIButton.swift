@@ -20,7 +20,7 @@ extension UIButton {
                 if device == "iPhone 5" {
                     sizeScale = 0.85
                 }
-                currentFont?.withSize(currentSize! * sizeScale)
+                self.titleLabel?.font = currentFont?.withSize(currentSize! * sizeScale)
             }
         }
         get {

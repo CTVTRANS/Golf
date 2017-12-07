@@ -15,25 +15,18 @@ struct EventActivityModel: BaseModel {
     var address = ""
     var timeAttend = ""
     var priceAttend = 0
-    var listActivity = [Activity]()
+    var listActivity = ""
     var description = ""
     
     static func decodeJSON(json: JSON) -> EventActivityModel {
-        let array = getListActiviy(jsons: json[""].array!)
-        return EventActivityModel(time: json[""].stringValue,
-                                  address: json[""].stringValue,
-                                  timeAttend: json[""].stringValue,
-                                  priceAttend: json[""].intValue,
-                                  listActivity: array,
-                                  description: json[""].stringValue)
+        let parseHTML = json["activity_schedule"].stringValue.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+        let listActivity = parseHTML.replacingOccurrences(of: " ", with: "\t", options: .regularExpression, range: nil)
+        let description = json["attention"].stringValue.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+        return EventActivityModel(time: json["start_day"].stringValue,
+                                  address: json["place"].stringValue,
+                                  timeAttend: json["day_register"].stringValue,
+                                  priceAttend: json["fee_register"].intValue,
+                                  listActivity: listActivity,
+                                  description: description)
     }
-    
-    static func getListActiviy(jsons: [JSON]) -> [Activity] {
-        var array = [Activity]()
-        for json in jsons {
-            array.append(Activity.decodeJSON(json: json))
-        }
-        return array
-    }
-    
 }

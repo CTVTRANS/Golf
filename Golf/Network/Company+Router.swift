@@ -29,7 +29,11 @@ extension CompanyModel {
         var path: String {get { return compamyInfoMatch}}
         
         func dataWithResponse(_ response: JSON) -> Any {
-            return response
+            var content = ""
+            if let data = response["content"].string {
+                content = data
+            }
+            return content
         }
     }
 }

@@ -21,7 +21,7 @@ extension UILabel {
                 if device == "iPhone 5" {
                     sizeScale = 0.85
                 }
-                currentFont?.withSize(currentSize! * sizeScale)
+                self.font = currentFont?.withSize(currentSize! * sizeScale)
             }
         }
         get {

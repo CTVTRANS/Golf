@@ -11,9 +11,10 @@ import SwiftyJSON
 
 struct NewsModel: BaseModel {
     
+    var titleNews = ""
     var content = ""
     
     static func decodeJSON(json: JSON) -> NewsModel {
-        return NewsModel(content: json[""].stringValue)
+        return NewsModel(titleNews: json["title"].stringValue, content: json["content"].stringValue)
     }
 }

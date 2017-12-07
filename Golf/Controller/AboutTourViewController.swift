@@ -18,6 +18,7 @@ class AboutTourViewController: BaseViewController, MainStoryBoard {
         super.viewDidLoad()
         showLoading()
         webView.delegate = self
+        webView.scrollView.showsVerticalScrollIndicator = false
         getAboutMap()
     }
     

@@ -30,7 +30,7 @@ let memberAttendURL = ""
 let memberTermOfUse = ""
 
 let companyInfoURL = "contact-us"
-let compamyInfoMatch = ""
+let compamyInfoMatch = "competition"
 
 let productAllURL = ""
 let productDealURL = ""
@@ -39,11 +39,11 @@ let productScanedURL = ""
 let donorsListURL = "history-sponsors"
 let donorsCurrentURL = "this-year-sponsors"
 
-let holeDetailURL = ""
+let holeDetailURL = "hole-golf"
 
-let newsListURL = ""
+let newsListURL = "news"
 
-let eventInfo = ""
+let eventInfo = "activity"
 
 class Define: NSObject {
 

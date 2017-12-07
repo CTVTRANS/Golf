@@ -11,10 +11,12 @@ import UIKit
 class HoleListViewController: BaseViewController, MainStoryBoard {
 
     @IBOutlet weak var collection: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collection.register(UINib.init(nibName: "HoleViewCell", bundle: nil), forCellWithReuseIdentifier: "HoleViewCell")
     }
+    
 }
 
 extension HoleListViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
@@ -29,7 +31,7 @@ extension HoleListViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = ((widthScreen - 150) / 3)
+        let width = ((widthScreen - 170) / 3)
         return CGSize(width: width, height: width + 5)
     }
     

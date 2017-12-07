@@ -11,7 +11,7 @@ import UIKit
 class EventActivityViewController: BaseViewController, MainStoryBoard {
 
     @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var contentAvtivityView: UIView!
+    @IBOutlet weak var contentActivityView: UIScrollView!
     @IBOutlet weak var titleView: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var address: UILabel!
@@ -25,15 +25,16 @@ class EventActivityViewController: BaseViewController, MainStoryBoard {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        showLoading()
         switch typeShow {
         case .company:  // show image of donors
             backgroundImage.image = #imageLiteral(resourceName: "ic_info_company")
-            contentAvtivityView.isHidden = true
+            contentActivityView.isHidden = true
             titleView.text = "公益夥伴"
+            hideLoading()
         case .activity: // show activity
             backgroundImage.image = #imageLiteral(resourceName: "ic_background")
-            contentAvtivityView.isHidden = false
+            contentActivityView.isHidden = false
             titleView.text = "活動內容"
             getEvent()
         default:
@@ -59,12 +60,9 @@ class EventActivityViewController: BaseViewController, MainStoryBoard {
         address.text = event?.address
         timeAttend.text = event?.timeAttend
         priceAttend.text = event?.priceAttend.description
-        var nameEvent = ""
-        for activity in (event?.listActivity)! {
-            nameEvent += "\(activity.time)  \(activity.content)\n"
-        }
-        listEvent.text = nameEvent
+        listEvent.text = event?.listActivity
         descriptionLabel.text = event?.description
+        hideLoading()
     }
 
 }

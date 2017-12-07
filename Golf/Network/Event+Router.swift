@@ -17,7 +17,8 @@ extension EventActivityModel {
         var path: String {get { return eventInfo}}
         
         func dataWithResponse(_ response: JSON) -> Any {
-            return response
+            let event = EventActivityModel.decodeJSON(json: response["content"])
+            return event
         }
     }
 }

@@ -22,38 +22,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhJ-dl-w9B">
-                        <rect key="frame" x="29.5" y="12" width="41" height="18"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <rect key="frame" x="28.5" y="16" width="43.5" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="2r3-m9-b15">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="adjustSize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <color key="textColor" red="0.29803921568627451" green="0.29803921568627451" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="adjustFont" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDU-rr-VSm">
-                        <rect key="frame" x="36" y="30" width="28" height="29"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDU-rr-VSm">
+                        <rect key="frame" x="0.0" y="34" width="100" height="58"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                         <color key="textColor" red="0.82745098039215681" green="0.62352941176470589" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustFont" value="NO"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="adjustFont" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="BhJ-dl-w9B" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="1TM-Af-NL8">
+                <constraint firstItem="BhJ-dl-w9B" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="1TM-Af-NL8">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="adjustSize" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </constraint>
-                <constraint firstItem="HDU-rr-VSm" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="1xj-ra-0u8"/>
                 <constraint firstAttribute="bottom" secondItem="dKO-sI-mzd" secondAttribute="bottom" id="3LX-AM-R7a"/>
                 <constraint firstItem="dKO-sI-mzd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="DRA-zM-ndZ"/>
                 <constraint firstItem="BhJ-dl-w9B" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Dkc-C3-K93"/>
+                <constraint firstItem="HDU-rr-VSm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="UU9-ka-WCy"/>
                 <constraint firstItem="HDU-rr-VSm" firstAttribute="top" secondItem="BhJ-dl-w9B" secondAttribute="bottom" id="gXp-FK-rrd"/>
+                <constraint firstAttribute="trailing" secondItem="HDU-rr-VSm" secondAttribute="trailing" id="lot-iW-dbR"/>
                 <constraint firstItem="dKO-sI-mzd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="mW4-j3-j7R"/>
                 <constraint firstAttribute="trailing" secondItem="dKO-sI-mzd" secondAttribute="trailing" id="rGR-pY-gR3"/>
+                <constraint firstAttribute="bottom" secondItem="HDU-rr-VSm" secondAttribute="bottom" constant="8" id="rkd-i6-Fix"/>
             </constraints>
             <size key="customSize" width="185" height="142"/>
             <connections>

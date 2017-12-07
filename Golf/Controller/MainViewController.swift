@@ -11,13 +11,17 @@ import CoreData
 
 class MainViewController: BaseViewController {
     
-    let managerContext = StorageManager.shared.managedObjectContext
-    var company: CompanyModel?
-
+    @IBOutlet weak var table: UITableView!
+    fileprivate let managerContext = StorageManager.shared.managedObjectContext
+    fileprivate var company: CompanyModel?
+    fileprivate var page = 1
+    fileprivate var listNews = [NewsModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getCompany()
         getDonors()
+        getNews()
     }
     
     // MARK: API request
@@ -32,8 +36,6 @@ class MainViewController: BaseViewController {
             self.getCurrentDonors()
             
         }) { (_) in
-             let companytest = CompanyModel(name: "hanoi university of seience and technology", adress: "so 1 dai co viet", website: "www.hust.edu.vn", phone: "842436231732", latitude: 21.0062876, lontitude: 105.8423921, info: "alo alo", mapInfo: "bloblobloblo", currentDonor: "okokokok")
-             self.saveCompany(companyModel: companytest)
         }
     }
     
@@ -57,7 +59,6 @@ class MainViewController: BaseViewController {
                 print("Failed")
             }
         }) { (_) in
-            
         }
     }
     
@@ -80,7 +81,18 @@ class MainViewController: BaseViewController {
                 }
             }
         }) { (_) in
-            
+        }
+    }
+    
+    func getNews() {
+        let task = NewsModel.GetList(pager: page)
+        dataWithTask(task, onCompeted: { (data) in
+            guard let arrNews = data as? [NewsModel] else {
+                return
+            }
+            self.listNews = arrNews
+            self.table.reloadData()
+        }) { (_) in
         }
     }
     
@@ -114,12 +126,6 @@ class MainViewController: BaseViewController {
     
     // MARK: Action control
     
-    @IBAction func pressShowDetailNews(_ sender: Any) {
-        if let vc = NewsDetailViewController.instance() as? NewsDetailViewController {
-            navigationController?.pushViewController(vc, animated: false)
-        }
-    }
-    
     @IBAction func pressedAboutUs(_ sender: Any) {
         if let vc = AboutUsViewController.instance() as? AboutUsViewController {
             navigationController?.pushViewController(vc, animated: false)
@@ -152,6 +158,26 @@ class MainViewController: BaseViewController {
     
     @IBAction func pressedJackpot(_ sender: Any) {
         if let vc = JackpotViewController.instance() as? JackpotViewController {
+            navigationController?.pushViewController(vc, animated: false)
+        }
+    }
+}
+
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listNews.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = table.dequeueReusableCell(withIdentifier: "NewsViewCell", for: indexPath) as? NewsViewCell
+        cell?.loadNews(listNews[indexPath.row], at: indexPath.row + 1)
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let newsModel = listNews[indexPath.row]
+        if let vc = NewsDetailViewController.instance() as? NewsDetailViewController {
+            vc.news = newsModel
             navigationController?.pushViewController(vc, animated: false)
         }
     }
