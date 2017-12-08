@@ -8,6 +8,22 @@
 
 import UIKit
 import Kingfisher
+import LKExtension
+
+func showLoading() {
+    let viewLoading = LKActivity.showLoadingWithTitle(title: "Loading")
+    UIApplication.shared.keyWindow?.addSubview(viewLoading)
+}
+
+func hideLoading() {
+    DispatchQueue.main.async {
+        let windown = UIApplication.shared.keyWindow
+        let views = windown?.subviews
+        for view in views! where view is LKActivity {
+            view.removeFromSuperview()
+        }
+    }
+}
 
 class BaseViewController: UIViewController {
 
