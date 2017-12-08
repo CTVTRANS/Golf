@@ -14,10 +14,13 @@ extension EventActivityModel {
     struct GetActivityInfo: APIRequest {
         var method: HTTPMethod {get { return .get}}
         var params: [String: Any] {get { return ["": ""]}}
-        var path: String {get { return eventInfo}}
+        var path: String {
+            get { return eventInfo}
+            set {}
+        }
         
         func dataWithResponse(_ response: JSON) -> Any {
-            let event = EventActivityModel.decodeJSON(json: response["content"])
+            let event = EventActivityModel.decodeJSON(json: response)
             return event
         }
     }

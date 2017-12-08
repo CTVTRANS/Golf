@@ -30,7 +30,7 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
         let cahe = Cache<MemberModel>()
         var memberTest = cahe.fetchObject()
         if memberTest == nil {
-            memberTest = MemberModel(idMember: 1, name: "kien", phone: "123", address: "my dinh", email: "lekien@gmail.com", sex: 0, age: 24, birthDay: "1994/03/08", idCard: "142664602")
+            memberTest = MemberModel(idMember: 1, name: "kien", phone: "123", address: "my dinh", email: "lekien@gmail.com", sex: 0, age: 24, birthDay: "1994/03/08", idCard: "142664602", accessToken: "")
             cahe.save(object: memberTest!)
         }
         if let vc = InfomationMemberController.instance() as? InfomationMemberController {

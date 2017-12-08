@@ -81,6 +81,7 @@ class MainViewController: BaseViewController {
                 }
             }
         }) { (_) in
+            debugPrint("")
         }
     }
     

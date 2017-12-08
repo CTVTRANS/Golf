@@ -19,6 +19,7 @@ struct MemberModel: BaseModel {
     static let kAge = "age"
     static let kBirthDay = "birthDay"
     static let kIdCard = "idCard"
+    static let kAccessToken = "accessToken"
     
     var idMember = 0
     var name = ""
@@ -29,6 +30,9 @@ struct MemberModel: BaseModel {
     var age = 0
     var birthDay = ""
     var idCard = ""
+    var accessToken = ""
+    
+    static var shared = MemberModel()
     
     static func decodeJSON(json: JSON) -> MemberModel {
         return MemberModel(idMember: json[""].intValue,
@@ -39,7 +43,8 @@ struct MemberModel: BaseModel {
                            sex: json[""].intValue,
                            age: json[""].intValue,
                            birthDay: json[""].stringValue,
-                           idCard: json[""].stringValue
+                           idCard: json[""].stringValue,
+                           accessToken: json[""].stringValue
         )
     }
 }
@@ -67,6 +72,7 @@ class HeperMember: NSObject, NSCoding {
         aCoder.encode(member?.age, forKey: MemberModel.kAge)
         aCoder.encode(member?.birthDay, forKey: MemberModel.kBirthDay)
         aCoder.encode(member?.idCard, forKey: MemberModel.kIdCard)
+        aCoder.encode(member?.accessToken, forKey: MemberModel.kAccessToken)
     }
     
     var member: MemberModel?
@@ -85,13 +91,14 @@ class HeperMember: NSObject, NSCoding {
             let sex = aDecoder.decodeObject(forKey: MemberModel.kSex) as? Int,
             let age = aDecoder.decodeObject(forKey: MemberModel.kAge) as? Int,
             let birthDay = aDecoder.decodeObject(forKey: MemberModel.kBirthDay) as? String,
-            let idCard = aDecoder.decodeObject(forKey: MemberModel.kIdCard) as? String else {
+            let idCard = aDecoder.decodeObject(forKey: MemberModel.kIdCard) as? String,
+            let accessToken = aDecoder.decodeObject(forKey: MemberModel.kAccessToken) as? String else {
                 member = nil
                 super.init()
                 return nil
         }
     
-        member = MemberModel(idMember: idMember, name: name, phone: phone, address: address, email: email, sex: sex, age: age, birthDay: birthDay, idCard: idCard)
+        member = MemberModel(idMember: idMember, name: name, phone: phone, address: address, email: email, sex: sex, age: age, birthDay: birthDay, idCard: idCard, accessToken: accessToken)
         super.init()
     }
 }

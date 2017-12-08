@@ -14,7 +14,10 @@ extension DonorsModel {
     struct GetList: APIRequest {
         var method: HTTPMethod {get { return .get}}
         var params: [String: Any] {get { return ["": ""]}}
-        var path: String {get { return donorsListURL}}
+        var path: String {
+            get { return donorsListURL}
+            set {}
+        }
         
         func dataWithResponse(_ response: JSON) -> Any {
             var listDonors = [DonorsModel]()
@@ -32,7 +35,10 @@ extension DonorsModel {
     struct GetCurrent: APIRequest {
         var method: HTTPMethod {get { return .get}}
         var params: [String: Any] {get { return ["": ""]}}
-        var path: String {get { return donorsCurrentURL}}
+        var path: String {
+            get { return donorsCurrentURL}
+            set {}
+        }
         
         func dataWithResponse(_ response: JSON) -> Any {
             let content = response["content"].stringValue

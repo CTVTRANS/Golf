@@ -21,7 +21,7 @@ class EventActivityViewController: BaseViewController, MainStoryBoard {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     var typeShow: TypeShow = .company
-    var event: EventActivityModel?
+    private var event: EventActivityModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,11 @@ class EventActivityViewController: BaseViewController, MainStoryBoard {
         address.text = event?.address
         timeAttend.text = event?.timeAttend
         priceAttend.text = event?.priceAttend.description
-        listEvent.text = event?.listActivity
+        var listActivity = ""
+        for actitity in event.listActivity {
+            listActivity += "\(actitity.time)\t\(actitity.content)\n"
+        }
+        listEvent.text = listActivity
         descriptionLabel.text = event?.description
         hideLoading()
     }

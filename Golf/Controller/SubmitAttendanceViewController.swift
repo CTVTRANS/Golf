@@ -10,6 +10,7 @@ import UIKit
 
 class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
 
+    @IBOutlet weak var titleView: UILabel!
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var idUser: UILabel!
@@ -21,6 +22,7 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
     var type: TypeAttendance = .cup
     var member: MemberModel!
     var isshowMember = true
+    private var attend: AttendModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +31,9 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
         spaceTopButton.constant = 16
         memberView.isHidden = true
         if type == .cup {
-            name.text = "2018壽山盃報名"
+            titleView.text = "2018壽山盃報名"
         } else {
-            name.text = "2018球場活動報名"
+            titleView.text = "2018球場活動報名"
         }
         loadMember()
         getContent()
@@ -44,11 +46,22 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
     }
     
     func getContent() {
-        let task = MemberModel.GetTermOfUse()
+        let task = MemberModel.GetTermOfUse(type: type)
         dataWithTask(task, onCompeted: { (data) in
-            if let content = data as? String {
-                 self.webView.loadHTMLString(content, baseURL: nil)
+            if let attend = data as? AttendModel {
+                self.attend = attend
+                self.name.text = self.attend?.title
+                self.webView.loadHTMLString((self.attend?.content)!, baseURL: nil)
             }
+        }) { (_) in
+            
+        }
+    }
+    
+    func attendAction() {
+        let task = MemberModel.Attend(eventID: (attend?.idEvent)!)
+        dataWithTask(task, onCompeted: { (data) in
+            
         }) { (_) in
             
         }
@@ -61,6 +74,7 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
             isshowMember = false
             return
         }
+        attendAction()
         if let vc = AttendSuccessViewController.instance() as? AttendSuccessViewController {
             if type == .cup {
                 vc.titleName = "2018壽山盃報名"

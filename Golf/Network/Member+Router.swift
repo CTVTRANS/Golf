@@ -20,7 +20,10 @@ extension MemberModel {
         }
         var method: HTTPMethod {get { return .post}}
         var params: [String: Any] {get { return ["": ""]}}
-        var path: String {get { return memberSiginURL}}
+        var path: String {
+            get { return memberSiginURL}
+            set {}
+        }
         
         func dataWithResponse(_ response: JSON) -> Any {
             return response
@@ -52,7 +55,10 @@ extension MemberModel {
         }
         var method: HTTPMethod {get { return .post}}
         var params: [String: Any] {get { return ["": ""]}}
-        var path: String {get { return memberSigupURL}}
+        var path: String {
+            get { return memberSigupURL}
+            set {}
+        }
     
         func dataWithResponse(_ response: JSON) -> Any {
             return response
@@ -70,7 +76,10 @@ extension MemberModel {
         }
         var method: HTTPMethod {get { return .post}}
         var params: [String: Any] {get { return ["": ""]}}
-        var path: String {get { return memberForgotPassURL}}
+        var path: String {
+            get { return memberForgotPassURL}
+            set {}
+        }
         
         func dataWithResponse(_ response: JSON) -> Any {
             return response
@@ -92,7 +101,10 @@ extension MemberModel {
         }
         var method: HTTPMethod {get { return .post}}
         var params: [String: Any] {get { return ["": ""]}}
-        var path: String {get { return memberUpdateInfoURL}}
+        var path: String {
+            get { return memberUpdateInfoURL}
+            set {}
+        }
         
         func dataWithResponse(_ response: JSON) -> Any {
             return response
@@ -110,22 +122,29 @@ extension MemberModel {
         }
         var method: HTTPMethod {get { return .post}}
         var params: [String: Any] {get { return ["": ""]}}
-        var path: String {get { return memberScanProductURL}}
+        var path: String {
+            get { return memberScanProductURL}
+            set {}
+        }
         func dataWithResponse(_ response: JSON) -> Any {
             return response
         }
     }
     
     struct Attend: APIRequest {
-        let idCard: Int!
-        let type: TypeAttendance!
-        init(idCard: Int, type: TypeAttendance) {
-            self.idCard = idCard
-            self.type = type
+        private let eventID: Int!
+        private let memberID = MemberModel.shared.idMember
+        private let accessToken = MemberModel.shared.accessToken
+        
+        init(eventID: Int) {
+            self.eventID = eventID
         }
         var method: HTTPMethod {get { return .post}}
-        var params: [String: Any] {get { return ["": ""]}}
-        var path: String {get { return memberAttendURL}}
+        var params: [String: Any] {get { return ["event_id": eventID, "member_id": memberID, "access_token": accessToken]}}
+        var path: String {
+            get { return memberAttendURL}
+            set {}
+        }
         
         func dataWithResponse(_ response: JSON) -> Any {
             return response
@@ -141,7 +160,10 @@ extension MemberModel {
         }
         var method: HTTPMethod {get { return .get}}
         var params: [String: Any] {get { return ["": ""]}}
-        var path: String {get { return memberGetCodeSms}}
+        var path: String {
+            get { return memberGetCodeSms}
+            set {}
+        }
         
         func dataWithResponse(_ response: JSON) -> Any {
             return response
@@ -149,12 +171,26 @@ extension MemberModel {
     }
     
     struct GetTermOfUse: APIRequest {
-        var method: HTTPMethod {get { return .get}}
-        var params: [String: Any] {get { return ["": ""]}}
-        var path: String {get { return memberTermOfUse}}
+        var pathURL = ""
+        init(type: TypeAttendance) {
+            switch type {
+            case .cup:
+                path = attendCup
+            case .tour:
+                path = attendTuor
+            }
+        }
+        
+        var method: HTTPMethod {get {return .get}}
+        var params: [String: Any] {get {return ["": ""]}}
+        var path: String {
+            get {return pathURL}
+            set {pathURL = newValue}
+        }
         
         func dataWithResponse(_ response: JSON) -> Any {
-            return response
+            let attend = AttendModel.decodeJSON(json: response)
+            return attend
         }
     }
 }

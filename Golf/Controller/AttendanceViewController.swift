@@ -13,7 +13,7 @@ class AttendanceViewController: BaseViewController, MainStoryBoard {
     var member: MemberModel?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     @IBAction func pressAttendanceCup(_ sender: Any) {
@@ -25,6 +25,9 @@ class AttendanceViewController: BaseViewController, MainStoryBoard {
     }
     
     @IBAction func pressedAttendanceTour(_ sender: Any) {
+        let member = MemberModel(idMember: 1, name: "kien", phone: "123", address: "asdf", email: "asdf", sex: 8, age: 34, birthDay: "sdf", idCard: "sdf", accessToken: "")
+        let cache = Cache<MemberModel>()
+        cache.save(object: member)
         if let member = checkMember(), let vc = SubmitAttendanceViewController.instance() as? SubmitAttendanceViewController {
             vc.type = .tour
             vc.member = member

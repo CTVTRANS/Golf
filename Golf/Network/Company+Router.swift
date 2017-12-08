@@ -14,7 +14,10 @@ extension CompanyModel {
     struct GetInfo: APIRequest {
         var method: HTTPMethod {get { return .get}}
         var params: [String: Any] {get { return ["": ""]}}
-        var path: String {get { return companyInfoURL}}
+        var path: String {
+            get { return companyInfoURL}
+            set {}
+        }
         
         func dataWithResponse(_ response: JSON) -> Any {
             let company = CompanyModel.decodeJSON(json: response)
@@ -26,7 +29,10 @@ extension CompanyModel {
     struct GetInfoMatch: APIRequest {
         var method: HTTPMethod {get { return .get}}
         var params: [String: Any] {get { return ["": ""]}}
-        var path: String {get { return compamyInfoMatch}}
+        var path: String {
+            get { return compamyInfoMatch}
+            set {}
+        }
         
         func dataWithResponse(_ response: JSON) -> Any {
             var content = ""

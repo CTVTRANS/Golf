@@ -15,18 +15,23 @@ struct EventActivityModel: BaseModel {
     var address = ""
     var timeAttend = ""
     var priceAttend = 0
-    var listActivity = ""
+    var listActivity = [ActivityModel]()
     var description = ""
     
     static func decodeJSON(json: JSON) -> EventActivityModel {
-        let parseHTML = json["activity_schedule"].stringValue.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-        let listActivity = parseHTML.replacingOccurrences(of: " ", with: "\t", options: .regularExpression, range: nil)
+        var arrayActivity = [ActivityModel]()
+        if let array = json["activity_schedule"].array {
+            for arr in array {
+                let activity = ActivityModel.decodeJSON(json: arr)
+                arrayActivity.append(activity)
+            }
+        }
         let description = json["attention"].stringValue.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         return EventActivityModel(time: json["start_day"].stringValue,
                                   address: json["place"].stringValue,
                                   timeAttend: json["day_register"].stringValue,
                                   priceAttend: json["fee_register"].intValue,
-                                  listActivity: listActivity,
+                                  listActivity: arrayActivity,
                                   description: description)
     }
 }

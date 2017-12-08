@@ -68,6 +68,7 @@ class BaseViewController: UIViewController {
             })
             return nil
         }
+        MemberModel.shared = member
         return member
     }
 }

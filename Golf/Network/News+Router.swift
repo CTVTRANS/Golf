@@ -19,7 +19,10 @@ extension NewsModel {
         
         var method: HTTPMethod {get { return .get}}
         var params: [String: Any] {get { return ["limit": 30, "page": page]}}
-        var path: String {get { return newsListURL}}
+        var path: String {
+            get { return newsListURL}
+            set {}
+        }
         
         func dataWithResponse(_ response: JSON) -> Any {
             var listNews = [NewsModel]()

@@ -10,37 +10,36 @@ import UIKit
 
 class DetailHoleViewController: BaseViewController, MainStoryBoard {
 
+    @IBOutlet weak var imageDonors: UIImageView!
+    @IBOutlet weak var par: UILabel!
+    @IBOutlet weak var regularRed: UILabel!
+    @IBOutlet weak var regularWhite: UILabel!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var imageBackGround: UIImageView!
     @IBOutlet weak var imageMapHole: UIImageView!
     @IBOutlet weak var indexHole: UILabel!
     @IBOutlet weak var detailHole: UIWebView!
-    var index = 1
+    
+    var hole: HoleModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoading()
-        detailHole.delegate = self
-        if index == 17 {
+        detailHole.scrollView.showsVerticalScrollIndicator = false
+        if hole.index == 17 {
             contentView.isHidden = true
             imageBackGround.image = #imageLiteral(resourceName: "ic_background_hole_17")
             return
         }
-        indexHole.text = index.description
+        par.text = hole.par.description
+        regularRed.text = "Regular(Red)\(hole.regularRed.description)"
+        regularWhite.text = "Regular(White)\(hole.regularWhite.description)"
+        detailHole.delegate = self
+        indexHole.text = hole.index.description
         imageBackGround.image = #imageLiteral(resourceName: "ic_backGround_hole")
-        imageMapHole.image = UIImage(named: "hole\(index)")
-    }
-    
-    func getDetailHole() {
-        let task = HoleModel.GetDetail(index: index)
-        dataWithTask(task, onCompeted: { (data) in
-            guard let hole = data as? HoleModel else {
-                return
-            }
-            self.detailHole.loadHTMLString(hole.content, baseURL: nil)
-        }) { (_) in
-            
-        }
+        imageMapHole.image = UIImage(named: "hole\(hole.index)")
+        imageDonors.kf.setImage(with: URL(string: hole.imageBusiness))
+        detailHole.loadHTMLString(hole.content, baseURL: nil)
     }
 }
 

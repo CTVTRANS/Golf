@@ -14,7 +14,10 @@ extension JackpotModel {
     struct GetAll: APIRequest {
         var method: HTTPMethod {get { return .get}}
         var params: [String: Any] {get { return ["": ""]}}
-        var path: String {get { return productAllURL}}
+        var path: String {
+            get { return productAllURL}
+            set {}
+        }
         
         func dataWithResponse(_ response: JSON) -> Any {
             return response
@@ -28,7 +31,10 @@ extension JackpotModel {
         }
         var method: HTTPMethod {get { return .get}}
         var params: [String: Any] {get { return ["": ""]}}
-        var path: String {get { return productDealURL}}
+        var path: String {
+            get { return productDealURL}
+            set {}
+        }
         
         func dataWithResponse(_ response: JSON) -> Any {
             return response
@@ -44,7 +50,10 @@ extension JackpotModel {
         }
         var method: HTTPMethod {get { return .get}}
         var params: [String: Any] {get { return ["": ""]}}
-        var path: String {get { return productScanedURL}}
+        var path: String {
+            get { return productScanedURL}
+            set {}
+        }
         
         func dataWithResponse(_ response: JSON) -> Any {
             return response

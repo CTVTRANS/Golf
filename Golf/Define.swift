@@ -18,7 +18,7 @@ let baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
 let apiMap = "AIzaSyBZ840yCSeH3DTwps5f9Aj031wawRcQP8k"  // key for google map
 let apiDirection = "AIzaSyAm99Jv13nXVpPJOLSWaIDVCTMA1VTqilU"    //key for gooele direction
 
-let baseRUL = "http://golf.transoftvietnam.com/api/page/"
+let baseRUL = "http://golf.transoftvietnam.com/api/"
 
 let memberSiginURL = ""
 let memberSigupURL = ""
@@ -26,24 +26,27 @@ let memberUpdateInfoURL = ""
 let memberForgotPassURL = ""
 let memberScanProductURL = ""
 let memberGetCodeSms = ""
-let memberAttendURL = ""
+let memberAttendURL = "event/attend"
 let memberTermOfUse = ""
 
-let companyInfoURL = "contact-us"
-let compamyInfoMatch = "competition"
+let companyInfoURL = "page/contact-us"
+let compamyInfoMatch = "page/competition"
 
 let productAllURL = ""
 let productDealURL = ""
 let productScanedURL = ""
 
-let donorsListURL = "history-sponsors"
-let donorsCurrentURL = "this-year-sponsors"
+let donorsListURL = "page/history-sponsors"
+let donorsCurrentURL = "page/this-year-sponsors"
 
-let holeDetailURL = "hole-golf"
+let holeDetailURL = "page/hole-golf"
 
-let newsListURL = "news"
+let newsListURL = "page/news"
 
-let eventInfo = "activity"
+let eventInfo = "page/activity"
+
+let attendCup = "event/cup"
+let attendTuor = "event/activity"
 
 class Define: NSObject {
 
