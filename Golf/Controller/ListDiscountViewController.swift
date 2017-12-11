@@ -25,12 +25,13 @@ class ListDiscountViewController: BaseViewController, SecondSroyBoard {
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var table: UITableView!
-    var typeDiscount: TypeDiscount = .product
+    var typeDiscount: TypeDiscount = .tour
     var listDiscount = [DiscountModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if typeDiscount == .product {
+        showLoading()
+        if typeDiscount == .tour {
             name.text = "球場優惠資訊"
         } else {
             name.text = "廠商優惠資訊"
@@ -44,9 +45,10 @@ class ListDiscountViewController: BaseViewController, SecondSroyBoard {
             if let array = data as? [DiscountModel] {
                 self.listDiscount = array
                 self.table.reloadData()
+                hideLoading()
             }
         }) { (_) in
-            
+            hideLoading()
         }
     }
 }

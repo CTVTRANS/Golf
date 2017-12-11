@@ -17,7 +17,7 @@ class DiscountViewController: BaseViewController, SecondSroyBoard {
     
     @IBAction func pressedDiscountProduct(_ sender: Any) {
         if let vc = ListDiscountViewController.instance() as? ListDiscountViewController {
-            vc.typeDiscount = .product
+            vc.typeDiscount = .tour
             navigationController?.pushViewController(vc, animated: false)
         }
     }

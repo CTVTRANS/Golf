@@ -12,7 +12,8 @@ import CoreData
 class MainViewController: BaseViewController {
     
     @IBOutlet weak var table: UITableView!
-    fileprivate let managerContext = StorageManager.shared.managedObjectContext
+    private let storage = StorageManager.shared
+    private let managerContext = StorageManager.shared.managedObjectContext
     fileprivate var company: CompanyModel?
     fileprivate var page = 1
     fileprivate var listNews = [NewsModel]()
@@ -104,11 +105,7 @@ class MainViewController: BaseViewController {
         if let companyCore = NSManagedObject(entity: entity!, insertInto: managerContext) as? CompanyCore {
             companyCore.company = companyModel
         }
-        do {
-           try  managerContext.save()
-        } catch {
-            print("Failed saving")
-        }
+        storage.saveContext()
     }
     
     func saveListDonors(donors: [DonorsModel]) {
@@ -118,11 +115,7 @@ class MainViewController: BaseViewController {
                 donorCore.donors = donor
             }
         }
-        do {
-            try  managerContext.save()
-        } catch {
-            print("Failed saving")
-        }
+       storage.saveContext()
     }
     
     // MARK: Action control

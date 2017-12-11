@@ -20,7 +20,15 @@ extension JackpotModel {
         }
         
         func dataWithResponse(_ response: JSON) -> Any {
-            return response
+            var listJackpotModel = [JackpotModel]()
+            guard let jsons = response.array else {
+                return response
+            }
+            for json in jsons {
+                let product = JackpotModel.decodeJSON(json: json)
+                listJackpotModel.append(product)
+            }
+            return listJackpotModel
         }
     }
     
@@ -30,14 +38,22 @@ extension JackpotModel {
             self.type = type
         }
         var method: HTTPMethod {get { return .get}}
-        var params: [String: Any] {get { return ["": ""]}}
+        var params: [String: Any] {get { return ["discount_type": type.rawValue]}}
         var path: String {
             get { return productDealURL}
             set {}
         }
         
         func dataWithResponse(_ response: JSON) -> Any {
-            return response
+            var listProfuct = [DiscountModel]()
+            guard let jsons = response.array else {
+                return response
+            }
+            for json in jsons {
+                let discount = DiscountModel.decodeJSON(json: json)
+                listProfuct.append(discount)
+            }
+            return listProfuct
         }
     }
     

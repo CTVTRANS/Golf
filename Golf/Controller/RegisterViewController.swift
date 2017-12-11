@@ -76,29 +76,45 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.nameEmty.rawValue, in: self)
             return
         }
-        guard let idMember = Int(idCard.text!) else {
-             UIAlertController.showAlertWith(title: "", message: ErrorMember.idCardEmty.rawValue, in: self)
+        guard let idMember = idCard.text else {
+            UIAlertController.showAlertWith(title: "", message: ErrorMember.idCardEmty.rawValue, in: self)
+            return
+        }
+        guard let landLine = telephone.text else {
+            UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)
             return
         }
         let adressMember = address.text
         let birDay = birthDay.text
         let emailMember = email.text
-        guard let telephoneMember = Int(telephone.text!) else {
-            return
-        }
         guard let code = confirmCode.text else {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.confirmCodeEmty.rawValue, in: self)
             return
         }
-        let task = MemberModel.Sigup(userName: userName, pass: passWord, confirmPass: passWordConfirm, mobile: phoneNumber, birthDay: birDay, idCard: idMember, address: adressMember, email: emailMember, phone: telephoneMember, code: code)
+        let task = MemberModel.Sigup(userName: userName, pass: passWord, confirmPass: passWordConfirm, mobile: phoneNumber, birthDay: birDay, idCard: idMember, address: adressMember, email: emailMember, landLine: landLine, code: code)
         dataWithTask(task, onCompeted: { (data) in
-            guard let member = data as? MemberModel else {
+            debugPrint(data)
+            guard let _ = data as? MemberModel else {
+                
                 return
             }
-            if let vc = InfomationMemberController.instance() as? InfomationMemberController {
-                vc.member = member
-                self.navigationController?.pushViewController(vc, animated: false)
-            }
+            let message = ErrorCode.success
+            UIAlertController.showAlertWith(title: "", message: message.decodeError(), in: self, compeletionHandler: {
+                self.navigationController?.popViewController(animated: true)
+            })
+            return
+        }) { (_) in
+            
+        }
+    }
+    @IBAction func pressedGetCode(_ sender: Any) {
+        guard let phoneNumber = Int(phone.text!) else {
+            UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)
+            return
+        }
+        let task = MemberModel.GetCodeSms(phone: phoneNumber)
+        dataWithTask(task, onCompeted: { (data) in
+            debugPrint(data)
         }) { (_) in
             
         }

@@ -12,21 +12,22 @@ import SwiftyJSON
 
 extension MemberModel {
     struct Sigin: APIRequest {
-        let userName: Int!
+        let phone: Int!
         let pass: String!
-        init(userName: Int, pass: String) {
-            self.userName = userName
+        init(phone: Int, pass: String) {
+            self.phone = phone
             self.pass = pass
         }
         var method: HTTPMethod {get { return .post}}
-        var params: [String: Any] {get { return ["": ""]}}
+        var params: [String: Any] {get { return ["phone_number": phone, "password": pass]}}
         var path: String {
             get { return memberSiginURL}
             set {}
         }
         
         func dataWithResponse(_ response: JSON) -> Any {
-            return response
+            let member = MemberModel.decodeJSON(json: response)
+            return member
         }
     }
     
@@ -35,13 +36,13 @@ extension MemberModel {
         let pass: String!
         let confirmPass: String!
         let mobiPhone: Int!
-        let birthDay: String?
-        let idCard: Int!
-        let adress: String?
-        let email: String?
-        let phone: Int?
+        let birthDay: String!
+        let idCard: String!
+        let adress: String!
+        let email: String!
+        let landLine: String!
         let code: String!
-        init(userName: String, pass: String, confirmPass: String, mobile: Int, birthDay: String?, idCard: Int, address: String?, email: String?, phone: Int?, code: String) {
+        init(userName: String, pass: String, confirmPass: String, mobile: Int, birthDay: String?, idCard: String, address: String?, email: String?, landLine: String, code: String) {
             self.userName = userName
             self.pass = pass
             self.confirmPass = confirmPass
@@ -49,33 +50,40 @@ extension MemberModel {
             self.birthDay = birthDay
             self.idCard = idCard
             self.adress = address
-            self.phone = phone
             self.email = email
+            self.landLine = landLine
             self.code = code
         }
         var method: HTTPMethod {get { return .post}}
-        var params: [String: Any] {get { return ["": ""]}}
+        var params: [String: Any] {get { return ["phone_number": mobiPhone,
+                                                 "confirm_code": code,
+                                                 "name": userName,
+                                                 "email": email,
+                                                 "birthday": birthDay,
+                                                 "identity_card_number": idCard,
+                                                 "address": adress,
+                                                 "password": pass,
+                                                 "confirm_password": confirmPass]}}
         var path: String {
             get { return memberSigupURL}
             set {}
         }
     
         func dataWithResponse(_ response: JSON) -> Any {
-            return response
+            let member = MemberModel.decodeJSON(json: response)
+            return member
         }
     }
     
     struct ForgotPass: APIRequest {
-        let userName: Int!
-        let idCard: Int!
-        let code: String!
-        init(phone: Int, idCard: Int, code: String) {
-            self.userName = phone
+        let phone: Int!
+        let idCard: String!
+        init(phone: Int, idCard: String) {
+            self.phone = phone
             self.idCard = idCard
-            self.code = code
         }
         var method: HTTPMethod {get { return .post}}
-        var params: [String: Any] {get { return ["": ""]}}
+        var params: [String: Any] {get { return ["phone_number": phone, "identity_card_number": idCard]}}
         var path: String {
             get { return memberForgotPassURL}
             set {}
@@ -87,20 +95,29 @@ extension MemberModel {
     }
     
     struct Update: APIRequest {
-        let birthDay: String?
-        let idCard: Int?
-        let adress: String?
-        let email: String?
-        let phone: Int?
-        init( birthDay: String?, idCard: Int?, address: String?, email: String?, phone: Int?) {
+        let name: String!
+        let birthDay: String!
+        let idCard: String!
+        let adress: String!
+        let emailMember: String!
+        let landLine: String!
+        
+        init(name: String?, birthDay: String!, idCard: String?, address: String!, email: String!, landLine: String!) {
+            self.name = name
             self.birthDay = birthDay
             self.idCard = idCard
             self.adress = address
-            self.phone = phone
-            self.email = email
+            self.emailMember = email
+            self.landLine = landLine
         }
         var method: HTTPMethod {get { return .post}}
-        var params: [String: Any] {get { return ["": ""]}}
+        var params: [String: Any] {get { return ["member_id": MemberModel.shared.idMember,
+                                                 "access_token": MemberModel.shared.accessToken,
+                                                 "name": name,
+                                                 "birthday": birthDay,
+                                                 "identity_card_number": idCard,
+                                                 "address": adress,
+                                                 "email": emailMember]}}
         var path: String {
             get { return memberUpdateInfoURL}
             set {}
@@ -152,14 +169,12 @@ extension MemberModel {
     }
     
     struct GetCodeSms: APIRequest {
-        let idCard: Int!
         let phone: Int!
-        init(idCard: Int, phone: Int) {
-            self.idCard = idCard
+        init(phone: Int) {
             self.phone = phone
         }
-        var method: HTTPMethod {get { return .get}}
-        var params: [String: Any] {get { return ["": ""]}}
+        var method: HTTPMethod {get { return .post}}
+        var params: [String: Any] {get { return ["phone_number": phone]}}
         var path: String {
             get { return memberGetCodeSms}
             set {}

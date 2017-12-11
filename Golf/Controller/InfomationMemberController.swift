@@ -14,8 +14,8 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
     @IBOutlet weak var birthDay: UITextField!
     @IBOutlet weak var idCard: UITextField!
     @IBOutlet weak var address: UITextField!
+    @IBOutlet weak var landLine: UITextField!
     @IBOutlet weak var mail: UITextField!
-    @IBOutlet weak var telephone: UITextField!
     @IBOutlet weak var topContrains: NSLayoutConstraint!
     
     var member: MemberModel!
@@ -25,6 +25,8 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
         disableRightBarButton()
         setupUI()
         setupKeyBoard()
+        let backbutton = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_back"), style: .done, target: self, action: #selector(pressedHome))
+        navigationItem.leftBarButtonItems = [backbutton]
     }
     
     func setupKeyBoard() {
@@ -33,7 +35,6 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
         idCard.delegate = self
         address.delegate = self
         mail.delegate = self
-        telephone.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
     }
@@ -44,7 +45,6 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
         idCard.text = member.idCard
         address.text = member.address
         mail.text = member.email
-        telephone.text = member.phone
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
@@ -68,14 +68,26 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
     }
     
     @IBAction func pressedEdit(_ sender: Any) {
-
-        let idCardMember: Int? = idCard.text == "" ? nil: Int(idCard.text!)
-        let phone: Int? = telephone.text == "" ? nil: Int(telephone.text!)
-        let task = MemberModel.Update(birthDay: birthDay.text, idCard: idCardMember, address: address.text, email: mail.text, phone: phone)
+        let task = MemberModel.Update(name: name.text, birthDay: birthDay.text, idCard: idCard.text, address: address.text, email: mail.text, landLine: landLine.text)
         dataWithTask(task, onCompeted: { (_) in
-            UIAlertController.showAlertWith(title: "", message: "change suess", in: self)
+            MemberModel.shared.name = self.name.text!
+            MemberModel.shared.birthDay = self.birthDay.text!
+            MemberModel.shared.idCard = self.idCard.text!
+            MemberModel.shared.address = self.address.text!
+            MemberModel.shared.email = self.mail.text!
+            MemberModel.shared.landLine = self.landLine.text!
+            let cache = Cache<MemberModel>()
+            cache.save(object: MemberModel.shared)
+            let status = ErrorCode.success
+            UIAlertController.showAlertWith(title: "", message: status.decodeError(), in: self)
         }) { (_) in
             
+        }
+    }
+    
+    @IBAction func pressedChangepass(_ sender: Any) {
+        if let vc = ChangePassViewController.instance() as? ChangePassViewController {
+            navigationController?.pushViewController(vc, animated: false)
         }
     }
 }

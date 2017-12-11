@@ -19,6 +19,7 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
     @IBOutlet weak var memberView: UIView!
     @IBOutlet weak var spaceTopButton: NSLayoutConstraint!
     
+    @IBOutlet weak var submitButton: UIButton!
     var type: TypeAttendance = .cup
     var member: MemberModel!
     var isshowMember = true
@@ -60,7 +61,7 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
     
     func attendAction() {
         let task = MemberModel.Attend(eventID: (attend?.idEvent)!)
-        dataWithTask(task, onCompeted: { (data) in
+        dataWithTask(task, onCompeted: { (_) in
             
         }) { (_) in
             
@@ -70,6 +71,7 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
     @IBAction func pressedSubmit(_ sender: Any) {
         if isshowMember {
             spaceTopButton.constant = memberView.frame.size.height + 16
+            submitButton.setTitle("submit", for: .normal)
             memberView.isHidden = false
             isshowMember = false
             return

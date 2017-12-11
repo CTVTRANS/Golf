@@ -26,6 +26,7 @@
 		9D0A2B291FD55008007A4EAF /* Golf.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D0A2B271FD55008007A4EAF /* Golf.xcdatamodeld */; };
 		9D0A2B2B1FD556E2007A4EAF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D0A2B2A1FD556D5007A4EAF /* CoreData.framework */; };
 		9D0CA5441FCD0B7B00AB4D97 /* ResultScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0CA5431FCD0B7B00AB4D97 /* ResultScanViewController.swift */; };
+		9D0D77DC1FDE46B800286E24 /* ChangePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D77DB1FDE46B800286E24 /* ChangePassViewController.swift */; };
 		9D0F1F9F1FD1484D0094EB26 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0F1F9E1FD1484D0094EB26 /* Cache.swift */; };
 		9D0F1FA11FD163040094EB26 /* AttendSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0F1FA01FD163040094EB26 /* AttendSuccessViewController.swift */; };
 		9D0F53A21FD6824C0025EA3B /* Hole+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0F53A11FD6824C0025EA3B /* Hole+API.swift */; };
@@ -93,6 +94,7 @@
 		9D0A2B281FD55008007A4EAF /* Golf.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Golf.xcdatamodel; sourceTree = "<group>"; };
 		9D0A2B2A1FD556D5007A4EAF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9D0CA5431FCD0B7B00AB4D97 /* ResultScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScanViewController.swift; sourceTree = "<group>"; };
+		9D0D77DB1FDE46B800286E24 /* ChangePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassViewController.swift; sourceTree = "<group>"; };
 		9D0F1F9E1FD1484D0094EB26 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		9D0F1FA01FD163040094EB26 /* AttendSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendSuccessViewController.swift; sourceTree = "<group>"; };
 		9D0F53A11FD6824C0025EA3B /* Hole+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hole+API.swift"; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				9D986A111FC7DBE50027D894 /* ForgotPassViewController.swift */,
 				9D04EAE91FC7FB3E00028EF7 /* RegisterViewController.swift */,
 				9DFC799C1FD256EB002CA3F5 /* InfomationMemberController.swift */,
+				9D0D77DB1FDE46B800286E24 /* ChangePassViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				9D0A2ADD1FD52C4D007A4EAF /* Storage.swift in Sources */,
 				9D0F53A81FD690B50025EA3B /* Donor+API.swift in Sources */,
 				9DF70F1C1FC56D1000774BA6 /* DetailHoleViewController.swift in Sources */,
+				9D0D77DC1FDE46B800286E24 /* ChangePassViewController.swift in Sources */,
 				9D0F1F9F1FD1484D0094EB26 /* Cache.swift in Sources */,
 				9D986A101FC7C9740027D894 /* JackpotModel.swift in Sources */,
 				9DF881F41FC3D43300FADA1B /* AboutTourViewController.swift in Sources */,

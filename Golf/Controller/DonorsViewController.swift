@@ -35,6 +35,7 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
         showLoading()
         table.estimatedRowHeight = 140
         webView.delegate = self
+        webView.scrollView.showsVerticalScrollIndicator = false
         switch type {
         case .older2018: // show list donors older 2018
             titleScreen.text = "歷年贊助對象"

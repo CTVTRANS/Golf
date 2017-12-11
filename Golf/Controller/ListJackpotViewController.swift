@@ -48,7 +48,6 @@ class ListJackpotViewController: BaseViewController, SecondSroyBoard {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        table.estimatedRowHeight = 140
         switch statusProduct {
         case .all:
             getAllProduct()
@@ -112,9 +111,5 @@ extension ListJackpotViewController: UITableViewDelegate, UITableViewDataSource 
             }
         }
         return cell!
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
     }
 }

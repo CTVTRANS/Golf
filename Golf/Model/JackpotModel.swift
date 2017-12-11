@@ -17,10 +17,10 @@ struct JackpotModel: BaseModel {
     var status = false
     
     static func decodeJSON(json: JSON) -> JackpotModel {
-        return JackpotModel(idJackpit: json[""].intValue,
-                            name: json[""].stringValue,
-                            imageURL: json[""].stringValue,
-                            amount: json[""].intValue,
+        return JackpotModel(idJackpit: json["id"].intValue,
+                            name: json["title"].stringValue,
+                            imageURL: json["image"].stringValue,
+                            amount: json["amount_left"].intValue,
                             status: json[""].boolValue
         )
     }

@@ -15,8 +15,7 @@ struct MemberModel: BaseModel {
     static let kPhone = "phone"
     static let kAddress = "address"
     static let kEmail = "email"
-    static let kSex = "sex"
-    static let kAge = "age"
+    static let kLandLine = "landLine"
     static let kBirthDay = "birthDay"
     static let kIdCard = "idCard"
     static let kAccessToken = "accessToken"
@@ -26,8 +25,7 @@ struct MemberModel: BaseModel {
     var phone = ""
     var address = ""
     var email = ""
-    var sex = 0
-    var age = 0
+    var landLine = ""
     var birthDay = ""
     var idCard = ""
     var accessToken = ""
@@ -35,16 +33,15 @@ struct MemberModel: BaseModel {
     static var shared = MemberModel()
     
     static func decodeJSON(json: JSON) -> MemberModel {
-        return MemberModel(idMember: json[""].intValue,
-                           name: json[""].stringValue,
-                           phone: json[""].stringValue,
-                           address: json[""].stringValue,
-                           email: json[""].stringValue,
-                           sex: json[""].intValue,
-                           age: json[""].intValue,
-                           birthDay: json[""].stringValue,
-                           idCard: json[""].stringValue,
-                           accessToken: json[""].stringValue
+        return MemberModel(idMember: json["id"].intValue,
+                           name: json["name"].stringValue,
+                           phone: String(json["phone_number"].intValue),
+                           address: json["address"].stringValue,
+                           email: json["email"].stringValue,
+                           landLine: json[""].stringValue,
+                           birthDay: json["date_of_birth"].stringValue,
+                           idCard: json["identity_card_number"].stringValue,
+                           accessToken: json["access_token"].stringValue
         )
     }
 }
@@ -68,8 +65,7 @@ class HeperMember: NSObject, NSCoding {
         aCoder.encode(member?.phone, forKey: MemberModel.kPhone)
         aCoder.encode(member?.address, forKey: MemberModel.kAddress)
         aCoder.encode(member?.email, forKey: MemberModel.kEmail)
-        aCoder.encode(member?.sex, forKey: MemberModel.kSex)
-        aCoder.encode(member?.age, forKey: MemberModel.kAge)
+        aCoder.encode(member?.landLine, forKey: MemberModel.kLandLine)
         aCoder.encode(member?.birthDay, forKey: MemberModel.kBirthDay)
         aCoder.encode(member?.idCard, forKey: MemberModel.kIdCard)
         aCoder.encode(member?.accessToken, forKey: MemberModel.kAccessToken)
@@ -88,8 +84,7 @@ class HeperMember: NSObject, NSCoding {
             let phone = aDecoder.decodeObject(forKey: MemberModel.kPhone) as? String,
             let address = aDecoder.decodeObject(forKey: MemberModel.kAddress) as? String,
             let email = aDecoder.decodeObject(forKey: MemberModel.kEmail) as? String,
-            let sex = aDecoder.decodeObject(forKey: MemberModel.kSex) as? Int,
-            let age = aDecoder.decodeObject(forKey: MemberModel.kAge) as? Int,
+            let landLine = aDecoder.decodeObject(forKey: MemberModel.kLandLine) as? String,
             let birthDay = aDecoder.decodeObject(forKey: MemberModel.kBirthDay) as? String,
             let idCard = aDecoder.decodeObject(forKey: MemberModel.kIdCard) as? String,
             let accessToken = aDecoder.decodeObject(forKey: MemberModel.kAccessToken) as? String else {
@@ -98,7 +93,7 @@ class HeperMember: NSObject, NSCoding {
                 return nil
         }
     
-        member = MemberModel(idMember: idMember, name: name, phone: phone, address: address, email: email, sex: sex, age: age, birthDay: birthDay, idCard: idCard, accessToken: accessToken)
+        member = MemberModel(idMember: idMember, name: name, phone: phone, address: address, email: email, landLine: landLine, birthDay: birthDay, idCard: idCard, accessToken: accessToken)
         super.init()
     }
 }

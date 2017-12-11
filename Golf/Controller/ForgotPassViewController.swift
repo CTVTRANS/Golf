@@ -12,36 +12,16 @@ class ForgotPassViewController: BaseViewController, SecondSroyBoard {
 
     @IBOutlet weak var profileID: UITextField!
     @IBOutlet weak var phone: UITextField!
-    @IBOutlet weak var confirmCode: UITextField!
-    @IBOutlet weak var getCodeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         profileID.delegate = self
         phone.delegate = self
-        confirmCode.delegate = self
         disableRightBarButton()
     }
     
-    @IBAction func pressedGetCode(_ sender: Any) {
-        guard let idCard = Int(profileID.text!) else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.idCardEmty.rawValue, in: self)
-            return
-        }
-        guard let phoneNumber = Int(phone.text!) else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)
-            return
-        }
-        let task = MemberModel.GetCodeSms(idCard: idCard, phone: phoneNumber)
-        dataWithTask(task, onCompeted: { (_) in
-            
-        }) { (_) in
-            
-        }
-    }
-    
     @IBAction func pressedButton(_ sender: Any) {
-        guard let idCard = Int(profileID.text!) else {
+        guard let idCard = profileID.text else {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.idCardEmty.rawValue, in: self)
             return
         }
@@ -49,11 +29,7 @@ class ForgotPassViewController: BaseViewController, SecondSroyBoard {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)
             return
         }
-        guard let code = confirmCode.text, code != "" else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.confirmCodeEmty.rawValue, in: self)
-            return
-        }
-        let task = MemberModel.ForgotPass(phone: phoneNumber, idCard: idCard, code: code)
+        let task = MemberModel.ForgotPass(phone: phoneNumber, idCard: idCard)
         dataWithTask(task, onCompeted: { (_) in
             UIAlertController.showAlertWith(title: "", message: "new Pass send to phone number", in: self)
         }) { (_) in

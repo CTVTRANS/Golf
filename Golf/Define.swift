@@ -20,20 +20,21 @@ let apiDirection = "AIzaSyAm99Jv13nXVpPJOLSWaIDVCTMA1VTqilU"    //key for gooele
 
 let baseRUL = "http://golf.transoftvietnam.com/api/"
 
-let memberSiginURL = ""
-let memberSigupURL = ""
-let memberUpdateInfoURL = ""
-let memberForgotPassURL = ""
+let memberSiginURL = "member/login"
+let memberSigupURL = "member/register"
+let memberUpdateInfoURL = "member/update_profile"
+let memberForgotPassURL = "member/forgot_password"
 let memberScanProductURL = ""
-let memberGetCodeSms = ""
+let memberGetCodeSms = "member/generate_confirm_code"
 let memberAttendURL = "event/attend"
-let memberTermOfUse = ""
+let attendCup = "event/cup"
+let attendTuor = "event/activity"
 
 let companyInfoURL = "page/contact-us"
 let compamyInfoMatch = "page/competition"
 
-let productAllURL = ""
-let productDealURL = ""
+let productAllURL = "drawn/get_products"
+let productDealURL = "discount/get_discount"
 let productScanedURL = ""
 
 let donorsListURL = "page/history-sponsors"
@@ -44,9 +45,6 @@ let holeDetailURL = "page/hole-golf"
 let newsListURL = "page/news"
 
 let eventInfo = "page/activity"
-
-let attendCup = "event/cup"
-let attendTuor = "event/activity"
 
 class Define: NSObject {
 

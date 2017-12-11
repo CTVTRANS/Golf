@@ -17,10 +17,10 @@ struct DiscountModel: BaseModel {
     var price = 0
     
     static func decodeJSON(json: JSON) -> DiscountModel {
-        return DiscountModel(idDiscount: json[""].intValue,
-                             name: json[""].stringValue,
-                             imageURL: json[""].stringValue,
-                             price: json[""].intValue
+        return DiscountModel(idDiscount: json["id"].intValue,
+                             name: json["title"].stringValue,
+                             imageURL: json["image"].stringValue,
+                             price: json["price"].intValue
         )
     }
 }

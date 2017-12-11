@@ -26,8 +26,6 @@ func hideLoading() {
 }
 
 class BaseViewController: UIViewController {
-
-    var isAuthor = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +45,13 @@ class BaseViewController: UIViewController {
     }
     
     @objc func pressedMember() {
-        if !isAuthor {
-            if let vc = SinginViewController.instance() as? SinginViewController {
-                navigationController?.pushViewController(vc, animated: false)
-            }
-        } else {
-           
+        if let member = checkMember(), let vc = InfomationMemberController.instance() as? InfomationMemberController {
+            vc.member = member
+            navigationController?.pushViewController(vc, animated: false)
+            return
+        }
+        if let vc = SinginViewController.instance() as? SinginViewController {
+            navigationController?.pushViewController(vc, animated: false)
         }
     }
     
@@ -66,6 +65,13 @@ class BaseViewController: UIViewController {
     
     func dataWithTask(_ task: APIRequest, onCompeted: @escaping BlookSuccess, onError: @escaping BlookFailure) {
         task.requestDataWith(onCompelete: { (data) in
+            if let errorCode = data as? Int {
+                let error = ErrorCode(rawValue: errorCode)
+                if let messageError = error?.decodeError() {
+                    UIAlertController.showAlertWith(title: "", message: messageError, in: self)
+                }
+                return
+            }
             onCompeted(data)
         }) { (error) in
             hideLoading()

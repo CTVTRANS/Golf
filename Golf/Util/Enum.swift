@@ -31,8 +31,8 @@ enum TypeAttendance: Int {
 }
 
 enum TypeDiscount: Int {
-    case product // show all product discount
-    case store // show product in store discount
+    case tour = 0 // show all product discount
+    case store = 1 // show product in store discount
 }
 
 enum TravelModes: Int {
