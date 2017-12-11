@@ -15,7 +15,6 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var idUser: UILabel!
     @IBOutlet weak var nameUser: UILabel!
-    @IBOutlet weak var name: UILabel!
     @IBOutlet weak var memberView: UIView!
     @IBOutlet weak var spaceTopButton: NSLayoutConstraint!
     
@@ -31,11 +30,6 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
         webView.delegate = self
         spaceTopButton.constant = 16
         memberView.isHidden = true
-        if type == .cup {
-            titleView.text = "2018壽山盃報名"
-        } else {
-            titleView.text = "2018球場活動報名"
-        }
         loadMember()
         getContent()
     }
@@ -51,7 +45,7 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
         dataWithTask(task, onCompeted: { (data) in
             if let attend = data as? AttendModel {
                 self.attend = attend
-                self.name.text = self.attend?.title
+                self.titleView.text = attend.title
                 self.webView.loadHTMLString((self.attend?.content)!, baseURL: nil)
             }
         }) { (_) in
@@ -71,18 +65,14 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
     @IBAction func pressedSubmit(_ sender: Any) {
         if isshowMember {
             spaceTopButton.constant = memberView.frame.size.height + 16
-            submitButton.setTitle("submit", for: .normal)
+            submitButton.setTitle(" 確認資料並報名活動 ", for: .normal)
             memberView.isHidden = false
             isshowMember = false
             return
         }
         attendAction()
         if let vc = AttendSuccessViewController.instance() as? AttendSuccessViewController {
-            if type == .cup {
-                vc.titleName = "2018壽山盃報名"
-            } else {
-                vc.titleName = "2018球場活動報名"
-            }
+            vc.titleName = self.attend?.title
             navigationController?.pushViewController(vc, animated: false)
         }
     }

@@ -23,6 +23,7 @@ class ProductCell: UITableViewCell {
 
 class ProductScanedCell: UITableViewCell {
     
+    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var nameProduct: UILabel!
     @IBOutlet weak var status: UILabel!
     var product: JackpotModel!
@@ -31,7 +32,11 @@ class ProductScanedCell: UITableViewCell {
     func load(_ jackpotScaned: JackpotModel) {
         product = jackpotScaned
         nameProduct.text = jackpotScaned.name
-        status.text = jackpotScaned.status.description
+        status.text = (jackpotScaned.statusReceive == 0) ? "未用" : "已用"
+        if jackpotScaned.isWinings == 0 {
+            button.isEnabled = false
+            button.backgroundColor = UIColor.gray
+        }
     }
     
     @IBAction func pressedReward(_ sender: Any) {
@@ -41,6 +46,8 @@ class ProductScanedCell: UITableViewCell {
 
 class ListJackpotViewController: BaseViewController, SecondSroyBoard {
 
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var showDescription: UILabel!
     @IBOutlet weak var table: UITableView!
     var statusProduct: TypeJackpotProduct = .all
     var listJackpot = [JackpotModel]()
@@ -48,10 +55,15 @@ class ListJackpotViewController: BaseViewController, SecondSroyBoard {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLoading()
         switch statusProduct {
         case .all:
+            showDescription.isHidden = true
+            name.text = "獎品目錄"
             getAllProduct()
         case .scaned:
+            name.text = "管理票券"
+            showDescription.isHidden = false
             getProductScan()
         }
     }
@@ -62,6 +74,7 @@ class ListJackpotViewController: BaseViewController, SecondSroyBoard {
             if let array = data as? [JackpotModel] {
                 self.listJackpot = array
                 self.table.reloadData()
+                hideLoading()
             }
         }) { (_) in
             
@@ -69,11 +82,12 @@ class ListJackpotViewController: BaseViewController, SecondSroyBoard {
     }
     
     func getProductScan() {
-        let task = JackpotModel.GetProductScaned(idCard: member.idCard, type: .scaned)
+        let task = JackpotModel.GetProductScaned()
         dataWithTask(task, onCompeted: { (data) in
             if let array = data as? [JackpotModel] {
                 self.listJackpot = array
                 self.table.reloadData()
+                hideLoading()
             }
         }) { (_) in
             

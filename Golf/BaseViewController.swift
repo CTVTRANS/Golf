@@ -66,11 +66,16 @@ class BaseViewController: UIViewController {
     func dataWithTask(_ task: APIRequest, onCompeted: @escaping BlookSuccess, onError: @escaping BlookFailure) {
         task.requestDataWith(onCompelete: { (data) in
             if let errorCode = data as? Int {
-                let error = ErrorCode(rawValue: errorCode)
-                if let messageError = error?.decodeError() {
+                if let errorMember = ErrorCode(rawValue: errorCode) {
+                    let messageError = errorMember.decodeError()
                     UIAlertController.showAlertWith(title: "", message: messageError, in: self)
+                    return
                 }
-                return
+                if let errorProduct = ErrorProduct(rawValue: errorCode) {
+                    let messageError = errorProduct.decodeError()
+                    onError(messageError)
+                    return
+                }
             }
             onCompeted(data)
         }) { (error) in

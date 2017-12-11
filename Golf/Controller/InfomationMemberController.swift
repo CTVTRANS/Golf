@@ -35,6 +35,7 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
         idCard.delegate = self
         address.delegate = self
         mail.delegate = self
+        landLine.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
     }

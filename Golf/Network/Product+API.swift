@@ -58,21 +58,25 @@ extension JackpotModel {
     }
     
     struct GetProductScaned: APIRequest {
-        let idCard: String!
-        let type: TypeJackpotProduct!
-        init(idCard: String, type: TypeJackpotProduct) {
-            self.idCard = idCard
-            self.type = type
-        }
+
         var method: HTTPMethod {get { return .get}}
-        var params: [String: Any] {get { return ["": ""]}}
+        var params: [String: Any] {get { return ["member_id": MemberModel.shared.idMember,
+                                                 "access_token": MemberModel.shared.accessToken]}}
         var path: String {
             get { return productScanedURL}
             set {}
         }
         
         func dataWithResponse(_ response: JSON) -> Any {
-            return response
+            var listProduct = [JackpotModel]()
+            guard let jsons = response.array else {
+                return response
+            }
+            for json in jsons {
+                let product = JackpotModel.decodeJSON(json: json)
+                listProduct.append(product)
+            }
+            return listProduct
         }
     }
 }

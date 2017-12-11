@@ -94,6 +94,29 @@ extension MemberModel {
         }
     }
     
+    struct ChangePass: APIRequest {
+        let oldPass: String!
+        let newPass: String!
+        let confirmPass: String!
+        init(oldPass: String, newPass: String, confirmPass: String) {
+            self.oldPass = oldPass
+            self.newPass = newPass
+            self.confirmPass = confirmPass
+        }
+        var method: HTTPMethod {get {return .post}}
+        var params: [String: Any] {get {return ["access_token": MemberModel.shared.accessToken,
+                                                 "member_id": MemberModel.shared.idMember,
+                                                 "old_password": oldPass,
+                                                 "new_password": newPass,
+                                                 "confirm_password": confirmPass]}}
+        var path: String {get {return memberChangePass}}
+        
+        func dataWithResponse(_ response: JSON) -> Any {
+            let newtoken = response["new_access_token"].stringValue
+            return newtoken
+        }
+    }
+    
     struct Update: APIRequest {
         let name: String!
         let birthDay: String!
@@ -129,22 +152,21 @@ extension MemberModel {
     }
     
     struct ScanProduct: APIRequest {
-        let userName: String!
-        let idCard: Int!
         let code: String!
-        init(userName: String, idCard: Int, code: String) {
-            self.userName = userName
-            self.idCard = idCard
+        init(code: String) {
             self.code = code
         }
-        var method: HTTPMethod {get { return .post}}
-        var params: [String: Any] {get { return ["": ""]}}
+        var method: HTTPMethod {get { return .get}}
+        var params: [String: Any] {get { return ["product_code": code,
+                                                 "member_id": MemberModel.shared.idMember,
+                                                 "access_token": MemberModel.shared.accessToken]}}
         var path: String {
             get { return memberScanProductURL}
             set {}
         }
         func dataWithResponse(_ response: JSON) -> Any {
-            return response
+            let product = JackpotModel.decodeJSON(json: response)
+            return product
         }
     }
     

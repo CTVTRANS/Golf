@@ -93,16 +93,10 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
         }
         let task = MemberModel.Sigup(userName: userName, pass: passWord, confirmPass: passWordConfirm, mobile: phoneNumber, birthDay: birDay, idCard: idMember, address: adressMember, email: emailMember, landLine: landLine, code: code)
         dataWithTask(task, onCompeted: { (data) in
-            debugPrint(data)
-            guard let _ = data as? MemberModel else {
-                
-                return
-            }
             let message = ErrorCode.success
             UIAlertController.showAlertWith(title: "", message: message.decodeError(), in: self, compeletionHandler: {
                 self.navigationController?.popViewController(animated: true)
             })
-            return
         }) { (_) in
             
         }

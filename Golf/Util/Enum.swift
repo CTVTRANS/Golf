@@ -68,6 +68,13 @@ enum ErrorCode: Int {
     case accountError = 215
 }
 
+enum ErrorProduct: Int {
+    case notFound = 601
+    case limited = 602
+    case outOfTime = 603
+    case noHasProduct = 604
+}
+
 extension ErrorCode {
     func decodeError() -> String {
         switch self {
@@ -99,6 +106,21 @@ extension ErrorCode {
             return "手机号码已经被注册了"
         case .accountError:
             return "帐号不存在"
+        }
+    }
+}
+
+extension ErrorProduct {
+    func decodeError() -> String {
+        switch self {
+        case .notFound:
+            return "not foud product"
+        case .limited:
+            return "limited scand"
+        case .outOfTime:
+            return "out of time"
+        case .noHasProduct:
+            return "ho has product"
         }
     }
 }

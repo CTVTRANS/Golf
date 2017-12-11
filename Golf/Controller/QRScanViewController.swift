@@ -52,20 +52,23 @@ class QRScanViewController: BaseViewController, SecondSroyBoard {
     }
     
     func checkProduct(qrID: String) {
-        let task = MemberModel.ScanProduct(userName: member.name, idCard: 0, code: "")
+        showLoading()
+        let task = MemberModel.ScanProduct(code: qrID)
         dataWithTask(task, onCompeted: { (data) in
             if let product = data as? JackpotModel {
                 self.product = product
+                self.showResult(withString: "")
             }
-        }) { (_) in
-            
+        }) { (error) in
+            self.showResult(withString: error)
         }
-        showResult()
+        
     }
     
-    func showResult() {
+    func showResult(withString: String) {
         if let vc = ResultScanViewController.instance() as? ResultScanViewController {
             vc.product = self.product
+            vc.message = withString
             navigationController?.pushViewController(vc, animated: false)
         }
     }

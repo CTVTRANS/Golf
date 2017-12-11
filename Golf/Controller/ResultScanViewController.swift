@@ -19,18 +19,20 @@ class ResultScanViewController: BaseViewController, SecondSroyBoard {
     
     var product: JackpotModel?
     var isHiddenButton = false
+    var message = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showLoading()
+        hideLoading()
         showResult()
         button.isHidden = isHiddenButton
     }
     
     func showResult() {
         if product != nil {
-            productID.text = product?.idJackpit.description
+            productID.text = product?.productCode
             nameProduct.text = product?.name
+            nameProduct.isHidden = false
             button.setTitle("show list scaned", for: .normal)
             imageProduct.kf.setImage(with: URL(string: (product?.imageURL)!))
             imageResult.image = #imageLiteral(resourceName: "ic_jackpot_winnings")
@@ -41,6 +43,7 @@ class ResultScanViewController: BaseViewController, SecondSroyBoard {
             button.setTitle("return scan", for: .normal)
             imageProduct.isHidden = true
             imageResult.image = #imageLiteral(resourceName: "ic_jackpot_failure")
+            UIAlertController.showAlertWith(title: "", message: message, in: self)
         }
         hideLoading()
     }
