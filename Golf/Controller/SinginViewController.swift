@@ -9,14 +9,18 @@
 import UIKit
 
 class SinginViewController: BaseViewController, SecondSroyBoard {
+    
     @IBOutlet weak var phoneTexField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
+    @IBOutlet weak var topContrans: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         phoneTexField.delegate = self
         passTextField.delegate = self
         disableRightBarButton()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
     }
     
     func showInfomationMember() {
@@ -50,6 +54,20 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
         }, onError: { (_) in
             
         })
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        topContrans.constant = 20
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        topContrans.constant = 80
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     @IBAction func forgotPassPress(_ sender: Any) {

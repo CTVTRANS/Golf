@@ -10,6 +10,7 @@ import UIKit
 
 class ResultScanViewController: BaseViewController, SecondSroyBoard {
 
+    @IBOutlet weak var nameProduct2: UILabel!
     @IBOutlet weak var productID: UILabel!
     @IBOutlet weak var titleWinings: UIImageView!
     @IBOutlet weak var nameProduct: UILabel!
@@ -24,23 +25,30 @@ class ResultScanViewController: BaseViewController, SecondSroyBoard {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideLoading()
-        showResult()
         button.isHidden = isHiddenButton
+        nameProduct2.isHidden = !isHiddenButton
+        showResult()
     }
     
     func showResult() {
-        if product != nil {
+        if isHiddenButton &&  product != nil {
+            nameProduct2.text = product?.name
+            productID.text = "會員: \(MemberModel.shared.name)"
+            nameProduct.text = product?.productCode
+            titleWinings.isHidden = true
+            imageProduct.kf.setImage(with: URL(string: (product?.imageURL)!))
+            imageResult.image = #imageLiteral(resourceName: "ic_jackpot_winnings")
+        } else if !isHiddenButton && product != nil {
             productID.text = product?.productCode
             nameProduct.text = product?.name
-            nameProduct.isHidden = false
-            button.setTitle("show list scaned", for: .normal)
+            button.setTitle(" 前往票劵管理 ", for: .normal)
             imageProduct.kf.setImage(with: URL(string: (product?.imageURL)!))
             imageResult.image = #imageLiteral(resourceName: "ic_jackpot_winnings")
         } else {
             productID.isHidden = true
             titleWinings.isHidden = true
             nameProduct.isHidden = true
-            button.setTitle("return scan", for: .normal)
+            button.setTitle(" 前往掃描票劵 ", for: .normal)
             imageProduct.isHidden = true
             imageResult.image = #imageLiteral(resourceName: "ic_jackpot_failure")
             UIAlertController.showAlertWith(title: "", message: message, in: self)

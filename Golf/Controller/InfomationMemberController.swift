@@ -46,10 +46,11 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
         idCard.text = member.idCard
         address.text = member.address
         mail.text = member.email
+        landLine.text = member.landLine
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        topContrains.constant = -60
+        topContrains.constant = -80
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
         }

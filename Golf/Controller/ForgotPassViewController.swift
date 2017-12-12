@@ -12,12 +12,29 @@ class ForgotPassViewController: BaseViewController, SecondSroyBoard {
 
     @IBOutlet weak var profileID: UITextField!
     @IBOutlet weak var phone: UITextField!
+    @IBOutlet weak var topContrains: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         profileID.delegate = self
         phone.delegate = self
         disableRightBarButton()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        topContrains.constant = 20
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        topContrains.constant = 80
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     @IBAction func pressedButton(_ sender: Any) {

@@ -42,7 +42,7 @@ extension MemberModel {
         let email: String!
         let landLine: String!
         let code: String!
-        init(userName: String, pass: String, confirmPass: String, mobile: Int, birthDay: String?, idCard: String, address: String?, email: String?, landLine: String, code: String) {
+        init(userName: String, pass: String, confirmPass: String, mobile: Int, birthDay: String?, idCard: String, address: String?, email: String?, landLine: String?, code: String) {
             self.userName = userName
             self.pass = pass
             self.confirmPass = confirmPass
@@ -59,6 +59,7 @@ extension MemberModel {
                                                  "confirm_code": code,
                                                  "name": userName,
                                                  "email": email,
+                                                 "landline_telephone": landLine,
                                                  "birthday": birthDay,
                                                  "identity_card_number": idCard,
                                                  "address": adress,
@@ -140,6 +141,7 @@ extension MemberModel {
                                                  "birthday": birthDay,
                                                  "identity_card_number": idCard,
                                                  "address": adress,
+                                                 "landline_telephone": landLine,
                                                  "email": emailMember]}}
         var path: String {
             get { return memberUpdateInfoURL}

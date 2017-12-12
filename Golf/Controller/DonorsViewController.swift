@@ -82,8 +82,8 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
             }
         } catch {
             print("Failed")
+            hideLoading()
         }
-        hideLoading()
     }
 }
 

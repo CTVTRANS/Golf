@@ -41,6 +41,16 @@ enum TravelModes: Int {
     case bicycling
 }
 
+enum StatusWinings: Int {
+    case winings = 1
+    case notWining = 0
+}
+
+enum StatusReward: Int {
+    case rewarded = 1
+    case notRewarded = 0
+}
+
 enum ErrorMember: String {
     case passwordConfirmEmty = "密码及重打密码不能空白"
     case confirmCodeEmty = "验证码不能空白"
@@ -114,13 +124,13 @@ extension ErrorProduct {
     func decodeError() -> String {
         switch self {
         case .notFound:
-            return "not foud product"
+            return "找不到產品"
         case .limited:
-            return "limited scand"
+            return "每一天只能掃描一次"
         case .outOfTime:
-            return "out of time"
+            return "QRcode已經有人使用"
         case .noHasProduct:
-            return "ho has product"
+            return "沒有產品"
         }
     }
 }

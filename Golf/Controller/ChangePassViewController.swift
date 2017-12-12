@@ -13,13 +13,29 @@ class ChangePassViewController: BaseViewController, SecondSroyBoard {
     @IBOutlet weak var oldPass: UITextField!
     @IBOutlet weak var newPass: UITextField!
     @IBOutlet weak var confirmPass: UITextField!
+    @IBOutlet weak var topContrains: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         oldPass.delegate = self
         newPass.delegate = self
         confirmPass.delegate = self
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        topContrains.constant = 10
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        topContrains.constant = 80
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
     }
 
     @IBAction func pressedChange(_ sender: Any) {
@@ -44,6 +60,7 @@ class ChangePassViewController: BaseViewController, SecondSroyBoard {
                 UIAlertController.showAlertWith(title: "", message: ErrorCode.success.decodeError(), in: self, compeletionHandler: {
                     self.navigationController?.popViewController(animated: false)
                 })
+                return
             }
         }) { (_) in
             

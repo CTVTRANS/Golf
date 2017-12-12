@@ -29,6 +29,7 @@ class DetailHoleViewController: BaseViewController, MainStoryBoard {
         if hole.index == 17 {
             contentView.isHidden = true
             imageBackGround.image = #imageLiteral(resourceName: "ic_background_hole_17")
+            hideLoading()
             return
         }
         par.text = hole.par.description

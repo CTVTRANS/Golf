@@ -32,8 +32,8 @@ class ProductScanedCell: UITableViewCell {
     func load(_ jackpotScaned: JackpotModel) {
         product = jackpotScaned
         nameProduct.text = jackpotScaned.name
-        status.text = (jackpotScaned.statusReceive == 0) ? "未用" : "已用"
-        if jackpotScaned.isWinings == 0 {
+        status.text = (jackpotScaned.statusReward == .notRewarded ) ? "未用" : "已用"
+        if jackpotScaned.isWinings == .notWining {
             button.isEnabled = false
             button.backgroundColor = UIColor.gray
         }

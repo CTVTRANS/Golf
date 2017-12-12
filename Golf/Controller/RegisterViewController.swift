@@ -21,8 +21,11 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
     @IBOutlet weak var telephone: UITextField!
     @IBOutlet weak var confirmCode: UITextField!
     
-    @IBOutlet weak var topContrains: NSLayoutConstraint!
-    
+    @IBOutlet weak var botContrains: NSLayoutConstraint!
+    @IBOutlet weak var counterLabel: UILabel!
+    @IBOutlet weak var getCodeButton: UIButton!
+    var counter = 60
+
     override func viewDidLoad() {
         super.viewDidLoad()
         disableRightBarButton()
@@ -46,17 +49,14 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        topContrains.constant = -60
-        UIView.animate(withDuration: 0.5) {
-            self.view.layoutIfNeeded()
+        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            botContrains.constant = keyboardRectangle.height
         }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-        topContrains.constant = 40
-        UIView.animate(withDuration: 0.5) {
-            self.view.layoutIfNeeded()
-        }
+        botContrains.constant = 0
     }
     
     @IBAction func sigupPressed(_ sender: Any) {
@@ -80,10 +80,7 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.idCardEmty.rawValue, in: self)
             return
         }
-        guard let landLine = telephone.text else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)
-            return
-        }
+        let landLine = telephone.text
         let adressMember = address.text
         let birDay = birthDay.text
         let emailMember = email.text
@@ -92,7 +89,7 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
             return
         }
         let task = MemberModel.Sigup(userName: userName, pass: passWord, confirmPass: passWordConfirm, mobile: phoneNumber, birthDay: birDay, idCard: idMember, address: adressMember, email: emailMember, landLine: landLine, code: code)
-        dataWithTask(task, onCompeted: { (data) in
+        dataWithTask(task, onCompeted: { (_) in
             let message = ErrorCode.success
             UIAlertController.showAlertWith(title: "", message: message.decodeError(), in: self, compeletionHandler: {
                 self.navigationController?.popViewController(animated: true)
@@ -106,11 +103,24 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)
             return
         }
+         _ = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer(timer:)), userInfo: nil, repeats: true)
+        getCodeButton.isEnabled = false
         let task = MemberModel.GetCodeSms(phone: phoneNumber)
         dataWithTask(task, onCompeted: { (data) in
             debugPrint(data)
         }) { (_) in
             
+        }
+    }
+    
+    @objc func updateTimer(timer: Timer) {
+        counter -= 1
+        counterLabel.text = "( \(counter)s )"
+        if counter <= 0 {
+            counterLabel.text = " 取驗證碼 "
+            timer.invalidate()
+            counter = 60
+            getCodeButton.isEnabled = true
         }
     }
 }

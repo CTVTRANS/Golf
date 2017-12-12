@@ -60,6 +60,7 @@ class QRScanViewController: BaseViewController, SecondSroyBoard {
                 self.showResult(withString: "")
             }
         }) { (error) in
+            self.product = nil
             self.showResult(withString: error)
         }
         

@@ -15,17 +15,19 @@ struct JackpotModel: BaseModel {
     var imageURL = ""
     var amount = 0
     var productCode = ""
-    var statusReceive = 0
-    var isWinings = 0
+    var statusReward: StatusReward = .notRewarded
+    var isWinings: StatusWinings = .notWining
     
     static func decodeJSON(json: JSON) -> JackpotModel {
+        let statusReward = StatusReward(rawValue: json["status_receive"].intValue)
+        let isWinings = StatusWinings(rawValue: json["status_scan"].intValue)
         return JackpotModel(idJackpit: json["id"].intValue,
                             name: json["title"].stringValue,
                             imageURL: json["image"].stringValue,
                             amount: json["amount_left"].intValue,
                             productCode: json["product_code"].stringValue,
-                            statusReceive: json["status_receive"].intValue,
-                            isWinings: json["status_scan"].intValue
+                            statusReward: statusReward!,
+                            isWinings: isWinings!
         )
     }
 }

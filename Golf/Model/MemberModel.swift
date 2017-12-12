@@ -38,7 +38,7 @@ struct MemberModel: BaseModel {
                            phone: String(json["phone_number"].intValue),
                            address: json["address"].stringValue,
                            email: json["email"].stringValue,
-                           landLine: json[""].stringValue,
+                           landLine: json["landline_telephone"].stringValue,
                            birthDay: json["date_of_birth"].stringValue,
                            idCard: json["identity_card_number"].stringValue,
                            accessToken: json["access_token"].stringValue

@@ -18,7 +18,7 @@ class ContactUsViewController: BaseViewController, MainStoryBoard {
     @IBOutlet weak var phone: UILabel!
     @IBOutlet weak var website: UILabel!
     @IBOutlet weak var address: UILabel!
-    @IBOutlet weak var infoLabel: UILabel!
+    
     let managerContext = StorageManager.shared.managedObjectContext
     
     var locationManager = CLLocationManager()
@@ -68,7 +68,6 @@ class ContactUsViewController: BaseViewController, MainStoryBoard {
         phone.text = company?.phone.description
         website.text = company?.website
         address.text = company?.adress
-        infoLabel.text = company?.info
     }
     
     @IBAction func pressedShowPath(_ sender: Any) {
@@ -90,7 +89,6 @@ class ContactUsViewController: BaseViewController, MainStoryBoard {
                       "sensor": "true"]
       
         Alamofire.request(baseURLDirections, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { (responseData) in
-            debugPrint(responseData)
             if responseData.result.value != nil {
                 let json = JSON(responseData.result.value!)
                 let routes = json["routes"].arrayValue
