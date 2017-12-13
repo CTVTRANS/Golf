@@ -98,6 +98,15 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
             
         }
     }
+    
+    @IBAction func pressedChooseBirDay(_ sender: Any) {
+        let chooseDate = ChooseBirthDayView.instance() as? ChooseBirthDayView
+        chooseDate?.show()
+        chooseDate?.callBackDate = { [weak self] date in
+            self?.birthDay.text = date
+        }
+    }
+    
     @IBAction func pressedGetCode(_ sender: Any) {
         guard let phoneNumber = Int(phone.text!) else {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)

@@ -23,7 +23,7 @@ class JackpotViewController: BaseViewController, SecondSroyBoard {
     
     @IBAction func pressedListproduct(_ sender: Any) {
         if let member = checkMember(), let vc = ListJackpotViewController.instance() as? ListJackpotViewController {
-            vc.statusProduct = .all
+            vc.statusProduct = .scaned
             vc.member = member
             navigationController?.pushViewController(vc, animated: false)
         }
@@ -31,7 +31,7 @@ class JackpotViewController: BaseViewController, SecondSroyBoard {
     
     @IBAction func pressedShowScaned(_ sender: Any) {
         if let member = checkMember(), let vc = ListJackpotViewController.instance() as? ListJackpotViewController {
-            vc.statusProduct = .scaned
+            vc.statusProduct = .all
             vc.member = member
             navigationController?.pushViewController(vc, animated: false)
         }

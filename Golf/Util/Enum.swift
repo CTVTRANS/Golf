@@ -52,13 +52,13 @@ enum StatusReward: Int {
 }
 
 enum ErrorMember: String {
-    case passwordConfirmEmty = "密码及重打密码不能空白"
-    case confirmCodeEmty = "验证码不能空白"
-    case numberPhoneEmty = "电话号码不能空白"
-    case nameEmty = "名称不能空白"
-    case passwordEmty = "密码不能空白"
-    case passwordHasSpace = "密码不能有空格"
-    case idCardEmty = "emty"
+    case passwordConfirmEmty = "密碼及再確認密碼不能空白"
+    case confirmCodeEmty = "驗證碼不能空白"
+    case numberPhoneEmty = "電話號碼不能空白"
+    case nameEmty = "姓名不能空白"
+    case passwordEmty = "密碼不能空白"
+    case passwordHasSpace = "密碼不能有空格"
+    case idCardEmty = "身份證字號不能空白"
 }
 
 enum ErrorCode: Int {
@@ -91,31 +91,31 @@ extension ErrorCode {
         case .success:
             return "成功！"
         case .emailError:
-            return "邮箱格式不对"
+            return "郵箱格式不對"
         case .passwordShort:
-            return "密码太短（一定要从8个符号以上）"
+            return "密碼太短（一定要從8個符號以上）"
         case .confirmPassError:
-            return "密码及重打密码不重叠"
+            return "密碼及再確認密碼不重疊"
         case .passwordConfirmEmty:
-            return "密码及重打密码不能空白"
+            return "密碼及再確認密碼不能空白"
         case .passwordError:
-            return "密码吗不对"
+            return "密碼嗎不對"
         case .numberPhoneError:
-            return "电话号码不对"
+            return "電話號碼不對"
         case .confirmCodeError:
-            return "验证码不对"
+            return "驗證碼不對"
         case .confirmCodeEmty:
-            return "验证码不能空白"
+            return "驗證碼不能空白"
         case .numberPhoneEmty:
-            return "电话号码不能空白"
+            return "電話號碼不能空白"
         case .nameEmty:
-            return "名称不能空白"
+            return "姓名不能空白"
         case .passwordEmty:
-            return "密码不能空白"
+            return "密碼不能空白"
         case .numberPhoneExists:
-            return "手机号码已经被注册了"
+            return "手機號碼已經被註冊了"
         case .accountError:
-            return "帐号不存在"
+            return "帳號不存在"
         }
     }
 }

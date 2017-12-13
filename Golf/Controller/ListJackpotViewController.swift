@@ -17,7 +17,7 @@ class ProductCell: UITableViewCell {
     func load(_ jackpot: JackpotModel) {
         imageJackpot.kf.setImage(with: URL(string: jackpot.imageURL))
         name.text = jackpot.name
-        amountJactpot.text = jackpot.amount.description
+        amountJactpot.text = "共\(jackpot.amount.description)名"
     }
 }
 

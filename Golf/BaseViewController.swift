@@ -88,11 +88,6 @@ class BaseViewController: UIViewController {
     func checkMember() -> MemberModel? {
         let cahe = Cache<MemberModel>()
         guard let member = cahe.fetchObject() else {
-            UIAlertController.showAlertWith(title: "", message: "you need sigin to attend", in: self, compeletionHandler: {
-                if let vc = SinginViewController.instance() as? SinginViewController {
-                    self.navigationController?.pushViewController(vc, animated: false)
-                }
-            })
             return nil
         }
         MemberModel.shared = member

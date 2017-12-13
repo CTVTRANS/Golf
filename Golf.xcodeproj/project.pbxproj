@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		6876139A579BF38C8F73277E /* Pods_Golf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD995BA08F58A4FFD8D88EB6 /* Pods_Golf.framework */; };
-		9D01BD5C1FC9203400C69211 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01BD5B1FC9203400C69211 /* Enum.swift */; };
 		9D0333E11FD0154A00F87B0D /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0333E01FD0154A00F87B0D /* NewsDetailViewController.swift */; };
 		9D04EAEA1FC7FB3E00028EF7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAE91FC7FB3E00028EF7 /* RegisterViewController.swift */; };
 		9D04EAEE1FC810EF00028EF7 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAED1FC810EE00028EF7 /* BaseModel.swift */; };
 		9D04EAF41FC81F4000028EF7 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAF31FC81F4000028EF7 /* MemberModel.swift */; };
 		9D04EAFA1FC8222A00028EF7 /* HoleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAF91FC8222A00028EF7 /* HoleModel.swift */; };
 		9D04EAFC1FC822AB00028EF7 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAFB1FC822AB00028EF7 /* Company.swift */; };
+		9D0507ED1FE102CA007EA9A9 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0507EC1FE102CA007EA9A9 /* Enum.swift */; };
 		9D05EB791FC823E5008943BF /* DonorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05EB781FC823E5008943BF /* DonorsModel.swift */; };
 		9D05EB7B1FC825EA008943BF /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05EB7A1FC825EA008943BF /* News.swift */; };
 		9D069D831FD9201E005275BC /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D069D821FD9201E005275BC /* ActivityModel.swift */; };
@@ -38,6 +38,8 @@
 		9D4BFF851FCC26F1001ACFD1 /* 華康方圓體W7.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 9D4BFF841FCC26EF001ACFD1 /* 華康方圓體W7.ttc */; };
 		9D56169E1FD0FC5D00D72CD0 /* EventActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D56169D1FD0FC5D00D72CD0 /* EventActivityViewController.swift */; };
 		9D5616A01FD10AB000D72CD0 /* EventAvtivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D56169F1FD10AB000D72CD0 /* EventAvtivityModel.swift */; };
+		9D8269FC1FE0BFD20010591F /* BaseDailog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8269FB1FE0BFD20010591F /* BaseDailog.swift */; };
+		9D8269FE1FE0C0070010591F /* ChooseBirthDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8269FD1FE0C0070010591F /* ChooseBirthDayView.swift */; };
 		9D8943F81FD8DAF80019C562 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8943F71FD8DAF80019C562 /* NewsViewCell.swift */; };
 		9D8E1B691FC4040900FCFD71 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E1B681FC4040900FCFD71 /* ContactUsViewController.swift */; };
 		9D986A081FC7ACC40027D894 /* ListDiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D986A071FC7ACC40027D894 /* ListDiscountViewController.swift */; };
@@ -45,6 +47,7 @@
 		9D986A0E1FC7C8FA0027D894 /* DiscountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D986A0D1FC7C8FA0027D894 /* DiscountModel.swift */; };
 		9D986A101FC7C9740027D894 /* JackpotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D986A0F1FC7C9740027D894 /* JackpotModel.swift */; };
 		9D986A121FC7DBE50027D894 /* ForgotPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D986A111FC7DBE50027D894 /* ForgotPassViewController.swift */; };
+		9D9EB0D41FE1076C001EAD5D /* ChooseBirthDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D9EB0D31FE1076C001EAD5D /* ChooseBirthDayView.xib */; };
 		9DA594541FCBB44C00C31CBC /* QRScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA594531FCBB44C00C31CBC /* QRScanViewController.swift */; };
 		9DA594561FCBB46A00C31CBC /* QRManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA594551FCBB46A00C31CBC /* QRManager.swift */; };
 		9DDD1BB11FD8F7FC00EE15DF /* SimHei.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DDD1BB01FD8F7FB00EE15DF /* SimHei.ttf */; };
@@ -76,13 +79,13 @@
 
 /* Begin PBXFileReference section */
 		464E30B328C8B59C9C3E97DA /* Pods-Golf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Golf.release.xcconfig"; path = "Pods/Target Support Files/Pods-Golf/Pods-Golf.release.xcconfig"; sourceTree = "<group>"; };
-		9D01BD5B1FC9203400C69211 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		9D0333E01FD0154A00F87B0D /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		9D04EAE91FC7FB3E00028EF7 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9D04EAED1FC810EE00028EF7 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		9D04EAF31FC81F4000028EF7 /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		9D04EAF91FC8222A00028EF7 /* HoleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleModel.swift; sourceTree = "<group>"; };
 		9D04EAFB1FC822AB00028EF7 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		9D0507EC1FE102CA007EA9A9 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		9D05EB781FC823E5008943BF /* DonorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonorsModel.swift; sourceTree = "<group>"; };
 		9D05EB7A1FC825EA008943BF /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		9D069D821FD9201E005275BC /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
@@ -106,6 +109,8 @@
 		9D4BFF841FCC26EF001ACFD1 /* 華康方圓體W7.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "華康方圓體W7.ttc"; sourceTree = "<group>"; };
 		9D56169D1FD0FC5D00D72CD0 /* EventActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActivityViewController.swift; sourceTree = "<group>"; };
 		9D56169F1FD10AB000D72CD0 /* EventAvtivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAvtivityModel.swift; sourceTree = "<group>"; };
+		9D8269FB1FE0BFD20010591F /* BaseDailog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDailog.swift; sourceTree = "<group>"; };
+		9D8269FD1FE0C0070010591F /* ChooseBirthDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseBirthDayView.swift; sourceTree = "<group>"; };
 		9D8943F71FD8DAF80019C562 /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		9D8E1B681FC4040900FCFD71 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		9D986A071FC7ACC40027D894 /* ListDiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDiscountViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +118,7 @@
 		9D986A0D1FC7C8FA0027D894 /* DiscountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountModel.swift; sourceTree = "<group>"; };
 		9D986A0F1FC7C9740027D894 /* JackpotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JackpotModel.swift; sourceTree = "<group>"; };
 		9D986A111FC7DBE50027D894 /* ForgotPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassViewController.swift; sourceTree = "<group>"; };
+		9D9EB0D31FE1076C001EAD5D /* ChooseBirthDayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseBirthDayView.xib; sourceTree = "<group>"; };
 		9DA594531FCBB44C00C31CBC /* QRScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanViewController.swift; sourceTree = "<group>"; };
 		9DA594551FCBB46A00C31CBC /* QRManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRManager.swift; sourceTree = "<group>"; };
 		9DDD1BB01FD8F7FB00EE15DF /* SimHei.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimHei.ttf; sourceTree = "<group>"; };
@@ -258,7 +264,7 @@
 				9DF44A7B1FC2B4400063D804 /* Assets.xcassets */,
 				9DF44A7D1FC2B4400063D804 /* LaunchScreen.storyboard */,
 				9DF44A801FC2B4400063D804 /* Info.plist */,
-				9D01BD5B1FC9203400C69211 /* Enum.swift */,
+				9D0507EC1FE102CA007EA9A9 /* Enum.swift */,
 				9D0F1F9E1FD1484D0094EB26 /* Cache.swift */,
 			);
 			path = Util;
@@ -270,6 +276,9 @@
 				9DF70F151FC55FB400774BA6 /* HoleViewCell.swift */,
 				9DF70F161FC55FB400774BA6 /* HoleViewCell.xib */,
 				9D8943F71FD8DAF80019C562 /* NewsViewCell.swift */,
+				9D8269FB1FE0BFD20010591F /* BaseDailog.swift */,
+				9D8269FD1FE0C0070010591F /* ChooseBirthDayView.swift */,
+				9D9EB0D31FE1076C001EAD5D /* ChooseBirthDayView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -372,6 +381,7 @@
 				9DDD1BB11FD8F7FC00EE15DF /* SimHei.ttf in Resources */,
 				9DF70F181FC55FB400774BA6 /* HoleViewCell.xib in Resources */,
 				9DF44A7F1FC2B4400063D804 /* LaunchScreen.storyboard in Resources */,
+				9D9EB0D41FE1076C001EAD5D /* ChooseBirthDayView.xib in Resources */,
 				9D4BFF851FCC26F1001ACFD1 /* 華康方圓體W7.ttc in Resources */,
 				9DF44A7C1FC2B4400063D804 /* Assets.xcassets in Resources */,
 				9DF351341FC6CDB300696057 /* Second.storyboard in Resources */,
@@ -476,10 +486,11 @@
 				9D0F53A41FD68D5B0025EA3B /* Product+API.swift in Sources */,
 				9D2063371FD94ED700FB3F36 /* Contant.swift in Sources */,
 				9D0F53AA1FD692D40025EA3B /* Event+API.swift in Sources */,
+				9D8269FE1FE0C0070010591F /* ChooseBirthDayView.swift in Sources */,
 				9D8943F81FD8DAF80019C562 /* NewsViewCell.swift in Sources */,
+				9D8269FC1FE0BFD20010591F /* BaseDailog.swift in Sources */,
 				9D08DAAE1FD4E25100F08289 /* Member+API.swift in Sources */,
 				9D08DAAC1FD4DF2D00F08289 /* BaseAPI.swift in Sources */,
-				9D01BD5C1FC9203400C69211 /* Enum.swift in Sources */,
 				9D05EB7B1FC825EA008943BF /* News.swift in Sources */,
 				9D0F53A61FD68F600025EA3B /* News+API.swift in Sources */,
 				9DF44A771FC2B4400063D804 /* MainViewController.swift in Sources */,
@@ -501,6 +512,7 @@
 				9DF70F131FC55EA800774BA6 /* HoleListViewController.swift in Sources */,
 				9DF44A881FC2BBD20063D804 /* BaseViewController.swift in Sources */,
 				9D05EB791FC823E5008943BF /* DonorsModel.swift in Sources */,
+				9D0507ED1FE102CA007EA9A9 /* Enum.swift in Sources */,
 				9DF70F171FC55FB400774BA6 /* HoleViewCell.swift in Sources */,
 				9D986A0C1FC7C6C50027D894 /* SinginViewController.swift in Sources */,
 				9DA594541FCBB44C00C31CBC /* QRScanViewController.swift in Sources */,

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="S7M-rc-QbJ" customClass="ChooseBirthDayView" customModule="Golf" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7YP-Oh-L5M">
+                    <rect key="frame" x="16" y="202.5" width="343" height="262"/>
+                    <subviews>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="JiQ-yi-CDr">
+                            <rect key="frame" x="0.0" y="0.0" width="343" height="216"/>
+                            <date key="date" timeIntervalSinceReferenceDate="534823095.371333">
+                                <!--2017-12-13 01:58:15 +0000-->
+                            </date>
+                        </datePicker>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ugw-n6-ADt">
+                            <rect key="frame" x="132.5" y="224" width="78" height="30"/>
+                            <state key="normal" title="  儲存資料  ">
+                                <color key="titleColor" red="0.47843137250000001" green="0.75686274509999996" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.47843137250000001" green="0.75686274509999996" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="pressedChose:" destination="S7M-rc-QbJ" eventType="touchUpInside" id="81m-Ef-svf"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="JiQ-yi-CDr" secondAttribute="trailing" id="8Rm-GM-QuK"/>
+                        <constraint firstItem="Ugw-n6-ADt" firstAttribute="top" secondItem="JiQ-yi-CDr" secondAttribute="bottom" constant="8" id="GlU-49-Fpl"/>
+                        <constraint firstItem="JiQ-yi-CDr" firstAttribute="leading" secondItem="7YP-Oh-L5M" secondAttribute="leading" id="OjM-u2-eOw"/>
+                        <constraint firstItem="Ugw-n6-ADt" firstAttribute="centerX" secondItem="7YP-Oh-L5M" secondAttribute="centerX" id="kCs-69-gsc"/>
+                        <constraint firstAttribute="bottom" secondItem="Ugw-n6-ADt" secondAttribute="bottom" constant="8" id="nhM-0g-bKp"/>
+                        <constraint firstItem="JiQ-yi-CDr" firstAttribute="top" secondItem="7YP-Oh-L5M" secondAttribute="top" id="pUP-qj-T0N"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="7YP-Oh-L5M" firstAttribute="leading" secondItem="S7M-rc-QbJ" secondAttribute="leading" constant="16" id="ibs-Uj-B1j"/>
+                <constraint firstItem="7YP-Oh-L5M" firstAttribute="centerX" secondItem="S7M-rc-QbJ" secondAttribute="centerX" id="jka-wu-UUv"/>
+                <constraint firstItem="7YP-Oh-L5M" firstAttribute="centerY" secondItem="S7M-rc-QbJ" secondAttribute="centerY" id="nNt-pW-Q6f"/>
+                <constraint firstAttribute="trailing" secondItem="7YP-Oh-L5M" secondAttribute="trailing" constant="16" id="skZ-B1-CJl"/>
+            </constraints>
+            <connections>
+                <outlet property="contenView" destination="7YP-Oh-L5M" id="UJs-mH-p5T"/>
+                <outlet property="dateView" destination="JiQ-yi-CDr" id="0fd-Va-1gV"/>
+                <outletCollection property="gestureRecognizers" destination="c5X-eM-JRc" appends="YES" id="TA7-MU-All"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+        <tapGestureRecognizer id="c5X-eM-JRc">
+            <connections>
+                <action selector="pressHidden:" destination="S7M-rc-QbJ" id="t5s-1t-Quc"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>

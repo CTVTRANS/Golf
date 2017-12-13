@@ -145,15 +145,27 @@ class MainViewController: BaseViewController {
     }
     
     @IBAction func pressedAttendance(_ sender: Any) {
-        if let vc = AttendanceViewController.instance() as? AttendanceViewController {
+        if checkMember() != nil, let vc = AttendanceViewController.instance() as? AttendanceViewController {
             navigationController?.pushViewController(vc, animated: false)
+            return
         }
+        UIAlertController.showAlertWith(title: "", message: "要先登入", in: self, compeletionHandler: {
+            if let vc = SinginViewController.instance() as? SinginViewController {
+                self.navigationController?.pushViewController(vc, animated: false)
+            }
+        })
     }
     
     @IBAction func pressedJackpot(_ sender: Any) {
-        if let vc = JackpotViewController.instance() as? JackpotViewController {
+        if checkMember() != nil , let vc = JackpotViewController.instance() as? JackpotViewController {
             navigationController?.pushViewController(vc, animated: false)
+            return
         }
+        UIAlertController.showAlertWith(title: "", message: "要先登入", in: self, compeletionHandler: {
+            if let vc = SinginViewController.instance() as? SinginViewController {
+                self.navigationController?.pushViewController(vc, animated: false)
+            }
+        })
     }
 }
 

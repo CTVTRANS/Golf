@@ -15,7 +15,7 @@ class DiscountCell: UITableViewCell {
     @IBOutlet weak var imageDiscount: UIImageView!
     
     func load(_ discount: DiscountModel) {
-        price.text = discount.price.description
+        price.text = "$\(discount.price.description)"
         name.text = discount.name
         imageDiscount.kf.setImage(with: URL(string: discount.imageURL))
     }

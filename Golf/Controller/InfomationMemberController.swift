@@ -69,6 +69,16 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
         navigationController?.popToRootViewController(animated: false)
     }
     
+    @IBAction func pressedChooseDate(_ sender: Any) {
+        if let chooseDate = ChooseBirthDayView.instance() as? ChooseBirthDayView {
+            chooseDate.show()
+            chooseDate.callBackDate = {[weak self] date in
+                self?.birthDay.text = date
+            }
+        }
+        
+    }
+    
     @IBAction func pressedEdit(_ sender: Any) {
         let task = MemberModel.Update(name: name.text, birthDay: birthDay.text, idCard: idCard.text, address: address.text, email: mail.text, landLine: landLine.text)
         dataWithTask(task, onCompeted: { (_) in
