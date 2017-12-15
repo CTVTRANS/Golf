@@ -64,19 +64,22 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)
             return
         }
-        guard let passWord = pass.text else {
+        
+        guard let passWord = pass.text, passWord != "" else {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.passwordEmty.rawValue, in: self)
             return
         }
-        guard let passWordConfirm = confirmPass.text else {
+        
+        guard let passWordConfirm = confirmPass.text, passWordConfirm != "" else {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.passwordConfirmEmty.rawValue, in: self)
             return
         }
+        
         guard let userName = name.text else {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.nameEmty.rawValue, in: self)
             return
         }
-        guard let idMember = idCard.text else {
+        guard let idMember = idCard.text, idMember != "" else {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.idCardEmty.rawValue, in: self)
             return
         }
@@ -84,7 +87,7 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
         let adressMember = address.text
         let birDay = birthDay.text
         let emailMember = email.text
-        guard let code = confirmCode.text else {
+        guard let code = confirmCode.text, code != "" else {
             UIAlertController.showAlertWith(title: "", message: ErrorMember.confirmCodeEmty.rawValue, in: self)
             return
         }

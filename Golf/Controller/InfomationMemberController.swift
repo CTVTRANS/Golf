@@ -16,7 +16,7 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
     @IBOutlet weak var address: UITextField!
     @IBOutlet weak var landLine: UITextField!
     @IBOutlet weak var mail: UITextField!
-    @IBOutlet weak var topContrains: NSLayoutConstraint!
+    @IBOutlet weak var botContrains: NSLayoutConstraint!
     
     var member: MemberModel!
     
@@ -50,17 +50,14 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        topContrains.constant = -80
-        UIView.animate(withDuration: 0.5) {
-            self.view.layoutIfNeeded()
+        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            botContrains.constant = keyboardRectangle.height
         }
     }
     
    @objc func keyboardWillHide(_ notification: Notification) {
-        topContrains.constant = 40
-        UIView.animate(withDuration: 0.5) {
-            self.view.layoutIfNeeded()
-        }
+        botContrains.constant = 0
     }
     
     @IBAction func pressedLogout(_ sender: Any) {
