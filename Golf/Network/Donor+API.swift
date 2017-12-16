@@ -12,6 +12,7 @@ import SwiftyJSON
 
 extension DonorsModel {
     struct GetList: APIRequest {
+        typealias ResponseObject = [DonorsModel]
         var method: HTTPMethod {get { return .get}}
         var params: [String: Any] {get { return ["": ""]}}
         var path: String {
@@ -19,10 +20,10 @@ extension DonorsModel {
             set {}
         }
         
-        func dataWithResponse(_ response: JSON) -> Any {
+        func dataWithResponse(_ response: JSON) -> [DonorsModel] {
             var listDonors = [DonorsModel]()
             guard let jsons = response.array else {
-                return response
+                return listDonors
             }
             for json in jsons {
                 let donors = DonorsModel.decodeJSON(json: json)

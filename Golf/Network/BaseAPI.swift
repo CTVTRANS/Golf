@@ -14,10 +14,11 @@ typealias BlookSuccess = (Any) -> Void
 typealias BlookFailure = (String) -> Void
 
 protocol APIRequest {
+    associatedtype ResponseObject
     var method: HTTPMethod {get}
     var params: [String: Any] {get}
     var path: String {get}
-    func dataWithResponse(_ response: JSON) -> Any
+    func dataWithResponse(_ response: JSON) -> ResponseObject
 }
 
 extension APIRequest {

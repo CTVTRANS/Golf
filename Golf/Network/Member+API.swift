@@ -12,6 +12,7 @@ import SwiftyJSON
 
 extension MemberModel {
     struct Sigin: APIRequest {
+        typealias ResponseObject = MemberModel
         let phone: Int!
         let pass: String!
         init(phone: Int, pass: String) {
@@ -25,13 +26,14 @@ extension MemberModel {
             set {}
         }
         
-        func dataWithResponse(_ response: JSON) -> Any {
+        func dataWithResponse(_ response: JSON) -> MemberModel {
             let member = MemberModel.decodeJSON(json: response)
             return member
         }
     }
     
     struct Sigup: APIRequest {
+        typealias ResponseObject = MemberModel
         let userName: String!
         let pass: String!
         let confirmPass: String!
@@ -70,7 +72,7 @@ extension MemberModel {
             set {}
         }
     
-        func dataWithResponse(_ response: JSON) -> Any {
+        func dataWithResponse(_ response: JSON) -> MemberModel {
             let member = MemberModel.decodeJSON(json: response)
             return member
         }
@@ -154,6 +156,7 @@ extension MemberModel {
     }
     
     struct ScanProduct: APIRequest {
+        typealias ResponseObject = JackpotModel
         let code: String!
         init(code: String) {
             self.code = code
@@ -166,7 +169,7 @@ extension MemberModel {
             get { return memberScanProductURL}
             set {}
         }
-        func dataWithResponse(_ response: JSON) -> Any {
+        func dataWithResponse(_ response: JSON) -> JackpotModel {
             let product = JackpotModel.decodeJSON(json: response)
             return product
         }
@@ -210,6 +213,7 @@ extension MemberModel {
     }
     
     struct GetTermOfUse: APIRequest {
+        typealias ResponseObject = AttendModel
         var pathURL = ""
         init(type: TypeAttendance) {
             switch type {
@@ -227,7 +231,7 @@ extension MemberModel {
             set {pathURL = newValue}
         }
         
-        func dataWithResponse(_ response: JSON) -> Any {
+        func dataWithResponse(_ response: JSON) -> AttendModel {
             let attend = AttendModel.decodeJSON(json: response)
             return attend
         }

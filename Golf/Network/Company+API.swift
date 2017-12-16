@@ -12,6 +12,7 @@ import SwiftyJSON
 
 extension CompanyModel {
     struct GetInfo: APIRequest {
+        typealias ResponseObject = CompanyModel
         var method: HTTPMethod {get { return .get}}
         var params: [String: Any] {get { return ["": ""]}}
         var path: String {
@@ -19,7 +20,7 @@ extension CompanyModel {
             set {}
         }
         
-        func dataWithResponse(_ response: JSON) -> Any {
+        func dataWithResponse(_ response: JSON) -> CompanyModel {
             let company = CompanyModel.decodeJSON(json: response)
             return company
         }

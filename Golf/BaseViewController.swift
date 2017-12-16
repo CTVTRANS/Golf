@@ -63,7 +63,7 @@ class BaseViewController: UIViewController {
         navigationController?.popToRootViewController(animated: false)
     }
     
-    func dataWithTask(_ task: APIRequest, onCompeted: @escaping BlookSuccess, onError: @escaping BlookFailure) {
+    func dataWithTask<T: APIRequest>(_ task: T, onCompeted: @escaping BlookSuccess, onError: @escaping BlookFailure) {
         task.requestDataWith(onCompelete: { (data) in
             if let errorCode = data as? Int {
                 if let errorMember = ErrorCode(rawValue: errorCode) {
