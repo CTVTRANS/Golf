@@ -71,12 +71,27 @@ class ContactUsViewController: BaseViewController, MainStoryBoard {
     }
     
     @IBAction func pressedShowPath(_ sender: Any) {
-        if !showpath {
-            mapView.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
-            showpath = true
-            locationManager.startUpdatingLocation()
-            
+        company?.latitude = 21.007207
+        company?.lontitude = 105.841427
+        let lat = company?.latitude.description
+        let lon = company?.lontitude.description
+        let directionsURL = "http://maps.apple.com/?daddr=\(lat!),\(lon!)"
+        debugPrint(directionsURL)
+        guard let url = URL(string: directionsURL) else {
+            return
         }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+        
+//        if !showpath {
+//            mapView.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
+//            showpath = true
+//            locationManager.startUpdatingLocation()
+//
+//        }
     }
     
     func drawPathFromMylocation(_ startLocation: CLLocation, to endLocation: CLLocation) {

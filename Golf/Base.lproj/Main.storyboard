@@ -70,9 +70,16 @@
                                     <constraint firstAttribute="trailing" secondItem="DLg-wi-4rI" secondAttribute="trailing" id="sT3-S3-cLW"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUf-vE-u5o">
+                                <rect key="frame" x="90" y="74.5" width="269" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.41568627450980389" green="0.28627450980392155" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.47843137254901957" green="0.75686274509803919" blue="0.62745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="7bb-HA-6t5" firstAttribute="top" secondItem="GUf-vE-u5o" secondAttribute="bottom" constant="50" id="1ea-vA-OuY"/>
                             <constraint firstItem="37C-Cv-i8i" firstAttribute="top" secondItem="7OP-Qf-gdN" secondAttribute="bottom" constant="27" id="40a-p5-a89"/>
                             <constraint firstAttribute="trailing" secondItem="NNR-Fl-Dir" secondAttribute="trailing" id="CHK-jx-2yr"/>
                             <constraint firstItem="cGG-jb-4jk" firstAttribute="top" secondItem="NNR-Fl-Dir" secondAttribute="bottom" id="FFl-aZ-uar"/>
@@ -82,9 +89,12 @@
                             <constraint firstItem="NNR-Fl-Dir" firstAttribute="leading" secondItem="BR1-zQ-Ypu" secondAttribute="leading" id="Sfo-gB-QhU"/>
                             <constraint firstItem="7bb-HA-6t5" firstAttribute="leading" secondItem="BR1-zQ-Ypu" secondAttribute="leading" constant="35" id="U2D-9a-Rlb"/>
                             <constraint firstItem="7bb-HA-6t5" firstAttribute="top" secondItem="37C-Cv-i8i" secondAttribute="bottom" constant="16" id="jLZ-fI-SOT"/>
+                            <constraint firstItem="GUf-vE-u5o" firstAttribute="leading" secondItem="BR1-zQ-Ypu" secondAttribute="leading" constant="90" id="k1g-Nm-tsW"/>
+                            <constraint firstAttribute="trailing" secondItem="GUf-vE-u5o" secondAttribute="trailing" constant="16" id="snu-VW-0hB"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="titleNews" destination="GUf-vE-u5o" id="gTS-xr-5l1"/>
                         <outlet property="webView" destination="PUb-6q-Fgw" id="USy-oA-qQ1"/>
                     </connections>
                 </viewController>
@@ -1345,7 +1355,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zkd-HM-trs">
-                                <rect key="frame" x="145.5" y="45" width="86" height="26"/>
+                                <rect key="frame" x="145" y="45" width="86" height="26"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_heart" translatesAutoresizingMaskIntoConstraints="NO" id="iIo-0A-WeM">
                                         <rect key="frame" x="0.0" y="0.0" width="22" height="26"/>

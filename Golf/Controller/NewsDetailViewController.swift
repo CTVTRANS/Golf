@@ -10,6 +10,7 @@ import UIKit
 
 class NewsDetailViewController: BaseViewController, MainStoryBoard {
 
+    @IBOutlet weak var titleNews: UILabel!
     @IBOutlet weak var webView: UIWebView!
     var news: NewsModel!
     
@@ -22,7 +23,8 @@ class NewsDetailViewController: BaseViewController, MainStoryBoard {
     }
     
     func setupUI() {
-       webView.loadHTMLString(news.content, baseURL: nil)
+        titleNews.text = news.titleNews
+        webView.loadHTMLString(news.content, baseURL: nil)
     }
 }
 
