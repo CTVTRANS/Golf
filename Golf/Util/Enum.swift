@@ -51,31 +51,30 @@ enum StatusReward: Int {
     case notRewarded = 0
 }
 
-enum ErrorMember: String {
-    case passwordConfirmEmty = "密碼及再確認密碼不能空白"
-    case confirmCodeEmty = "驗證碼不能空白"
-    case numberPhoneEmty = "電話號碼不能空白"
-    case nameEmty = "姓名不能空白"
-    case passwordEmty = "密碼不能空白"
-    case passwordHasSpace = "密碼不能有空格"
-    case idCardEmty = "身份證字號不能空白"
-}
-
 enum ErrorCode: Int {
     case success = 200
-    case emailError = 201
-    case passwordShort = 204
-    case confirmPassError = 205
-    case passwordConfirmEmty = 206
-    case passwordError = 207
+    case passwordWrongFormat = 204
+    case confirmPassWrong = 205
+    case passwordEmty = 206
+    case passwordWrong = 207
     case numberPhoneError = 208
     case confirmCodeError = 209
     case confirmCodeEmty = 210
     case numberPhoneEmty = 211
     case nameEmty = 212
-    case passwordEmty = 213
     case numberPhoneExists = 214
     case accountError = 215
+    case birthError = 217
+    case idCardEmty = 218
+    case addressEmty = 219
+    case emailEmty = 220
+    case emailError = 221
+    case birthEmty = 222
+    case emailExits = 223
+    case idCardWrong = 224
+    case passWordError = 605
+    case idCardError = 606
+    case memberRegisted = 607
 }
 
 enum ErrorProduct: Int {
@@ -89,33 +88,51 @@ extension ErrorCode {
     func decodeError() -> String {
         switch self {
         case .success:
-            return "成功！"
-        case .emailError:
-            return "郵箱格式不對"
-        case .passwordShort:
-            return "密碼太短（一定要從8個符號以上）"
-        case .confirmPassError:
-            return "密碼及再確認密碼不重疊"
-        case .passwordConfirmEmty:
-            return "密碼及再確認密碼不能空白"
-        case .passwordError:
-            return "密碼嗎不對"
-        case .numberPhoneError:
-            return "電話號碼不對"
-        case .confirmCodeError:
-            return "驗證碼不對"
-        case .confirmCodeEmty:
-            return "驗證碼不能空白"
-        case .numberPhoneEmty:
-            return "電話號碼不能空白"
-        case .nameEmty:
-            return "姓名不能空白"
+            return "成功"
+        case .passwordWrongFormat:
+            return "密碼格式請填入8-12碼英文+數字"
+        case .confirmPassWrong:
+            return "密碼及再輸入密碼不重疊"
         case .passwordEmty:
-            return "密碼不能空白"
+            return "密碼及再輸入密碼為必填"
+        case .passwordWrong:
+            return "密碼不對"
+        case .numberPhoneError:
+            return "帳號須為手機號碼"
+        case .confirmCodeError:
+            return "驗證碼錯誤"
+        case .confirmCodeEmty:
+            return "驗證碼為必填"
+        case .numberPhoneEmty:
+            return "聯絡電話為必填"
+        case .nameEmty:
+            return "姓名為必填"
         case .numberPhoneExists:
-            return "手機號碼已經被註冊了"
+            return "此帳號已申請過"
         case .accountError:
-            return "帳號不存在"
+            return "此帳號不存在"
+        case .birthError:
+            return "出生日格式錯誤"
+        case .idCardEmty:
+            return "身份證字號為必填"
+        case .addressEmty:
+            return "地址為必填"
+        case .emailEmty:
+            return "信箱為必填"
+        case .emailError:
+            return "信箱格式錯誤"
+        case .birthEmty:
+            return "出生日為必填"
+        case .emailExits:
+            return "此Email已申請過"
+        case .idCardWrong:
+            return "帳號或者身份證字號不對"
+        case .passWordError:
+            return "密碼至少要一英文+一數字 (不可全為英文或全數字)"
+        case .idCardError:
+            return "身分證格式錯誤"
+        case .memberRegisted:
+            return "您已報名過此活動 請等候專員連繫 感謝!"
         }
     }
 }
@@ -124,11 +141,11 @@ extension ErrorProduct {
     func decodeError() -> String {
         switch self {
         case .notFound:
-            return "找不到產品"
+            return "此票劵不存在"
         case .limited:
             return "每一天只能掃描一次"
         case .outOfTime:
-            return "QRcode已經有人使用"
+            return "此票劵已被掃描過"
         case .noHasProduct:
             return "沒有產品"
         }

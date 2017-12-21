@@ -30,7 +30,6 @@ class HoleListViewController: BaseViewController, MainStoryBoard {
             self.collection.reloadData()
             hideLoading()
         }) { (_) in
-            
         }
     }
     

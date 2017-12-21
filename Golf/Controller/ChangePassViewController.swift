@@ -40,15 +40,15 @@ class ChangePassViewController: BaseViewController, SecondSroyBoard {
 
     @IBAction func pressedChange(_ sender: Any) {
         guard let oldPass = oldPass.text, oldPass != "" else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.passwordEmty.rawValue, in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.passwordWrongFormat.decodeError(), in: self)
             return
         }
-        guard let newPass = newPass.text, newPass != "", newPass.components(separatedBy: " ").count <= 1 else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.passwordHasSpace.rawValue, in: self)
+        guard let newPass = newPass.text, newPass != "" else {
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.passwordWrongFormat.decodeError(), in: self)
             return
         }
-        guard let confirmpass = confirmPass.text, confirmpass != "", confirmpass.components(separatedBy: " ").count <= 1 else {
-             UIAlertController.showAlertWith(title: "", message: ErrorMember.passwordHasSpace.rawValue, in: self)
+        guard let confirmpass = confirmPass.text, confirmpass != "" else {
+             UIAlertController.showAlertWith(title: "", message: ErrorCode.passwordWrongFormat.decodeError(), in: self)
             return
         }
         let task = MemberModel.ChangePass(oldPass: oldPass, newPass: newPass, confirmPass: confirmpass)
@@ -63,10 +63,8 @@ class ChangePassViewController: BaseViewController, SecondSroyBoard {
                 return
             }
         }) { (_) in
-            
         }
     }
-
 }
 
 extension ChangePassViewController: UITextFieldDelegate {

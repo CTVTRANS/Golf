@@ -39,18 +39,17 @@ class ForgotPassViewController: BaseViewController, SecondSroyBoard {
     
     @IBAction func pressedButton(_ sender: Any) {
         guard let idCard = profileID.text else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.idCardEmty.rawValue, in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.idCardEmty.decodeError(), in: self)
             return
         }
         guard let phoneNumber = Int(phone.text!) else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.numberPhoneEmty.decodeError(), in: self)
             return
         }
         let task = MemberModel.ForgotPass(phone: phoneNumber, idCard: idCard)
         dataWithTask(task, onCompeted: { (_) in
             UIAlertController.showAlertWith(title: "", message: "new Pass send to phone number", in: self)
         }) { (_) in
-            
         }
     }
     

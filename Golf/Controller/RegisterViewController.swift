@@ -61,34 +61,43 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
     
     @IBAction func sigupPressed(_ sender: Any) {
         guard let phoneNumber = Int(phone.text!) else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.numberPhoneError.decodeError(), in: self)
             return
         }
-        
         guard let passWord = pass.text, passWord != "" else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.passwordEmty.rawValue, in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.passwordEmty.decodeError(), in: self)
             return
         }
-        
         guard let passWordConfirm = confirmPass.text, passWordConfirm != "" else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.passwordConfirmEmty.rawValue, in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.passwordEmty.decodeError(), in: self)
             return
         }
-        
         guard let userName = name.text else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.nameEmty.rawValue, in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.nameEmty.decodeError(), in: self)
             return
         }
-        guard let idMember = idCard.text, idMember != "" else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.idCardEmty.rawValue, in: self)
+        guard let idMember = idCard.text else {
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.idCardEmty.decodeError(), in: self)
             return
         }
-        let landLine = telephone.text
-        let adressMember = address.text
-        let birDay = birthDay.text
-        let emailMember = email.text
+        guard let landLine = telephone.text, landLine != "" else {
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.numberPhoneEmty.decodeError(), in: self)
+            return
+        }
+        guard let adressMember = address.text, adressMember != "" else {
+             UIAlertController.showAlertWith(title: "", message: ErrorCode.addressEmty.decodeError(), in: self)
+            return
+        }
+        guard let birDay = birthDay.text, birDay != "" else {
+             UIAlertController.showAlertWith(title: "", message: ErrorCode.birthEmty.decodeError(), in: self)
+            return
+        }
+        guard let emailMember = email.text, emailMember != "" else {
+             UIAlertController.showAlertWith(title: "", message: ErrorCode.emailEmty.decodeError(), in: self)
+            return
+        }
         guard let code = confirmCode.text, code != "" else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.confirmCodeEmty.rawValue, in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.confirmCodeEmty.decodeError(), in: self)
             return
         }
         let task = MemberModel.Sigup(userName: userName, pass: passWord, confirmPass: passWordConfirm, mobile: phoneNumber, birthDay: birDay, idCard: idMember, address: adressMember, email: emailMember, landLine: landLine, code: code)
@@ -98,7 +107,6 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
                 self.navigationController?.popViewController(animated: true)
             })
         }) { (_) in
-            
         }
     }
     
@@ -112,22 +120,25 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
     
     @IBAction func pressedGetCode(_ sender: Any) {
         guard let phoneNumber = Int(phone.text!) else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.numberPhoneEmty.decodeError(), in: self)
             return
         }
-         _ = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer(timer:)), userInfo: nil, repeats: true)
+        let time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer(timer:)), userInfo: nil, repeats: true)
         getCodeButton.isEnabled = false
         let task = MemberModel.GetCodeSms(phone: phoneNumber)
         dataWithTask(task, onCompeted: { (data) in
             debugPrint(data)
-        }) { (_) in
-            
+        }) { (error) in
+            UIAlertController.showAlertWith(title: "", message: error, in: self)
+            time.invalidate()
+            self.getCodeButton.isEnabled = true
+            self.counterLabel.text = " 取驗證碼 "
         }
     }
     
     @objc func updateTimer(timer: Timer) {
         counter -= 1
-        counterLabel.text = "( \(counter)s )"
+        counterLabel.text = "(\(counter)s)"
         if counter <= 0 {
             counterLabel.text = " 取驗證碼 "
             timer.invalidate()
@@ -140,5 +151,48 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
 extension RegisterViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.endEditing(true)
+    }
+}
+
+extension String {
+    var checkIDCard: Bool {
+        if self.count == 10 {
+            let index1 = self.index(self.startIndex, offsetBy: 1)
+            let number = self[index1...self.endIndex]
+            let charater = self[..<index1]
+            guard Int(number) != nil else {
+                return false
+            }
+            guard Int(charater) != nil else {
+                return true
+            }
+        }
+        return false
+    }
+    
+    var checkPass: Bool {
+        if self.count <= 12 && self.count >= 8 {
+            if Int(self) != nil {
+                return false// self all number
+            }
+            for character in self {
+                if character == " " {
+                    return false
+                }
+                guard Int(String(character)) != nil else {
+                    return true// self has number
+                }
+            }
+        }
+        return false
+    }
+}
+
+extension Int {
+    var checkPhone: Bool {
+        guard String(self).count == 9 else {
+            return false
+        }
+        return true
     }
 }

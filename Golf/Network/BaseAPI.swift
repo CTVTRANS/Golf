@@ -33,6 +33,7 @@ extension APIRequest {
             }
             let json = JSON(jsonResponseData.result.value!)
             if let status = json["status_code"].int, status != 200 {
+                debugPrint(status)
                 onCompelete(status)
                 return
             }

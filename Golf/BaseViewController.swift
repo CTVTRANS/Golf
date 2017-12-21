@@ -68,14 +68,17 @@ class BaseViewController: UIViewController {
             if let errorCode = data as? Int {
                 if let errorMember = ErrorCode(rawValue: errorCode) {
                     let messageError = errorMember.decodeError()
+                    hideLoading()
                     UIAlertController.showAlertWith(title: "", message: messageError, in: self)
-                    return
+                    onError(messageError)
                 }
                 if let errorProduct = ErrorProduct(rawValue: errorCode) {
                     let messageError = errorProduct.decodeError()
+                    hideLoading()
+                    UIAlertController.showAlertWith(title: "", message: messageError, in: self)
                     onError(messageError)
-                    return
                 }
+                return
             }
             onCompeted(data)
         }) { (error) in

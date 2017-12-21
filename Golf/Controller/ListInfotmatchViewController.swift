@@ -26,7 +26,6 @@ class ListInfotmatchViewController: BaseViewController, MainStoryBoard {
                 self.webView.loadHTMLString(content, baseURL: nil)
             }
         }) { (_) in
-            
         }
     }
 }

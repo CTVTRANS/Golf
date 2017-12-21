@@ -51,7 +51,6 @@ class EventActivityViewController: BaseViewController, MainStoryBoard {
             self.event = eventModel
             self.setupUI()
         }) { (_) in
-            
         }
     }
     

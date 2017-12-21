@@ -73,7 +73,6 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
                 self?.birthDay.text = date
             }
         }
-        
     }
     
     @IBAction func pressedEdit(_ sender: Any) {

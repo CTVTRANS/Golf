@@ -14,17 +14,8 @@ class ChooseBirthDayView: BaseDailog {
     var callBackDate:((_ data: String) -> Void) = {_ in}
     
     @IBAction func pressedChose(_ sender: Any) {
-        let date = Date.convertDateString(date: dateView.date)
+        let date = Date.convert(date: dateView.date, toString: "yyy-MM-dd")
         self.hide()
         callBackDate(date)
-    }
-}
-
-extension Date {
-    static func convertDateString(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateSting = dateFormatter.string(from: date)
-        return dateSting
     }
 }

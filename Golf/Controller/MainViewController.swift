@@ -37,6 +37,7 @@ class MainViewController: BaseViewController {
             self.getCurrentDonors()
             
         }) { (_) in
+            
         }
     }
     
@@ -50,11 +51,11 @@ class MainViewController: BaseViewController {
             request.returnsObjectsAsFaults = false
             do {
                 if let result = try self.managerContext.fetch(request) as? [DonorsCore] {
-                    if listDonors.count > result.count {
-                        let donors = listDonors[result.count..<listDonors.count]
-                        let newDonors: [DonorsModel] = Array(donors)
-                        self.saveListDonors(donors: newDonors)
+                    for companyCore in result {
+                        self.managerContext.delete(companyCore)
                     }
+                    self.storage.saveContext()
+                    self.saveListDonors(donors: listDonors)
                 }
             } catch {
                 print("Failed")
@@ -66,20 +67,23 @@ class MainViewController: BaseViewController {
     func getCurrentDonors() {
         let task = DonorsModel.GetCurrent()
         dataWithTask(task, onCompeted: { (data) in
-            if let content = data as? String {
-                self.company?.currentDonor = content
-                let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
-                request.returnsObjectsAsFaults = false
-                do {
-                    if let result = try self.managerContext.fetch(request) as? [CompanyCore] {
-                        if result.first != nil {
-                            return
-                        }
-                        self.saveCompany(companyModel: self.company!)
+            guard let content = data as? String else {
+                return
+            }
+            self.company?.currentDonor = content
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
+            request.returnsObjectsAsFaults = false
+            do {
+                if let result = try self.managerContext.fetch(request) as? [CompanyCore] {
+                    if result.first != nil, let companyResult = result.first {
+                        companyResult.company = self.company!
+                        self.storage.saveContext()
+                        return
                     }
-                } catch {
-                    print("Failed")
+                    self.insertCompany(companyModel: self.company!)
                 }
+            } catch {
+                print("Failed")
             }
         }) { (_) in
             debugPrint("")
@@ -100,7 +104,7 @@ class MainViewController: BaseViewController {
     
     // MARK: Save company and donors to core data
     
-    func saveCompany(companyModel: CompanyModel) {
+    func insertCompany(companyModel: CompanyModel) {
         let entity = NSEntityDescription.entity(forEntityName: companyEntity, in: self.managerContext)
         if let companyCore = NSManagedObject(entity: entity!, insertInto: managerContext) as? CompanyCore {
             companyCore.company = companyModel
@@ -109,7 +113,7 @@ class MainViewController: BaseViewController {
     }
     
     func saveListDonors(donors: [DonorsModel]) {
-         let entity = NSEntityDescription.entity(forEntityName: donorsEntity, in: self.managerContext)
+        let entity = NSEntityDescription.entity(forEntityName: donorsEntity, in: self.managerContext)
         for donor in donors {
             if let donorCore = NSManagedObject(entity: entity!, insertInto: managerContext) as? DonorsCore {
                 donorCore.donors = donor
@@ -157,7 +161,7 @@ class MainViewController: BaseViewController {
     }
     
     @IBAction func pressedJackpot(_ sender: Any) {
-        if checkMember() != nil , let vc = JackpotViewController.instance() as? JackpotViewController {
+        if checkMember() != nil, let vc = JackpotViewController.instance() as? JackpotViewController {
             navigationController?.pushViewController(vc, animated: false)
             return
         }

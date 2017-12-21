@@ -49,16 +49,17 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
                 self.webView.loadHTMLString((self.attend?.content)!, baseURL: nil)
             }
         }) { (_) in
-            
         }
     }
     
     func attendAction() {
         let task = MemberModel.Attend(eventID: (attend?.idEvent)!)
         dataWithTask(task, onCompeted: { (_) in
-            
+            if let vc = AttendSuccessViewController.instance() as? AttendSuccessViewController {
+                vc.titleName = self.attend?.title
+                self.navigationController?.pushViewController(vc, animated: false)
+            }
         }) { (_) in
-            
         }
     }
     
@@ -71,10 +72,6 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
             return
         }
         attendAction()
-        if let vc = AttendSuccessViewController.instance() as? AttendSuccessViewController {
-            vc.titleName = self.attend?.title
-            navigationController?.pushViewController(vc, animated: false)
-        }
     }
 }
 

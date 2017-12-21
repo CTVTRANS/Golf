@@ -90,7 +90,6 @@ class ListJackpotViewController: BaseViewController, SecondSroyBoard {
                 hideLoading()
             }
         }) { (_) in
-            
         }
     }
 }

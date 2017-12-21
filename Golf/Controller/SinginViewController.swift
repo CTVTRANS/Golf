@@ -10,9 +10,11 @@ import UIKit
 
 class SinginViewController: BaseViewController, SecondSroyBoard {
     
+    @IBOutlet weak var capcha: UILabel!
     @IBOutlet weak var phoneTexField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
     @IBOutlet weak var topContrans: NSLayoutConstraint!
+    @IBOutlet weak var capchaTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,11 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
         disableRightBarButton()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        capcha.text = randomString(length: 4)
     }
     
     func showInfomationMember() {
@@ -32,11 +39,17 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
     @IBAction func pressedSigin(_ sender: Any) {
         
         guard let phone = Int(phoneTexField.text!) else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.numberPhoneEmty.rawValue, in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.numberPhoneEmty.decodeError(), in: self)
             return
         }
         guard let pass = passTextField.text, pass != "" else {
-            UIAlertController.showAlertWith(title: "", message: ErrorMember.passwordEmty.rawValue, in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.passwordEmty.decodeError(), in: self)
+            return
+        }
+        
+        guard let capchaConfirm = capchaTextField.text, capchaConfirm ==  capcha.text else {
+            UIAlertController.showAlertWith(title: "", message: "驗證碼錯誤", in: self)
+            self.capcha.text = self.randomString(length: 4)
             return
         }
         let task = MemberModel.Sigin(phone: phone, pass: pass)
@@ -52,7 +65,7 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
                 self.navigationController?.pushViewController(vc, animated: false)
             }
         }, onError: { (_) in
-            
+            self.capcha.text = self.randomString(length: 4)
         })
     }
     
@@ -89,5 +102,18 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
 extension SinginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.endEditing(true)
+    }
+    
+    func randomString(length: Int) -> String {
+        let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        return randomString
     }
 }

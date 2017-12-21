@@ -19,6 +19,7 @@ class EventViewController: BaseViewController, MainStoryBoard {
             navigationController?.pushViewController(vc, animated: false)
         }
     }
+    
     @IBAction func pressedShowMath(_ sender: Any) {
         if let vc = ListInfotmatchViewController.instance() as? ListInfotmatchViewController {
             navigationController?.pushViewController(vc, animated: false)
