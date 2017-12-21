@@ -18,6 +18,7 @@ class ForgotPassViewController: BaseViewController, SecondSroyBoard {
         super.viewDidLoad()
         profileID.delegate = self
         phone.delegate = self
+        phone.keyboardType = .numberPad
         disableRightBarButton()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
@@ -48,7 +49,7 @@ class ForgotPassViewController: BaseViewController, SecondSroyBoard {
         }
         let task = MemberModel.ForgotPass(phone: phoneNumber, idCard: idCard)
         dataWithTask(task, onCompeted: { (_) in
-            UIAlertController.showAlertWith(title: "", message: "new Pass send to phone number", in: self)
+            UIAlertController.showAlertWith(title: "", message: "新密碼會寄到您的手機號碼的簡訊，請查看", in: self)
         }) { (_) in
         }
     }

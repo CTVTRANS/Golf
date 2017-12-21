@@ -19,6 +19,7 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
     override func viewDidLoad() {
         super.viewDidLoad()
         phoneTexField.delegate = self
+        phoneTexField.keyboardType = .numberPad
         passTextField.delegate = self
         disableRightBarButton()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
@@ -37,13 +38,14 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
     }
     
     @IBAction func pressedSigin(_ sender: Any) {
-        
         guard let phone = Int(phoneTexField.text!) else {
-            UIAlertController.showAlertWith(title: "", message: ErrorCode.numberPhoneEmty.decodeError(), in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.numberPhoneError.decodeError(), in: self)
+            debugPrint(ErrorCode.numberPhoneError.rawValue)
             return
         }
         guard let pass = passTextField.text, pass != "" else {
-            UIAlertController.showAlertWith(title: "", message: ErrorCode.passwordEmty.decodeError(), in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.passwordWrongFormat.decodeError(), in: self)
+            debugPrint(ErrorCode.passwordWrongFormat.rawValue)
             return
         }
         
@@ -52,11 +54,13 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
             self.capcha.text = self.randomString(length: 4)
             return
         }
+        showLoading()
         let task = MemberModel.Sigin(phone: phone, pass: pass)
         dataWithTask(task, onCompeted: { (data) in
             guard let member = data as? MemberModel else {
                 return
             }
+            hideLoading()
             MemberModel.shared = member
             let cache = Cache<MemberModel>()
             cache.save(object: member)

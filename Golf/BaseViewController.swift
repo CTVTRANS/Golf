@@ -73,9 +73,12 @@ class BaseViewController: UIViewController {
                     onError(messageError)
                 }
                 if let errorProduct = ErrorProduct(rawValue: errorCode) {
-                    let messageError = errorProduct.decodeError()
                     hideLoading()
-                    UIAlertController.showAlertWith(title: "", message: messageError, in: self)
+                    let messageError = errorProduct.decodeError()
+                    if errorProduct == .outOfTime {
+                         onError(errorCode.description)
+                        return
+                    }
                     onError(messageError)
                 }
                 return

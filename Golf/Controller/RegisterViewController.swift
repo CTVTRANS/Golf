@@ -34,6 +34,7 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
     
     func setupKeyBoard() {
         phone.delegate = self
+        phone.keyboardType = .numberPad
         pass.delegate = self
         confirmCode.delegate = self
         name.delegate = self

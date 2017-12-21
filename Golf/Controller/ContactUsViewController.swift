@@ -7,33 +7,30 @@
 //
 
 import UIKit
-import GoogleMaps
 import Alamofire
-import SwiftyJSON
 import CoreData
+import MapKit
 
 class ContactUsViewController: BaseViewController, MainStoryBoard {
 
-    @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var phone: UILabel!
     @IBOutlet weak var website: UILabel!
     @IBOutlet weak var address: UILabel!
     
     let managerContext = StorageManager.shared.managedObjectContext
-    
-    var locationManager = CLLocationManager()
-    var didFindMyLocation = false
-    var showpath = false
     var company: CompanyModel?
+    
+    let regionRadius: CLLocationDistance = 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showLoading()
         getCompany()
-        showInfoCompany()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)
+        mapView.setRegion(coordinateRegion, animated: true)
     }
     
     func getCompany() {
@@ -43,7 +40,9 @@ class ContactUsViewController: BaseViewController, MainStoryBoard {
             if let result = try self.managerContext.fetch(request) as? [CompanyCore] {
                 if let companyCore = result.first {
                     company = companyCore.company
-                    drawMaker()
+                    let initialLocation = CLLocation(latitude: (company?.latitude)!, longitude: (company?.lontitude)!)
+                    centerMapOnLocation(location: initialLocation)
+                    showInfoCompany()
                 }
             }
         } catch {
@@ -51,28 +50,18 @@ class ContactUsViewController: BaseViewController, MainStoryBoard {
         }
     }
     
-    func drawMaker() {
-        mapView.delegate = self
-        let camera = GMSCameraPosition.camera(withLatitude: (company?.latitude)!, longitude: (company?.lontitude)!, zoom: 15.0)
-        mapView.camera = camera
-        
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: (company?.latitude)!, longitude: (company?.lontitude)!)
-        marker.title = "Hanoi University of Science and Technology"
-        marker.snippet = "Ha Noi"
-        marker.map = mapView
-        mapView.isMyLocationEnabled = true
-    }
-    
     func showInfoCompany() {
+        let artwork = Artwork(title: (company?.name)!,
+                              locationName: "",
+                              discipline: "",
+                              coordinate: CLLocationCoordinate2D(latitude: (company?.latitude)!, longitude: (company?.lontitude)!))
+        mapView.addAnnotation(artwork)
         phone.text = company?.phone.description
         website.text = company?.website
         address.text = company?.adress
     }
     
     @IBAction func pressedShowPath(_ sender: Any) {
-        company?.latitude = 21.007207
-        company?.lontitude = 105.841427
         let lat = company?.latitude.description
         let lon = company?.lontitude.description
         let directionsURL = "http://maps.apple.com/?daddr=\(lat!),\(lon!)"
@@ -85,75 +74,29 @@ class ContactUsViewController: BaseViewController, MainStoryBoard {
         } else {
             UIApplication.shared.openURL(url)
         }
-        
-//        if !showpath {
-//            mapView.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
-//            showpath = true
-//            locationManager.startUpdatingLocation()
-//
-//        }
-    }
-    
-    func drawPathFromMylocation(_ startLocation: CLLocation, to endLocation: CLLocation) {
-        let origin = String(startLocation.coordinate.latitude) + "," + String(startLocation.coordinate.longitude)
-        let destination = String(endLocation.coordinate.latitude) + "," + String(endLocation.coordinate.longitude)
-        let params = ["origin": origin,
-                      "destination": destination,
-                      "mode": "driving",
-                      "key": apiDirection,
-                      "sensor": "true"]
-      
-        Alamofire.request(baseURLDirections, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil).responseJSON { (responseData) in
-            if responseData.result.value != nil {
-                let json = JSON(responseData.result.value!)
-                let routes = json["routes"].arrayValue
-                for route in routes {
-                    let routeOverviewPolyline = route["overview_polyline"].dictionary
-                    let points = routeOverviewPolyline?["points"]?.stringValue
-                    let path = GMSPath.init(fromEncodedPath: points!)
-                    let polyline = GMSPolyline.init(path: path)
-                    polyline.strokeWidth = 2
-                    polyline.strokeColor = .blue
-                    polyline.map = self.mapView
-                }
-            }
-        }
     }
     
     deinit {
-        if showpath {
-            mapView.removeObserver(self, forKeyPath: "myLocation", context: nil)
-        }
         NotificationCenter.default.removeObserver(self)
     }
 }
 
-extension ContactUsViewController: GMSMapViewDelegate, CLLocationManagerDelegate {
-    func mapViewDidFinishTileRendering(_ mapView: GMSMapView) {
-        hideLoading()
+class Artwork: NSObject, MKAnnotation {
+    let title: String?
+    let locationName: String
+    let discipline: String
+    let coordinate: CLLocationCoordinate2D
+    
+    init(title: String, locationName: String, discipline: String, coordinate: CLLocationCoordinate2D) {
+        self.title = title
+        self.locationName = locationName
+        self.discipline = discipline
+        self.coordinate = coordinate
+        
+        super.init()
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        if !didFindMyLocation {
-            if let myLocation: CLLocation = change![NSKeyValueChangeKey.newKey] as? CLLocation {
-                mapView.camera = GMSCameraPosition.camera(withTarget: myLocation.coordinate, zoom: 13.0)
-                didFindMyLocation = true
-            }
-        }
-    }
-    
-    // Handle authorization for the location manager.
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .authorizedWhenInUse:
-            mapView.isMyLocationEnabled = true
-        default: break
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last
-        let endLocation = CLLocation(latitude: (company?.latitude)!, longitude: (company?.lontitude)!)
-        drawPathFromMylocation(location!, to: endLocation)
+    var subtitle: String? {
+        return locationName
     }
 }

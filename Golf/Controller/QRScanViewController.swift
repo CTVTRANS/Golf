@@ -61,9 +61,17 @@ class QRScanViewController: BaseViewController, SecondSroyBoard {
             }
         }) { (error) in
             self.product = nil
+            if let errorCode = Int(error) {
+                if let error = ErrorProduct(rawValue: errorCode) {
+                    UIAlertController.showAlertWithAction(title: "", message: error.decodeError(), in: self, compeletionHandler: {
+                        self.qrCodeFrameView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+                        QRMetadataManager.shared.startScan()
+                    })
+                    return
+                }
+            }
             self.showResult(withString: error)
         }
-        
     }
     
     func showResult(withString: String) {
