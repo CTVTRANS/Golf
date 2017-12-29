@@ -28,8 +28,50 @@ struct SponsorModel: BaseModel {
     }
 }
 
-extension DonorsCore {
-    var donors: SponsorModel {
+extension HeperSponsor: Encodable {
+    var value: SponsorModel? {
+        return sponsor
+    }
+}
+
+extension SponsorModel: Encoded {
+    var encoder: HeperSponsor {
+        return HeperSponsor(sponsor: self)
+    }
+}
+
+class HeperSponsor: NSObject, NSCoding {
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(sponsor?.idDonors, forKey: "idDonors")
+        aCoder.encode(sponsor?.name, forKey: "name")
+        aCoder.encode(sponsor?.description, forKey: "description")
+        aCoder.encode(sponsor?.year, forKey: "year")
+    }
+    
+    var sponsor: SponsorModel?
+    
+    init(sponsor: SponsorModel) {
+        self.sponsor = sponsor
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        guard let idDonors = aDecoder.decodeObject(forKey: "idDonors") as? Int,
+            let name = aDecoder.decodeObject(forKey: "name") as? String,
+            let description = aDecoder.decodeObject(forKey: "description") as? String,
+            let year = aDecoder.decodeObject(forKey: "year") as? Int else {
+                sponsor = nil
+                super.init()
+                return nil
+        }
+        
+        sponsor = SponsorModel(idDonors: idDonors, name: name, description: description, year: year)
+        super.init()
+    }
+}
+
+extension SponsorsCore {
+    var sponsors: SponsorModel {
         get {
             return SponsorModel(idDonors: Int(self.id), name: self.name!, description: self.detail!, year: Int(self.year))
         }

@@ -26,6 +26,8 @@ class DetailHoleViewController: BaseViewController, MainStoryBoard {
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoading()
+        imageView?.isHidden = true
+        
         detailHole.scrollView.showsVerticalScrollIndicator = false
         if hole.index == 17 {
             imageHole17.isHidden = false
@@ -35,6 +37,7 @@ class DetailHoleViewController: BaseViewController, MainStoryBoard {
             hideLoading()
             return
         }
+        
         par.text = hole.par.description
         regularRed.text = "Regular(Red)\(hole.regularRed.description)"
         regularWhite.text = "Regular(White)\(hole.regularWhite.description)"

@@ -43,4 +43,39 @@ extension CompanyModel {
             return content
         }
     }
+    
+    struct GetListSponsor: APIRequest {
+        
+        var method: HTTPMethod {get {return .get}}
+        var params: [String: Any] {get {return ["": ""]}}
+        var path: String {get {return donorsImageURL}}
+        
+        func dataWithResponse(_ response: JSON) -> String {
+            let imageURL = response["image"].stringValue
+            return imageURL
+        }
+        typealias ResponseObject = String
+    }
+    
+    struct DownloadImage: APIRequest {
+        var url = ""
+        init(urlString: String) {
+            path = urlString
+        }
+        
+        var method: HTTPMethod {get {return .get}}
+        
+        var params: [String: Any] {get {return ["": ""]}}
+        
+        var path: String {
+            get {return url}
+            set {url = newValue}
+        }
+        
+        typealias ResponseObject = URL
+        func dataWithResponse(_ response: JSON) -> URL {
+            return URL(string: "s")!
+        }
+        
+    }
 }

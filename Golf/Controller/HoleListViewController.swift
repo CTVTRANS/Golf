@@ -16,6 +16,7 @@ class HoleListViewController: BaseViewController, MainStoryBoard {
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoading()
+        imageView?.isHidden = true
         collection.register(UINib.init(nibName: "HoleViewCell", bundle: nil), forCellWithReuseIdentifier: "HoleViewCell")
     }
     

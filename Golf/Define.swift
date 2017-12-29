@@ -12,7 +12,7 @@ let widthScreen = UIScreen.main.bounds.width
 let heightScreen = UIScreen.main.bounds.height
 
 let companyEntity = "CompanyCore"
-let donorsEntity = "DonorsCore"
+let sponsorsEntity = "SponsorsCore"
 
 let baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
 let apiMap = "AIzaSyBZ840yCSeH3DTwps5f9Aj031wawRcQP8k"  // key for google map
@@ -40,6 +40,7 @@ let productScanedURL = "drawn/product_scanned"
 
 let donorsListURL = "page/history-sponsors"
 let donorsCurrentURL = "page/this-year-sponsors"
+let donorsImageURL = "page/get-donors"
 
 let holeDetailURL = "page/hole-golf"
 

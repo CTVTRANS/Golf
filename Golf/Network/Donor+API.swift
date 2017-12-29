@@ -34,6 +34,7 @@ extension SponsorModel {
     }
     
     struct GetCurrent: APIRequest {
+        typealias ResponseObject = SponsorModel
         var method: HTTPMethod {get { return .get}}
         var params: [String: Any] {get { return ["": ""]}}
         var path: String {
@@ -41,9 +42,11 @@ extension SponsorModel {
             set {}
         }
         
-        func dataWithResponse(_ response: JSON) -> Any {
+        func dataWithResponse(_ response: JSON) -> SponsorModel {
             let content = response["content"].stringValue
-            return content
+            let name = response["title"].stringValue
+            let sponsor = SponsorModel(idDonors: 0, name: name, description: content, year: 0)
+            return sponsor
         }
     }
 }

@@ -34,7 +34,6 @@
 		9D0F53A61FD68F600025EA3B /* News+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0F53A51FD68F600025EA3B /* News+API.swift */; };
 		9D0F53A81FD690B50025EA3B /* Donor+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0F53A71FD690B50025EA3B /* Donor+API.swift */; };
 		9D0F53AA1FD692D40025EA3B /* Event+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0F53A91FD692D40025EA3B /* Event+API.swift */; };
-		9D2063371FD94ED700FB3F36 /* Contant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2063361FD94ED700FB3F36 /* Contant.swift */; };
 		9D4BFF851FCC26F1001ACFD1 /* 華康方圓體W7.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 9D4BFF841FCC26EF001ACFD1 /* 華康方圓體W7.ttc */; };
 		9D56169E1FD0FC5D00D72CD0 /* EventActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D56169D1FD0FC5D00D72CD0 /* EventActivityViewController.swift */; };
 		9D5616A01FD10AB000D72CD0 /* EventAvtivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D56169F1FD10AB000D72CD0 /* EventAvtivityModel.swift */; };
@@ -105,7 +104,6 @@
 		9D0F53A51FD68F600025EA3B /* News+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "News+API.swift"; sourceTree = "<group>"; };
 		9D0F53A71FD690B50025EA3B /* Donor+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Donor+API.swift"; sourceTree = "<group>"; };
 		9D0F53A91FD692D40025EA3B /* Event+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+API.swift"; sourceTree = "<group>"; };
-		9D2063361FD94ED700FB3F36 /* Contant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contant.swift; sourceTree = "<group>"; };
 		9D4BFF841FCC26EF001ACFD1 /* 華康方圓體W7.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "華康方圓體W7.ttc"; sourceTree = "<group>"; };
 		9D56169D1FD0FC5D00D72CD0 /* EventActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActivityViewController.swift; sourceTree = "<group>"; };
 		9D56169F1FD10AB000D72CD0 /* EventAvtivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAvtivityModel.swift; sourceTree = "<group>"; };
@@ -242,7 +240,6 @@
 			children = (
 				9DF44A741FC2B4400063D804 /* AppDelegate.swift */,
 				9DF70F191FC5623D00774BA6 /* Define.swift */,
-				9D2063361FD94ED700FB3F36 /* Contant.swift */,
 				9DF44A781FC2B4400063D804 /* Main.storyboard */,
 				9DF351331FC6CDB300696057 /* Second.storyboard */,
 				9DF44A871FC2BBD20063D804 /* BaseViewController.swift */,
@@ -484,7 +481,6 @@
 				9D986A081FC7ACC40027D894 /* ListDiscountViewController.swift in Sources */,
 				9DF881EF1FC3CAE100FADA1B /* AboutUsViewController.swift in Sources */,
 				9D0F53A41FD68D5B0025EA3B /* Product+API.swift in Sources */,
-				9D2063371FD94ED700FB3F36 /* Contant.swift in Sources */,
 				9D0F53AA1FD692D40025EA3B /* Event+API.swift in Sources */,
 				9D8269FE1FE0C0070010591F /* ChooseBirthDayView.swift in Sources */,
 				9D8943F81FD8DAF80019C562 /* NewsViewCell.swift in Sources */,

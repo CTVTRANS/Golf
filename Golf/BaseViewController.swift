@@ -28,9 +28,15 @@ func hideLoading() {
 
 class BaseViewController: UIViewController {
     
+    var imageView: UIImageView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
+        getImageCompany()
+        imageView = UIImageView(frame: CGRect(x: (widthScreen - 120) / 2, y: heightScreen - 72, width: 120, height: 64))
+        imageView?.contentMode = .scaleAspectFit
+        self.view.addSubview(imageView!)
     }
     
     func setupNavigation() {
@@ -100,4 +106,37 @@ class BaseViewController: UIViewController {
         MemberModel.shared = member
         return member
     }
+    
+    // MARK: API request
+    private func getImageCompany() {
+        let task = CompanyModel.GetInfo()
+        dataWithTask(task, onCompeted: { (data) in
+            guard let companyResponse = data as? CompanyModel else {
+                return
+            }
+            let task = CompanyModel.DownloadImage(urlString: companyResponse.footerImage)
+            task.downloadDataWith(onCompelete: { (fileURL) in
+                if let url = fileURL as? URL {
+                    if let data = try? Data(contentsOf: url) {
+                       self.imageView?.image = UIImage(data: data)
+                    }
+                }
+            }, onError: { (_) in
+                
+            })
+            
+        }) { (_) in
+            
+        }
+    }
+}
+
+extension BaseViewController {
+//    func downloadWithTask<T: APIRequest>(_ task: T, onCompeted: @escaping BlookSuccess, onError: @escaping BlookFailure) {
+//        task.downloadDataWith(onCompelete: { (data) in
+//            debugPrint(data)
+//        }) { (_) in
+//
+//        }
+//    }
 }

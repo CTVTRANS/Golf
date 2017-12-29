@@ -40,4 +40,21 @@ extension APIRequest {
             onCompelete(self.dataWithResponse(json["data"]))
         }
     }
+    
+    func downloadDataWith(onCompelete: @escaping BlookSuccess, onError: @escaping BlookFailure) {
+        let url = path
+        let destination = DownloadRequest.suggestedDownloadDestination()
+        
+        Alamofire.download(url, to: destination).response { response in
+            if response.error != nil {
+                let error = response.error?.localizedDescription
+                onError(error!)
+                return
+            }
+            if let url = response.destinationURL {
+                debugPrint(url)
+                onCompelete(url)
+            }
+        }
+    }
 }

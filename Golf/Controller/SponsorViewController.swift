@@ -43,21 +43,20 @@ class SponsorViewController: BaseViewController, MainStoryBoard {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         switch type {
-        case .older2018: // show list donors older 2018
+        case .older2018: // show list sponsors older 2018
             titleScreen.text = "歷年贊助對象"
             table.isHidden = false
             webView.isHidden = true
             if isInternetAvailable() {
                 getSponsors()
             } else {
-                fetchOlderDonors()
+                fetchOlderSponsors()
             }
-        case .thisYear: // show thisyear donors
-            titleScreen.text = "2018贊助對象"
+        case .thisYear: // show this year sponsor
             table.isHidden = true
             webView.isHidden = false
             if isInternetAvailable() {
-                getCompany()
+                getCurrentSponsor()
             } else {
                 fetchThisYearSponsor()
             }
@@ -74,10 +73,10 @@ class SponsorViewController: BaseViewController, MainStoryBoard {
             self.listSponsors = sponsors
             self.table.reloadData()
             hideLoading()
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: donorsEntity)
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: sponsorsEntity)
             request.returnsObjectsAsFaults = false
             do {
-                if let result = try self.managerContext.fetch(request) as? [DonorsCore] {
+                if let result = try self.managerContext.fetch(request) as? [SponsorsCore] {
                     for companyCore in result {
                         self.managerContext.delete(companyCore)
                     }
@@ -92,75 +91,50 @@ class SponsorViewController: BaseViewController, MainStoryBoard {
     }
     
     func saveListSponsors(sponsors: [SponsorModel]) {
-        let entity = NSEntityDescription.entity(forEntityName: donorsEntity, in: self.managerContext)
+        let entity = NSEntityDescription.entity(forEntityName: sponsorsEntity, in: self.managerContext)
         for sponsor in sponsors {
-            if let donorCore = NSManagedObject(entity: entity!, insertInto: managerContext) as? DonorsCore {
-                donorCore.donors = sponsor
+            if let sponsorCore = NSManagedObject(entity: entity!, insertInto: managerContext) as? SponsorsCore {
+                sponsorCore.sponsors = sponsor
             }
         }
         storage.saveContext()
     }
     
-    func getCompany() {
-        let task = CompanyModel.GetInfo()
-        dataWithTask(task, onCompeted: { (data) in
-            guard let companyResponse = data as? CompanyModel else {
-                return
-            }
-            self.company = companyResponse
-            self.getCurrentDonors()
-            
-        }) { (_) in
-            
-        }
-    }
-    
-    func getCurrentDonors() {
+    func getCurrentSponsor() {
         let task = SponsorModel.GetCurrent()
         dataWithTask(task, onCompeted: { (data) in
-            guard let content = data as? String else {
+            guard let sponsor = data as? SponsorModel else {
                 return
             }
-            self.company?.currentDonor = content
-            self.webView.loadHTMLString(content, baseURL: nil)
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
-            request.returnsObjectsAsFaults = false
-            do {
-                if let result = try self.managerContext.fetch(request) as? [CompanyCore] {
-                    if result.first != nil, let companyResult = result.first {
-                        companyResult.company = self.company!
-                        self.storage.saveContext()
-                        return
-                    }
-                    self.insertCompany(companyModel: self.company!)
-                }
-            } catch {
-                print("Failed")
-            }
+            self.titleScreen.text = sponsor.name
+            self.webView.loadHTMLString(sponsor.description, baseURL: nil)
+            let cacheSponsor = Cache<SponsorModel>()
+            cacheSponsor.remove()
+            cacheSponsor.save(object: sponsor)
         }) { (_) in
-            debugPrint("")
+            
         }
     }
     
-    func insertCompany(companyModel: CompanyModel) {
-        let entity = NSEntityDescription.entity(forEntityName: companyEntity, in: self.managerContext)
-        if let companyCore = NSManagedObject(entity: entity!, insertInto: managerContext) as? CompanyCore {
-            companyCore.company = companyModel
-        }
-        storage.saveContext()
-    }
+//    func insertCompany(companyModel: CompanyModel) {
+//        let entity = NSEntityDescription.entity(forEntityName: companyEntity, in: self.managerContext)
+//        if let companyCore = NSManagedObject(entity: entity!, insertInto: managerContext) as? CompanyCore {
+//            companyCore.company = companyModel
+//        }
+//        storage.saveContext()
+//    }
     
-    func fetchOlderDonors() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: donorsEntity)
+    func fetchOlderSponsors() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: sponsorsEntity)
         request.returnsObjectsAsFaults = false
         do {
-            if let result = try self.managerContext.fetch(request) as? [DonorsCore] {
+            if let result = try self.managerContext.fetch(request) as? [SponsorsCore] {
                 if result.first == nil {
                     hideLoading()
                     return
                 }
-                for donorsCore in result {
-                    listSponsors.append(donorsCore.donors)
+                for sponsorCore in result {
+                    listSponsors.append(sponsorCore.sponsors)
                 }
                 table.reloadData()
             }
@@ -171,18 +145,10 @@ class SponsorViewController: BaseViewController, MainStoryBoard {
     }
     
     func fetchThisYearSponsor() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
-        request.returnsObjectsAsFaults = false
-        do {
-            if let result = try self.managerContext.fetch(request) as? [CompanyCore] {
-                if let companyCore = result.first {
-                    webView.loadHTMLString(companyCore.currentDonor!, baseURL: nil)
-                }
-            }
-        } catch {
-            print("Failed")
-            hideLoading()
-        }
+        let cacheSponsor = Cache<SponsorModel>()
+        let sponsor = cacheSponsor.fetchObject()
+        self.titleScreen.text = sponsor?.name
+        webView.loadHTMLString((sponsor?.description)!, baseURL: nil)
     }
 }
 

@@ -19,6 +19,7 @@ class EventActivityViewController: BaseViewController, MainStoryBoard {
     @IBOutlet weak var priceAttend: UILabel!
     @IBOutlet weak var listEvent: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var viewOfTitle: UIView!
     
     var typeShow: TypeShow = .company
     private var event: EventActivityModel!
@@ -26,24 +27,34 @@ class EventActivityViewController: BaseViewController, MainStoryBoard {
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoading()
-       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         switch typeShow {
-        case .company:  // show image of donors
-            backgroundImage.image = #imageLiteral(resourceName: "ic_info_company")
+        case .company:  // show image of sponsor
             contentActivityView.isHidden = true
-            titleView.text = "公益夥伴"
-            hideLoading()
+            viewOfTitle.isHidden = true
+            getListSponsor()
         case .activity: // show activity
-            backgroundImage.image = #imageLiteral(resourceName: "ic_background")
+            backgroundImage.image = #imageLiteral(resourceName: "back_ground_main")
             contentActivityView.isHidden = false
             titleView.text = "活動內容"
             getEvent()
         default:
             break
+        }
+    }
+    
+    func getListSponsor() {
+        let task = CompanyModel.GetListSponsor()
+        dataWithTask(task, onCompeted: { (imageURL) in
+            if let url = imageURL as? String {
+                 self.backgroundImage.kf.setImage(with: URL(string: url))
+                hideLoading()
+            }
+        }) { (_) in
+            
         }
     }
     
