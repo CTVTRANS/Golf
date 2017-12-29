@@ -45,9 +45,9 @@ class MainViewController: BaseViewController {
     }
     
     func getDonors() {
-        let task = DonorsModel.GetList()
+        let task = SponsorModel.GetList()
         dataWithTask(task, onCompeted: { (data) in
-            guard let listDonors = data as? [DonorsModel] else {
+            guard let listDonors = data as? [SponsorModel] else {
                 return
             }
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: donorsEntity)
@@ -68,7 +68,7 @@ class MainViewController: BaseViewController {
     }
     
     func getCurrentDonors() {
-        let task = DonorsModel.GetCurrent()
+        let task = SponsorModel.GetCurrent()
         dataWithTask(task, onCompeted: { (data) in
             guard let content = data as? String else {
                 return
@@ -115,7 +115,7 @@ class MainViewController: BaseViewController {
         storage.saveContext()
     }
     
-    func saveListDonors(donors: [DonorsModel]) {
+    func saveListDonors(donors: [SponsorModel]) {
         let entity = NSEntityDescription.entity(forEntityName: donorsEntity, in: self.managerContext)
         for donor in donors {
             if let donorCore = NSManagedObject(entity: entity!, insertInto: managerContext) as? DonorsCore {

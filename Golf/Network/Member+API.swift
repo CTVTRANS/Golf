@@ -156,7 +156,7 @@ extension MemberModel {
     }
     
     struct ScanProduct: APIRequest {
-        typealias ResponseObject = JackpotModel
+        typealias ResponseObject = ProductJackpotModel
         let code: String!
         init(code: String) {
             self.code = code
@@ -169,8 +169,8 @@ extension MemberModel {
             get { return memberScanProductURL}
             set {}
         }
-        func dataWithResponse(_ response: JSON) -> JackpotModel {
-            let product = JackpotModel.decodeJSON(json: response)
+        func dataWithResponse(_ response: JSON) -> ProductJackpotModel {
+            let product = ProductJackpotModel.decodeJSON(json: response)
             return product
         }
     }

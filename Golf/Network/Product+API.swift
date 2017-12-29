@@ -10,9 +10,9 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-extension JackpotModel {
+extension ProductJackpotModel {
     struct GetAll: APIRequest {
-        typealias ResponseObject = [JackpotModel]
+        typealias ResponseObject = [ProductJackpotModel]
         var method: HTTPMethod {get { return .get}}
         var params: [String: Any] {get { return ["": ""]}}
         var path: String {
@@ -20,13 +20,13 @@ extension JackpotModel {
             set {}
         }
         
-        func dataWithResponse(_ response: JSON) -> [JackpotModel] {
-            var listJackpotModel = [JackpotModel]()
+        func dataWithResponse(_ response: JSON) -> [ProductJackpotModel] {
+            var listJackpotModel = [ProductJackpotModel]()
             guard let jsons = response.array else {
                 return listJackpotModel
             }
             for json in jsons {
-                let product = JackpotModel.decodeJSON(json: json)
+                let product = ProductJackpotModel.decodeJSON(json: json)
                 listJackpotModel.append(product)
             }
             return listJackpotModel
@@ -34,7 +34,7 @@ extension JackpotModel {
     }
     
     struct GetProductDeal: APIRequest {
-        typealias ResponseObject = [DiscountModel]
+        typealias ResponseObject = [ProductDiscountModel]
         let type: TypeDiscount!
         init(type: TypeDiscount) {
             self.type = type
@@ -46,13 +46,13 @@ extension JackpotModel {
             set {}
         }
         
-        func dataWithResponse(_ response: JSON) -> [DiscountModel] {
-            var listProfuct = [DiscountModel]()
+        func dataWithResponse(_ response: JSON) -> [ProductDiscountModel] {
+            var listProfuct = [ProductDiscountModel]()
             guard let jsons = response.array else {
                 return listProfuct
             }
             for json in jsons {
-                let discount = DiscountModel.decodeJSON(json: json)
+                let discount = ProductDiscountModel.decodeJSON(json: json)
                 listProfuct.append(discount)
             }
             return listProfuct
@@ -60,7 +60,7 @@ extension JackpotModel {
     }
     
     struct GetProductScaned: APIRequest {
-        typealias ResponseObject = [JackpotModel]
+        typealias ResponseObject = [ProductJackpotModel]
         var method: HTTPMethod {get { return .get}}
         var params: [String: Any] {get { return ["member_id": MemberModel.shared.idMember,
                                                  "access_token": MemberModel.shared.accessToken]}}
@@ -69,13 +69,13 @@ extension JackpotModel {
             set {}
         }
         
-        func dataWithResponse(_ response: JSON) -> [JackpotModel] {
-            var listProduct = [JackpotModel]()
+        func dataWithResponse(_ response: JSON) -> [ProductJackpotModel] {
+            var listProduct = [ProductJackpotModel]()
             guard let jsons = response.array else {
                 return listProduct
             }
             for json in jsons {
-                let product = JackpotModel.decodeJSON(json: json)
+                let product = ProductJackpotModel.decodeJSON(json: json)
                 listProduct.append(product)
             }
             return listProduct

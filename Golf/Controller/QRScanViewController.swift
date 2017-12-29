@@ -12,7 +12,7 @@ import AVFoundation
 class QRScanViewController: BaseViewController, SecondSroyBoard {
 
     @IBOutlet weak var scannerPreview: UIView!
-    var product: JackpotModel?
+    var product: ProductJackpotModel?
     var member: MemberModel!
     
     fileprivate lazy var qrCodeFrameView: UIView = {
@@ -55,7 +55,7 @@ class QRScanViewController: BaseViewController, SecondSroyBoard {
         showLoading()
         let task = MemberModel.ScanProduct(code: qrID)
         dataWithTask(task, onCompeted: { (data) in
-            if let product = data as? JackpotModel {
+            if let product = data as? ProductJackpotModel {
                 self.product = product
                 self.showResult(withString: "")
             }

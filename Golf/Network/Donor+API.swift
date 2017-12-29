@@ -10,9 +10,9 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-extension DonorsModel {
+extension SponsorModel {
     struct GetList: APIRequest {
-        typealias ResponseObject = [DonorsModel]
+        typealias ResponseObject = [SponsorModel]
         var method: HTTPMethod {get { return .get}}
         var params: [String: Any] {get { return ["": ""]}}
         var path: String {
@@ -20,13 +20,13 @@ extension DonorsModel {
             set {}
         }
         
-        func dataWithResponse(_ response: JSON) -> [DonorsModel] {
-            var listDonors = [DonorsModel]()
+        func dataWithResponse(_ response: JSON) -> [SponsorModel] {
+            var listDonors = [SponsorModel]()
             guard let jsons = response.array else {
                 return listDonors
             }
             for json in jsons {
-                let donors = DonorsModel.decodeJSON(json: json)
+                let donors = SponsorModel.decodeJSON(json: json)
                 listDonors.append(donors)
             }
             return listDonors

@@ -12,22 +12,22 @@ import CoreData
 class DonorsCell: UITableViewCell {
     
     @IBOutlet weak var content: UILabel!
-    @IBOutlet weak var titleDonors: UILabel!
+    @IBOutlet weak var titleSponsor: UILabel!
     @IBOutlet weak var year: UILabel!
-    func load(_ donors: DonorsModel) {
-        year.text = donors.year.description
-        titleDonors.text = donors.name
-        content.text = donors.description
+    func load(_ sponsor: SponsorModel) {
+        year.text = sponsor.year.description
+        titleSponsor.text = sponsor.name
+        content.text = sponsor.description
     }
 }
 
-class DonorsViewController: BaseViewController, MainStoryBoard {
+class SponsorViewController: BaseViewController, MainStoryBoard {
 
     @IBOutlet weak var titleScreen: UILabel!
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var table: UITableView!
-    var type = TypeDonors.thisYear
-    var listDonors = [DonorsModel]()
+    var type = TypeSponsor.thisYear
+    var listSponsors = [SponsorModel]()
     let managerContext = StorageManager.shared.managedObjectContext
     private let storage = StorageManager.shared
     fileprivate var company: CompanyModel?
@@ -48,7 +48,7 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
             table.isHidden = false
             webView.isHidden = true
             if isInternetAvailable() {
-                getDonors()
+                getSponsors()
             } else {
                 fetchOlderDonors()
             }
@@ -59,18 +59,19 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
             if isInternetAvailable() {
                 getCompany()
             } else {
-                fetchThisYearDonors()
+                fetchThisYearSponsor()
             }
         }
     }
     
-    func getDonors() {
-        let task = DonorsModel.GetList()
+    func getSponsors() {
+        let task = SponsorModel.GetList()
         dataWithTask(task, onCompeted: { (data) in
-            guard let listDonors = data as? [DonorsModel] else {
+            guard let sponsors = data as? [SponsorModel
+                ] else {
                 return
             }
-            self.listDonors = listDonors
+            self.listSponsors = sponsors
             self.table.reloadData()
             hideLoading()
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: donorsEntity)
@@ -81,7 +82,7 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
                         self.managerContext.delete(companyCore)
                     }
                     self.storage.saveContext()
-                    self.saveListDonors(donors: listDonors)
+                    self.saveListSponsors(sponsors: sponsors)
                 }
             } catch {
                 print("Failed")
@@ -90,11 +91,11 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
         }
     }
     
-    func saveListDonors(donors: [DonorsModel]) {
+    func saveListSponsors(sponsors: [SponsorModel]) {
         let entity = NSEntityDescription.entity(forEntityName: donorsEntity, in: self.managerContext)
-        for donor in donors {
+        for sponsor in sponsors {
             if let donorCore = NSManagedObject(entity: entity!, insertInto: managerContext) as? DonorsCore {
-                donorCore.donors = donor
+                donorCore.donors = sponsor
             }
         }
         storage.saveContext()
@@ -115,7 +116,7 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
     }
     
     func getCurrentDonors() {
-        let task = DonorsModel.GetCurrent()
+        let task = SponsorModel.GetCurrent()
         dataWithTask(task, onCompeted: { (data) in
             guard let content = data as? String else {
                 return
@@ -159,7 +160,7 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
                     return
                 }
                 for donorsCore in result {
-                    listDonors.append(donorsCore.donors)
+                    listSponsors.append(donorsCore.donors)
                 }
                 table.reloadData()
             }
@@ -169,7 +170,7 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
         hideLoading()
     }
     
-    func fetchThisYearDonors() {
+    func fetchThisYearSponsor() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
         request.returnsObjectsAsFaults = false
         do {
@@ -185,15 +186,15 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
     }
 }
 
-extension DonorsViewController: UITableViewDelegate, UITableViewDataSource {
+extension SponsorViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listDonors.count
+        return listSponsors.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? DonorsCell
-        let index = listDonors.count - 1 - indexPath.row
-        cell?.load(listDonors[index])
+        let index = listSponsors.count - 1 - indexPath.row
+        cell?.load(listSponsors[index])
         return cell!
     }
     
@@ -202,7 +203,7 @@ extension DonorsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension DonorsViewController: UIWebViewDelegate {
+extension SponsorViewController: UIWebViewDelegate {
     func webViewDidFinishLoad(_ webView: UIWebView) {
         hideLoading()
     }

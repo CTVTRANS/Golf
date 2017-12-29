@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-struct JackpotModel: BaseModel {
+struct ProductJackpotModel: BaseModel {
     var idJackpit = 0
     var name = ""
     var imageURL = ""
@@ -18,10 +18,10 @@ struct JackpotModel: BaseModel {
     var statusReward: StatusReward = .notRewarded
     var isWinings: StatusWinings = .notWining
     
-    static func decodeJSON(json: JSON) -> JackpotModel {
+    static func decodeJSON(json: JSON) -> ProductJackpotModel {
         let statusReward = StatusReward(rawValue: json["status_receive"].intValue)
         let isWinings = StatusWinings(rawValue: json["status_scan"].intValue)
-        return JackpotModel(idJackpit: json["id"].intValue,
+        return ProductJackpotModel(idJackpit: json["id"].intValue,
                             name: json["title"].stringValue,
                             imageURL: json["image"].stringValue,
                             amount: json["amount_left"].intValue,

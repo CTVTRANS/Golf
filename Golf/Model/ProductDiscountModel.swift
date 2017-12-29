@@ -9,15 +9,15 @@
 import UIKit
 import SwiftyJSON
 
-struct DiscountModel: BaseModel {
+struct ProductDiscountModel: BaseModel {
     
     var idDiscount = 0
     var name = ""
     var imageURL = ""
     var price = 0
     
-    static func decodeJSON(json: JSON) -> DiscountModel {
-        return DiscountModel(idDiscount: json["id"].intValue,
+    static func decodeJSON(json: JSON) -> ProductDiscountModel {
+        return ProductDiscountModel(idDiscount: json["id"].intValue,
                              name: json["title"].stringValue,
                              imageURL: json["image"].stringValue,
                              price: json["price"].intValue

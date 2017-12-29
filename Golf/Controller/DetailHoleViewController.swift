@@ -10,6 +10,7 @@ import UIKit
 
 class DetailHoleViewController: BaseViewController, MainStoryBoard {
 
+    @IBOutlet weak var imageHole17: UIImageView!
     @IBOutlet weak var imageDonors: UIImageView!
     @IBOutlet weak var par: UILabel!
     @IBOutlet weak var regularRed: UILabel!
@@ -27,6 +28,8 @@ class DetailHoleViewController: BaseViewController, MainStoryBoard {
         showLoading()
         detailHole.scrollView.showsVerticalScrollIndicator = false
         if hole.index == 17 {
+            imageHole17.isHidden = false
+            imageHole17.kf.setImage(with: URL(string: hole.imageHole))
             contentView.isHidden = true
             imageBackGround.image = #imageLiteral(resourceName: "ic_background_hole_17")
             hideLoading()
@@ -38,7 +41,7 @@ class DetailHoleViewController: BaseViewController, MainStoryBoard {
         detailHole.delegate = self
         indexHole.text = hole.index.description
         imageBackGround.image = #imageLiteral(resourceName: "ic_backGround_hole")
-        imageMapHole.image = UIImage(named: "hole\(hole.index)")
+        imageMapHole.kf.setImage(with: URL(string: hole.imageHole))
         imageDonors.kf.setImage(with: URL(string: hole.imageBusiness))
         detailHole.loadHTMLString(hole.content, baseURL: nil)
     }

@@ -18,7 +18,7 @@ class ResultScanViewController: BaseViewController, SecondSroyBoard {
     @IBOutlet weak var imageResult: UIImageView!
     @IBOutlet weak var button: UIButton!
     
-    var product: JackpotModel?
+    var product: ProductJackpotModel?
     var isHiddenButton = false
     var message = ""
     

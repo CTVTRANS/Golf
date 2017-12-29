@@ -14,7 +14,7 @@ class DiscountCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var imageDiscount: UIImageView!
     
-    func load(_ discount: DiscountModel) {
+    func load(_ discount: ProductDiscountModel) {
         price.text = "$\(discount.price.description)"
         name.text = discount.name
         imageDiscount.kf.setImage(with: URL(string: discount.imageURL))
@@ -26,7 +26,7 @@ class ListDiscountViewController: BaseViewController, SecondSroyBoard {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var table: UITableView!
     var typeDiscount: TypeDiscount = .tour
-    var listDiscount = [DiscountModel]()
+    var listDiscount = [ProductDiscountModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +44,9 @@ class ListDiscountViewController: BaseViewController, SecondSroyBoard {
     }
     
     func getDealProduct() {
-        let task = JackpotModel.GetProductDeal(type: typeDiscount)
+        let task = ProductJackpotModel.GetProductDeal(type: typeDiscount)
         dataWithTask(task, onCompeted: { (data) in
-            if let array = data as? [DiscountModel] {
+            if let array = data as? [ProductDiscountModel] {
                 self.listDiscount = array
                 self.table.reloadData()
                 hideLoading()

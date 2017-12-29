@@ -10,17 +10,17 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
-struct DonorsModel: BaseModel {
+struct SponsorModel: BaseModel {
     
     var idDonors = 0
     var name = ""
     var description = ""
     var year = 0
     
-    static func decodeJSON(json: JSON) -> DonorsModel {
+    static func decodeJSON(json: JSON) -> SponsorModel {
         let name = json["title"].stringValue.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         let description = json["description"].stringValue.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-        return DonorsModel(idDonors: json[""].intValue,
+        return SponsorModel(idDonors: json[""].intValue,
                            name: name,
                            description: description,
                            year: json["year"].intValue
@@ -29,9 +29,9 @@ struct DonorsModel: BaseModel {
 }
 
 extension DonorsCore {
-    var donors: DonorsModel {
+    var donors: SponsorModel {
         get {
-            return DonorsModel(idDonors: Int(self.id), name: self.name!, description: self.detail!, year: Int(self.year))
+            return SponsorModel(idDonors: Int(self.id), name: self.name!, description: self.detail!, year: Int(self.year))
         }
         set {
             self.id = Int16(newValue.idDonors)

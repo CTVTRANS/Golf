@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TypeDonors {
+enum TypeSponsor {
     case older2018
     case thisYear
 }

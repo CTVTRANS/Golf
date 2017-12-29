@@ -15,13 +15,13 @@ class AboutUsViewController: BaseViewController, MainStoryBoard {
     }
     
     @IBAction func pressedShowOldDonores(_ sender: Any) {
-        if let vc = DonorsViewController.instance() as? DonorsViewController {
+        if let vc = SponsorViewController.instance() as? SponsorViewController {
             vc.type = .older2018
             navigationController?.pushViewController(vc, animated: false)
         }
     }
     @IBAction func pressedShowNewDonors(_ sender: Any) {
-        if let vc = DonorsViewController.instance() as? DonorsViewController {
+        if let vc = SponsorViewController.instance() as? SponsorViewController {
             vc.type = .thisYear
             navigationController?.pushViewController(vc, animated: false)
         }

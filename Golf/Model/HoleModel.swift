@@ -17,6 +17,7 @@ struct HoleModel: BaseModel {
     var regularRed = 1
     var content = ""
     var imageBusiness = ""
+    var imageHole = ""
     
     static func decodeJSON(json: JSON) -> HoleModel {
         return HoleModel(index: json["hole"].intValue,
@@ -24,7 +25,8 @@ struct HoleModel: BaseModel {
                          regularWhite: json["regular_white"].intValue,
                          regularRed: json["regular_red"].intValue,
                          content: json["content"].stringValue,
-                         imageBusiness: json["hole_sponsor"].stringValue
+                         imageBusiness: json["hole_sponsor"].stringValue,
+                         imageHole: json["map"].stringValue
         )
     }
 }
