@@ -31,6 +31,10 @@ class ListDiscountViewController: BaseViewController, SecondSroyBoard {
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoading()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if typeDiscount == .tour {
             name.text = "球場優惠資訊"
         } else {

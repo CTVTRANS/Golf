@@ -12,8 +12,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="BradleyHand-Bold.ttf">
-            <string>BradleyHandITCTT-Bold</string>
+        <array key="Courier.ttc">
+            <string>Courier</string>
         </array>
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
@@ -143,11 +143,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="315" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FbK-7e-GQj">
-                                                    <rect key="frame" x="251" y="4" width="64" height="56"/>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FbK-7e-GQj">
+                                                    <rect key="frame" x="315" y="4" width="0.0" height="56"/>
                                                     <color key="backgroundColor" red="0.47843137250000001" green="0.75686274509999996" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="64" id="5nz-EL-e77"/>
+                                                        <constraint firstAttribute="width" id="5nz-EL-e77"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -204,7 +204,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaE-lX-SQJ">
-                                                    <rect key="frame" x="56" y="4" width="195" height="56"/>
+                                                    <rect key="frame" x="56" y="4" width="259" height="56"/>
                                                     <color key="backgroundColor" red="0.34509803921568627" green="0.34901960784313724" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -434,9 +434,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auk-we-0SK">
-                                <rect key="frame" x="137.5" y="505.5" width="100" height="30"/>
+                                <rect key="frame" x="141.5" y="505.5" width="92" height="30"/>
                                 <color key="backgroundColor" red="0.47843137250000001" green="0.75686274509999996" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title=" 前往票劵管理 ">
+                                <state key="normal" title="前往票券管理">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -672,8 +672,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_background" translatesAutoresizingMaskIntoConstraints="NO" id="bbc-jT-rF8">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDG-IX-OwQ">
-                                <rect key="frame" x="167" y="55" width="42" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDG-IX-OwQ">
+                                <rect key="frame" x="181.5" y="55" width="13.5" height="20"/>
                                 <fontDescription key="fontDescription" name="DFFangYuan-W7-WINP-BF" family="DFPFangYuanW7-B5" pointSize="17"/>
                                 <color key="textColor" red="0.44705882349999998" green="0.35294117650000001" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1836,14 +1836,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title_scan" translatesAutoresizingMaskIntoConstraints="NO" id="Aai-Af-rRr">
+                                <rect key="frame" x="122.5" y="54" width="130" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="SXI-B7-K3H"/>
+                                    <constraint firstAttribute="width" constant="130" id="k0c-k0-iVT"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.47843137250000001" green="0.75686274509999996" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="E3h-bV-OMF" firstAttribute="top" secondItem="FEN-B6-15w" secondAttribute="bottom" constant="16" id="0WO-Dd-aWM"/>
                             <constraint firstItem="aeD-QX-DMh" firstAttribute="trailing" secondItem="E3h-bV-OMF" secondAttribute="trailing" constant="16" id="1CQ-tM-s5e"/>
                             <constraint firstItem="9qB-WT-gdr" firstAttribute="trailing" secondItem="E3h-bV-OMF" secondAttribute="leading" constant="-16" id="1qv-6D-QKq"/>
+                            <constraint firstItem="Aai-Af-rRr" firstAttribute="centerX" secondItem="qgB-KO-0Wa" secondAttribute="centerX" id="4Vr-6V-jBO"/>
                             <constraint firstItem="FEN-B6-15w" firstAttribute="leading" secondItem="E3h-bV-OMF" secondAttribute="leading" constant="-16" id="6yM-Wf-27x"/>
                             <constraint firstItem="GRA-cJ-7vB" firstAttribute="top" secondItem="E3h-bV-OMF" secondAttribute="top" constant="-18" id="E2Q-Dh-1M4"/>
+                            <constraint firstItem="Aai-Af-rRr" firstAttribute="top" secondItem="8Gt-oC-Rao" secondAttribute="bottom" constant="34" id="EaF-Cz-NNg"/>
                             <constraint firstItem="f5i-WR-oGu" firstAttribute="top" secondItem="8Gt-oC-Rao" secondAttribute="bottom" id="K0Q-2V-lKs"/>
                             <constraint firstItem="GRA-cJ-7vB" firstAttribute="trailing" secondItem="E3h-bV-OMF" secondAttribute="leading" constant="-16" id="MH3-jc-HIK"/>
                             <constraint firstItem="g4K-UX-a8Y" firstAttribute="leading" secondItem="E3h-bV-OMF" secondAttribute="trailing" constant="16" id="N08-Vn-eUG"/>
@@ -2348,7 +2357,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DgER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcy-FT-5eD">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="44"/>
-                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="37"/>
+                                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="35"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -2547,5 +2556,6 @@
         <image name="ic_jackpot_winnings" width="239" height="253"/>
         <image name="ic_person" width="25" height="40"/>
         <image name="title_jackpot_winnings" width="270" height="66"/>
+        <image name="title_scan" width="259" height="47"/>
     </resources>
 </document>

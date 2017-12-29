@@ -44,12 +44,12 @@ class ForgotPassViewController: BaseViewController, SecondSroyBoard {
             return
         }
         guard let phoneNumber = Int(phone.text!) else {
-            UIAlertController.showAlertWith(title: "", message: ErrorCode.numberPhoneEmty.decodeError(), in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorCode.numberPhoneError.decodeError(), in: self)
             return
         }
         let task = MemberModel.ForgotPass(phone: phoneNumber, idCard: idCard)
         dataWithTask(task, onCompeted: { (_) in
-            UIAlertController.showAlertWith(title: "", message: "新密碼會寄到您的手機號碼的簡訊，請查看", in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorMessage.newPassSent.rawValue, in: self)
         }) { (_) in
         }
     }

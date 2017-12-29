@@ -20,8 +20,11 @@ class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getCompany()
-        getDonors()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+//        getCompany()
+//        getDonors()
         getNews()
     }
     

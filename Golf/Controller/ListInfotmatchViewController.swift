@@ -16,6 +16,10 @@ class ListInfotmatchViewController: BaseViewController, MainStoryBoard {
         super.viewDidLoad()
         showLoading()
         webView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getInfoActivity()
     }
     

@@ -82,6 +82,13 @@ enum ErrorProduct: Int {
     case limited = 602
     case outOfTime = 603
     case noHasProduct = 604
+    case notWining = 608
+}
+
+enum ErrorMessage: String {
+    case pleaseFillFullInfo = "註冊會員全部項目為必填"
+    case captchaWrong = "驗證碼錯誤"
+    case newPassSent = "新密碼會寄到您的手機號碼的簡訊，請查看"
 }
 
 extension ErrorCode {
@@ -148,6 +155,19 @@ extension ErrorProduct {
             return "此票劵已被掃描過"
         case .noHasProduct:
             return "沒有產品"
+        case .notWining:
+            return ""
+        }
+    }
+}
+
+extension StatusReward {
+    func decodeError() -> String {
+        switch self {
+        case .notRewarded:
+            return "未用"
+        case .rewarded:
+            return "已用"
         }
     }
 }

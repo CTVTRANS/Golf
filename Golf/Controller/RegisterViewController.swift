@@ -66,41 +66,48 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
             return
         }
         guard let passWord = pass.text, passWord != "" else {
-            UIAlertController.showAlertWith(title: "", message: ErrorCode.passwordEmty.decodeError(), in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorMessage.pleaseFillFullInfo.rawValue, in: self)
             return
         }
         guard let passWordConfirm = confirmPass.text, passWordConfirm != "" else {
-            UIAlertController.showAlertWith(title: "", message: ErrorCode.passwordEmty.decodeError(), in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorMessage.pleaseFillFullInfo.rawValue, in: self)
             return
         }
         guard let userName = name.text else {
-            UIAlertController.showAlertWith(title: "", message: ErrorCode.nameEmty.decodeError(), in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorMessage.pleaseFillFullInfo.rawValue, in: self)
             return
         }
-        guard let idMember = idCard.text else {
-            UIAlertController.showAlertWith(title: "", message: ErrorCode.idCardEmty.decodeError(), in: self)
-            return
-        }
-        guard let landLine = telephone.text, landLine != "" else {
-            UIAlertController.showAlertWith(title: "", message: ErrorCode.numberPhoneEmty.decodeError(), in: self)
-            return
-        }
-        guard let adressMember = address.text, adressMember != "" else {
-             UIAlertController.showAlertWith(title: "", message: ErrorCode.addressEmty.decodeError(), in: self)
-            return
-        }
+        
         guard let birDay = birthDay.text, birDay != "" else {
-             UIAlertController.showAlertWith(title: "", message: ErrorCode.birthEmty.decodeError(), in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorMessage.pleaseFillFullInfo.rawValue, in: self)
             return
         }
+        
+        guard let idMember = idCard.text else {
+            UIAlertController.showAlertWith(title: "", message: ErrorMessage.pleaseFillFullInfo.rawValue, in: self)
+            return
+        }
+        
+        guard let adressMember = address.text, adressMember != "" else {
+            UIAlertController.showAlertWith(title: "", message: ErrorMessage.pleaseFillFullInfo.rawValue, in: self)
+            return
+        }
+        
         guard let emailMember = email.text, emailMember != "" else {
-             UIAlertController.showAlertWith(title: "", message: ErrorCode.emailEmty.decodeError(), in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorMessage.pleaseFillFullInfo.rawValue, in: self)
             return
         }
+        
+        guard let landLine = telephone.text, landLine != "" else {
+            UIAlertController.showAlertWith(title: "", message: ErrorMessage.pleaseFillFullInfo.rawValue, in: self)
+            return
+        }
+        
         guard let code = confirmCode.text, code != "" else {
-            UIAlertController.showAlertWith(title: "", message: ErrorCode.confirmCodeEmty.decodeError(), in: self)
+            UIAlertController.showAlertWith(title: "", message: ErrorMessage.pleaseFillFullInfo.rawValue, in: self)
             return
         }
+        
         let task = MemberModel.Sigup(userName: userName, pass: passWord, confirmPass: passWordConfirm, mobile: phoneNumber, birthDay: birDay, idCard: idMember, address: adressMember, email: emailMember, landLine: landLine, code: code)
         dataWithTask(task, onCompeted: { (_) in
             let message = ErrorCode.success

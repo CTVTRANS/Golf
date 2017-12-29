@@ -49,8 +49,8 @@ class SinginViewController: BaseViewController, SecondSroyBoard {
             return
         }
         
-        guard let capchaConfirm = capchaTextField.text, capchaConfirm ==  capcha.text else {
-            UIAlertController.showAlertWith(title: "", message: "驗證碼錯誤", in: self)
+        guard let capchaConfirm = capchaTextField.text, capchaConfirm.caseInsensitiveCompare(capcha.text!) == .orderedSame else {
+            UIAlertController.showAlertWith(title: "", message: ErrorMessage.captchaWrong.rawValue, in: self)
             self.capcha.text = self.randomString(length: 4)
             return
         }

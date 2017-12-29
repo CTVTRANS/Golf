@@ -26,6 +26,11 @@ class EventActivityViewController: BaseViewController, MainStoryBoard {
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoading()
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         switch typeShow {
         case .company:  // show image of donors
             backgroundImage.image = #imageLiteral(resourceName: "ic_info_company")

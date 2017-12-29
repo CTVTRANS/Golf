@@ -17,6 +17,9 @@ class HoleListViewController: BaseViewController, MainStoryBoard {
         super.viewDidLoad()
         showLoading()
         collection.register(UINib.init(nibName: "HoleViewCell", bundle: nil), forCellWithReuseIdentifier: "HoleViewCell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         getHole()
     }
     

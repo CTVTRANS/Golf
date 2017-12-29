@@ -29,6 +29,8 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
     var type = TypeDonors.thisYear
     var listDonors = [DonorsModel]()
     let managerContext = StorageManager.shared.managedObjectContext
+    private let storage = StorageManager.shared
+    fileprivate var company: CompanyModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,22 +38,118 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
         table.estimatedRowHeight = 140
         webView.delegate = self
         webView.scrollView.showsVerticalScrollIndicator = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         switch type {
         case .older2018: // show list donors older 2018
             titleScreen.text = "歷年贊助對象"
             table.isHidden = false
             webView.isHidden = true
-            getOlderDonors()
+            if isInternetAvailable() {
+                getDonors()
+            } else {
+                fetchOlderDonors()
+            }
         case .thisYear: // show thisyear donors
             titleScreen.text = "2018贊助對象"
             table.isHidden = true
             webView.isHidden = false
-            getThisYearDonors()
+            if isInternetAvailable() {
+                getCompany()
+            } else {
+                fetchThisYearDonors()
+            }
         }
-
     }
     
-    func getOlderDonors() {
+    func getDonors() {
+        let task = DonorsModel.GetList()
+        dataWithTask(task, onCompeted: { (data) in
+            guard let listDonors = data as? [DonorsModel] else {
+                return
+            }
+            self.listDonors = listDonors
+            self.table.reloadData()
+            hideLoading()
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: donorsEntity)
+            request.returnsObjectsAsFaults = false
+            do {
+                if let result = try self.managerContext.fetch(request) as? [DonorsCore] {
+                    for companyCore in result {
+                        self.managerContext.delete(companyCore)
+                    }
+                    self.storage.saveContext()
+                    self.saveListDonors(donors: listDonors)
+                }
+            } catch {
+                print("Failed")
+            }
+        }) { (_) in
+        }
+    }
+    
+    func saveListDonors(donors: [DonorsModel]) {
+        let entity = NSEntityDescription.entity(forEntityName: donorsEntity, in: self.managerContext)
+        for donor in donors {
+            if let donorCore = NSManagedObject(entity: entity!, insertInto: managerContext) as? DonorsCore {
+                donorCore.donors = donor
+            }
+        }
+        storage.saveContext()
+    }
+    
+    func getCompany() {
+        let task = CompanyModel.GetInfo()
+        dataWithTask(task, onCompeted: { (data) in
+            guard let companyResponse = data as? CompanyModel else {
+                return
+            }
+            self.company = companyResponse
+            self.getCurrentDonors()
+            
+        }) { (_) in
+            
+        }
+    }
+    
+    func getCurrentDonors() {
+        let task = DonorsModel.GetCurrent()
+        dataWithTask(task, onCompeted: { (data) in
+            guard let content = data as? String else {
+                return
+            }
+            self.company?.currentDonor = content
+            self.webView.loadHTMLString(content, baseURL: nil)
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
+            request.returnsObjectsAsFaults = false
+            do {
+                if let result = try self.managerContext.fetch(request) as? [CompanyCore] {
+                    if result.first != nil, let companyResult = result.first {
+                        companyResult.company = self.company!
+                        self.storage.saveContext()
+                        return
+                    }
+                    self.insertCompany(companyModel: self.company!)
+                }
+            } catch {
+                print("Failed")
+            }
+        }) { (_) in
+            debugPrint("")
+        }
+    }
+    
+    func insertCompany(companyModel: CompanyModel) {
+        let entity = NSEntityDescription.entity(forEntityName: companyEntity, in: self.managerContext)
+        if let companyCore = NSManagedObject(entity: entity!, insertInto: managerContext) as? CompanyCore {
+            companyCore.company = companyModel
+        }
+        storage.saveContext()
+    }
+    
+    func fetchOlderDonors() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: donorsEntity)
         request.returnsObjectsAsFaults = false
         do {
@@ -71,7 +169,7 @@ class DonorsViewController: BaseViewController, MainStoryBoard {
         hideLoading()
     }
     
-    func getThisYearDonors() {
+    func fetchThisYearDonors() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
         request.returnsObjectsAsFaults = false
         do {

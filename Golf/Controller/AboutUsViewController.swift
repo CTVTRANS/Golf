@@ -12,8 +12,8 @@ class AboutUsViewController: BaseViewController, MainStoryBoard {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
     }
+    
     @IBAction func pressedShowOldDonores(_ sender: Any) {
         if let vc = DonorsViewController.instance() as? DonorsViewController {
             vc.type = .older2018

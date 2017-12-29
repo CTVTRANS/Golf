@@ -31,6 +31,11 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
         spaceTopButton.constant = 16
         memberView.isHidden = true
         loadMember()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         getContent()
     }
     

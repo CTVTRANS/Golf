@@ -32,10 +32,13 @@ class ProductScanedCell: UITableViewCell {
     func load(_ jackpotScaned: JackpotModel) {
         product = jackpotScaned
         nameProduct.text = jackpotScaned.name
-        status.text = (jackpotScaned.statusReward == .notRewarded ) ? "未用" : "已用"
+        status.text = jackpotScaned.statusReward.decodeError()
         if jackpotScaned.isWinings == .notWining {
             button.isEnabled = false
             button.backgroundColor = UIColor.gray
+        } else {
+            button.isEnabled = true
+            button.backgroundColor = UIColor.hex(rgbValue: 0x7AC1A0)
         }
     }
     
@@ -56,6 +59,11 @@ class ListJackpotViewController: BaseViewController, SecondSroyBoard {
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoading()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         switch statusProduct {
         case .all:
             showDescription.isHidden = true
