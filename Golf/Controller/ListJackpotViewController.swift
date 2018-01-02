@@ -53,8 +53,7 @@ class ListJackpotViewController: BaseViewController, SecondSroyBoard {
     @IBOutlet weak var showDescription: UILabel!
     @IBOutlet weak var table: UITableView!
     var statusProduct: TypeJackpotProduct = .all
-    var listJackpot = [ProductJackpotModel]()
-    var member: MemberModel!
+    private var listJackpot = [ProductJackpotModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

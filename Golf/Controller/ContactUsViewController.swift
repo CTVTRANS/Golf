@@ -18,11 +18,7 @@ class ContactUsViewController: BaseViewController, MainStoryBoard {
     @IBOutlet weak var website: UILabel!
     @IBOutlet weak var address: UILabel!
     
-    let managerContext = StorageManager.shared.managedObjectContext
-    var company: CompanyModel?
-    private let storage = StorageManager.shared
-    
-    let regionRadius: CLLocationDistance = 1000
+    private let regionRadius: CLLocationDistance = 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,31 +49,6 @@ class ContactUsViewController: BaseViewController, MainStoryBoard {
         }) { (_) in
             
         }
-    }
-    
-    func saveCompany() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
-        request.returnsObjectsAsFaults = false
-        do {
-            if let result = try self.managerContext.fetch(request) as? [CompanyCore] {
-                if result.first != nil, let companyResult = result.first {
-                    companyResult.company = self.company!
-                    self.storage.saveContext()
-                    return
-                }
-                self.insertCompany(companyModel: self.company!)
-            }
-        } catch {
-            print("Failed")
-        }
-    }
-    
-    func insertCompany(companyModel: CompanyModel) {
-        let entity = NSEntityDescription.entity(forEntityName: companyEntity, in: self.managerContext)
-        if let companyCore = NSManagedObject(entity: entity!, insertInto: managerContext) as? CompanyCore {
-            companyCore.company = companyModel
-        }
-        storage.saveContext()
     }
     
     func fetchCompany() {
@@ -129,10 +100,10 @@ class ContactUsViewController: BaseViewController, MainStoryBoard {
 }
 
 class Artwork: NSObject, MKAnnotation {
-    let title: String?
-    let locationName: String
-    let discipline: String
-    let coordinate: CLLocationCoordinate2D
+    internal let title: String?
+    private let locationName: String
+    private let discipline: String
+    internal let coordinate: CLLocationCoordinate2D
     
     init(title: String, locationName: String, discipline: String, coordinate: CLLocationCoordinate2D) {
         self.title = title

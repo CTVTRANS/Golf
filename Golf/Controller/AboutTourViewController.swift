@@ -12,9 +12,6 @@ import CoreData
 class AboutTourViewController: BaseViewController, MainStoryBoard {
 
     @IBOutlet weak var webView: UIWebView!
-    let managerContext = StorageManager.shared.managedObjectContext
-    private let storage = StorageManager.shared
-    fileprivate var company: CompanyModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,36 +38,11 @@ class AboutTourViewController: BaseViewController, MainStoryBoard {
             }
             self.company = companyResponse
             self.webView.loadHTMLString(companyResponse.info, baseURL: nil)
-            self.saveMap()
+            self.saveCompany()
             
         }) { (_) in
             
         }
-    }
-    
-    func saveMap() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: companyEntity)
-        request.returnsObjectsAsFaults = false
-        do {
-            if let result = try self.managerContext.fetch(request) as? [CompanyCore] {
-                if result.first != nil, let companyResult = result.first {
-                    companyResult.company = self.company!
-                    self.storage.saveContext()
-                    return
-                }
-                self.insertCompany(companyModel: self.company!)
-            }
-        } catch {
-            print("Failed")
-        }
-    }
-    
-    func insertCompany(companyModel: CompanyModel) {
-        let entity = NSEntityDescription.entity(forEntityName: companyEntity, in: self.managerContext)
-        if let companyCore = NSManagedObject(entity: entity!, insertInto: managerContext) as? CompanyCore {
-            companyCore.company = companyModel
-        }
-        storage.saveContext()
     }
     
     func fetchAboutMap() {

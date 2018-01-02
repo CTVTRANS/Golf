@@ -10,7 +10,8 @@ import UIKit
 
 class EventActivityViewController: BaseViewController, MainStoryBoard {
 
-    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var listSponsorView: UIView!
+    @IBOutlet weak var listSponesor: UIImageView!
     @IBOutlet weak var contentActivityView: UIScrollView!
     @IBOutlet weak var titleView: UILabel!
     @IBOutlet weak var time: UILabel!
@@ -34,11 +35,12 @@ class EventActivityViewController: BaseViewController, MainStoryBoard {
         switch typeShow {
         case .company:  // show image of sponsor
             contentActivityView.isHidden = true
+            listSponsorView.isHidden = false
             viewOfTitle.isHidden = true
             getListSponsor()
         case .activity: // show activity
-            backgroundImage.image = #imageLiteral(resourceName: "back_ground_main")
             contentActivityView.isHidden = false
+            listSponsorView.isHidden = true
             titleView.text = "活動內容"
             getEvent()
         default:
@@ -50,7 +52,7 @@ class EventActivityViewController: BaseViewController, MainStoryBoard {
         let task = CompanyModel.GetListSponsor()
         dataWithTask(task, onCompeted: { (imageURL) in
             if let url = imageURL as? String {
-                 self.backgroundImage.kf.setImage(with: URL(string: url))
+                 self.listSponesor.kf.setImage(with: URL(string: url))
                 hideLoading()
             }
         }) { (_) in

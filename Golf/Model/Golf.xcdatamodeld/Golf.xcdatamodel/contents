@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CompanyCore" representedClassName="CompanyCore" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="footerFileUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="footerImage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -17,7 +18,7 @@
         <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CompanyCore" positionX="-36" positionY="9" width="128" height="165"/>
+        <element name="CompanyCore" positionX="-36" positionY="9" width="128" height="180"/>
         <element name="SponsorsCore" positionX="124" positionY="18" width="128" height="105"/>
     </elements>
 </model>

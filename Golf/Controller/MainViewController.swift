@@ -23,7 +23,6 @@ class MainViewController: BaseViewController {
         getNews()
     }
 
-    
     func getNews() {
         let task = NewsModel.GetList(pager: page)
         dataWithTask(task, onCompeted: { (data) in

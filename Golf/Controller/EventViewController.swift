@@ -26,14 +26,12 @@ class EventViewController: BaseViewController, MainStoryBoard {
         }
     }
     @IBAction func pressedShowEvent(_ sender: Any) {
-        // Change content for webview
         if let vc = EventActivityViewController.instance() as? EventActivityViewController {
             vc.typeShow = .activity
             navigationController?.pushViewController(vc, animated: false)
         }
     }
     @IBAction func pressedShowCompany(_ sender: Any) {
-        // Change background, hiddien view
         if let vc = EventActivityViewController.instance() as? EventActivityViewController {
             vc.typeShow = .company
             navigationController?.pushViewController(vc, animated: false)

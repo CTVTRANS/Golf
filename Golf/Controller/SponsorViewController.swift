@@ -14,6 +14,7 @@ class DonorsCell: UITableViewCell {
     @IBOutlet weak var content: UILabel!
     @IBOutlet weak var titleSponsor: UILabel!
     @IBOutlet weak var year: UILabel!
+    
     func load(_ sponsor: SponsorModel) {
         year.text = sponsor.year.description
         titleSponsor.text = sponsor.name
@@ -27,10 +28,7 @@ class SponsorViewController: BaseViewController, MainStoryBoard {
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var table: UITableView!
     var type = TypeSponsor.thisYear
-    var listSponsors = [SponsorModel]()
-    let managerContext = StorageManager.shared.managedObjectContext
-    private let storage = StorageManager.shared
-    fileprivate var company: CompanyModel?
+    private var listSponsors = [SponsorModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,20 +107,12 @@ class SponsorViewController: BaseViewController, MainStoryBoard {
             self.titleScreen.text = sponsor.name
             self.webView.loadHTMLString(sponsor.description, baseURL: nil)
             let cacheSponsor = Cache<SponsorModel>()
-            cacheSponsor.remove()
+//            cacheSponsor.remove()
             cacheSponsor.save(object: sponsor)
         }) { (_) in
             
         }
     }
-    
-//    func insertCompany(companyModel: CompanyModel) {
-//        let entity = NSEntityDescription.entity(forEntityName: companyEntity, in: self.managerContext)
-//        if let companyCore = NSManagedObject(entity: entity!, insertInto: managerContext) as? CompanyCore {
-//            companyCore.company = companyModel
-//        }
-//        storage.saveContext()
-//    }
     
     func fetchOlderSponsors() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: sponsorsEntity)
@@ -147,8 +137,10 @@ class SponsorViewController: BaseViewController, MainStoryBoard {
     func fetchThisYearSponsor() {
         let cacheSponsor = Cache<SponsorModel>()
         let sponsor = cacheSponsor.fetchObject()
-        self.titleScreen.text = sponsor?.name
-        webView.loadHTMLString((sponsor?.description)!, baseURL: nil)
+        if sponsor != nil && sponsor?.name != "" && sponsor?.description != "" {
+            self.titleScreen.text = sponsor?.name
+            webView.loadHTMLString((sponsor?.description)!, baseURL: nil)
+        }
     }
 }
 

@@ -20,6 +20,7 @@ struct CompanyModel: BaseModel {
     var lontitude = 0.0
     var info = ""
     var footerImage = ""
+    var footerFileUrl = ""
     
     static func decodeJSON(json: JSON) -> CompanyModel {
         return CompanyModel(name: json[""].stringValue,
@@ -29,7 +30,8 @@ struct CompanyModel: BaseModel {
                             latitude: json["map"]["latitude"].doubleValue,
                             lontitude: json["map"]["longitude"].doubleValue,
                             info: json["about_us"].stringValue,
-                            footerImage: json["logo_footer"].stringValue
+                            footerImage: json["logo_footer"].stringValue,
+                            footerFileUrl: json[""].stringValue
         )
     }
 }
@@ -37,7 +39,7 @@ struct CompanyModel: BaseModel {
 extension CompanyCore {
     var company: CompanyModel {
         get {
-            return CompanyModel(name: self.name!, adress: self.address!, website: self.website!, phone: self.phone!, latitude: self.lat, lontitude: self.lon, info: self.info!, footerImage: self.footerImage!)
+            return CompanyModel(name: self.name!, adress: self.address!, website: self.website!, phone: self.phone!, latitude: self.lat, lontitude: self.lon, info: self.info!, footerImage: self.footerImage!, footerFileUrl: self.footerFileUrl!)
         }
         set {
             self.name = newValue.name
@@ -48,6 +50,7 @@ extension CompanyCore {
             self.lon = newValue.lontitude
             self.info = newValue.info
             self.footerImage = newValue.footerImage
+            self.footerFileUrl = newValue.footerFileUrl
         }
     }
 }

@@ -15,6 +15,7 @@
 		9D04EAFA1FC8222A00028EF7 /* HoleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAF91FC8222A00028EF7 /* HoleModel.swift */; };
 		9D04EAFC1FC822AB00028EF7 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D04EAFB1FC822AB00028EF7 /* Company.swift */; };
 		9D0507ED1FE102CA007EA9A9 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0507EC1FE102CA007EA9A9 /* Enum.swift */; };
+		9D054A371FF64CE500DCC0EC /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D054A361FF64CE500DCC0EC /* Contants.swift */; };
 		9D05EB791FC823E5008943BF /* SponsorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05EB781FC823E5008943BF /* SponsorModel.swift */; };
 		9D05EB7B1FC825EA008943BF /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05EB7A1FC825EA008943BF /* News.swift */; };
 		9D069D831FD9201E005275BC /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D069D821FD9201E005275BC /* ActivityModel.swift */; };
@@ -85,6 +86,7 @@
 		9D04EAF91FC8222A00028EF7 /* HoleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleModel.swift; sourceTree = "<group>"; };
 		9D04EAFB1FC822AB00028EF7 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		9D0507EC1FE102CA007EA9A9 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		9D054A361FF64CE500DCC0EC /* Contants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contants.swift; sourceTree = "<group>"; };
 		9D05EB781FC823E5008943BF /* SponsorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorModel.swift; sourceTree = "<group>"; };
 		9D05EB7A1FC825EA008943BF /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		9D069D821FD9201E005275BC /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				9DF70F191FC5623D00774BA6 /* Define.swift */,
 				9DF44A781FC2B4400063D804 /* Main.storyboard */,
 				9DF351331FC6CDB300696057 /* Second.storyboard */,
+				9D054A361FF64CE500DCC0EC /* Contants.swift */,
 				9DF44A871FC2BBD20063D804 /* BaseViewController.swift */,
 				9DF881F11FC3CFA400FADA1B /* StoryBoardHelper.swift */,
 				9DF70F141FC55F9500774BA6 /* Views */,
@@ -496,6 +499,7 @@
 				9DF351361FC6CDDB00696057 /* JackpotViewController.swift in Sources */,
 				9D04EAF41FC81F4000028EF7 /* MemberModel.swift in Sources */,
 				9DF18EE01FC3E84100B71DE7 /* SponsorViewController.swift in Sources */,
+				9D054A371FF64CE500DCC0EC /* Contants.swift in Sources */,
 				9D986A121FC7DBE50027D894 /* ForgotPassViewController.swift in Sources */,
 				9D069D851FD933BC005275BC /* AttendModel.swift in Sources */,
 				9D986A0E1FC7C8FA0027D894 /* ProductDiscountModel.swift in Sources */,
@@ -673,7 +677,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ctvtrans.kien.Golf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -690,7 +694,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ctvtrans.kien.Golf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
