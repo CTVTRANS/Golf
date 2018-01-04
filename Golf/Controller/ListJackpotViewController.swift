@@ -99,6 +99,10 @@ class ListJackpotViewController: BaseViewController, SecondSroyBoard {
         }) { (_) in
         }
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension ListJackpotViewController: UITableViewDelegate, UITableViewDataSource {

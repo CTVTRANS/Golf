@@ -65,6 +65,10 @@ class ChangePassViewController: BaseViewController, SecondSroyBoard {
         }) { (_) in
         }
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension ChangePassViewController: UITextFieldDelegate {

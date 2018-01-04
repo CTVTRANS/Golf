@@ -8,8 +8,6 @@ target 'Golf' do
   pod 'SwiftLint', '~> 0.24'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Alamofire', '~> 4.5'
-  pod 'GoogleMaps'
-  pod 'GooglePlaces'
   pod 'LKExtension', :git =>'https://bitbucket.org/lekienhust94/lkextension'
 
 end

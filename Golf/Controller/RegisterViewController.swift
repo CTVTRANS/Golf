@@ -154,6 +154,10 @@ class RegisterViewController: BaseViewController, SecondSroyBoard {
             getCodeButton.isEnabled = true
         }
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension RegisterViewController: UITextFieldDelegate {

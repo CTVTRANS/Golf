@@ -55,6 +55,10 @@ class ListDiscountViewController: BaseViewController, SecondSroyBoard {
             hideLoading()
         }
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 extension ListDiscountViewController: UITableViewDataSource, UITableViewDelegate {

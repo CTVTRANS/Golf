@@ -33,7 +33,6 @@ extension APIRequest {
             }
             let json = JSON(jsonResponseData.result.value!)
             if let status = json["status_code"].int, status != 200 {
-                debugPrint(status)
                 onCompelete(status)
                 return
             }
@@ -42,8 +41,16 @@ extension APIRequest {
     }
     
     func downloadDataWith(onCompelete: @escaping BlookSuccess, onError: @escaping BlookFailure) {
-        let url = path
-        let destination = DownloadRequest.suggestedDownloadDestination()
+        guard let url = URL(string: path) else {
+            return
+        }
+        let fileName = url.lastPathComponent
+        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
+            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let fileURL = documentsURL.appendingPathComponent(fileName)
+            
+            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+        }
         
         Alamofire.download(url, to: destination).response { response in
             if response.error != nil {
@@ -52,7 +59,6 @@ extension APIRequest {
                 return
             }
             if let url = response.destinationURL {
-                debugPrint(url)
                 onCompelete(url)
             }
         }

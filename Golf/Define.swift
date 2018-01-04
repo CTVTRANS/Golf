@@ -14,10 +14,6 @@ let heightScreen = UIScreen.main.bounds.height
 let companyEntity = "CompanyCore"
 let sponsorsEntity = "SponsorsCore"
 
-let baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
-let apiMap = "AIzaSyBZ840yCSeH3DTwps5f9Aj031wawRcQP8k"  // key for google map
-let apiDirection = "AIzaSyAm99Jv13nXVpPJOLSWaIDVCTMA1VTqilU"    //key for gooele direction
-
 let baseRUL = "http://golf.transoftvietnam.com/api/"
 
 let memberSiginURL = "member/login"

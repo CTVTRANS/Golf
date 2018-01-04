@@ -38,7 +38,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         setupNavigation()
         getImageCompany()
-        imageView = UIImageView(frame: CGRect(x: (widthScreen - 120) / 2, y: heightScreen - 72, width: 120, height: 64))
+        imageView = UIImageView(frame: CGRect(x: (widthScreen - 100) / 2, y: heightScreen - 68, width: 100, height: 60))
         imageView?.contentMode = .scaleAspectFit
         if Contants.shared.data != nil {
             imageView?.image = UIImage(data: Contants.shared.data!)
@@ -134,7 +134,6 @@ class BaseViewController: UIViewController {
             }, onError: { (_) in
                 let urlString = self.fetchimageURL()
                 if let url = URL(string: "file://\(urlString)") {
-                    debugPrint(url)
                     if let data = try? Data(contentsOf: url) {
                         Contants.shared.data = data
                     }
@@ -144,7 +143,6 @@ class BaseViewController: UIViewController {
         }) { (_) in
             let urlString = self.fetchimageURL()
             if let url = URL(string: "file://\(urlString)") {
-                debugPrint(url)
                 if let data = try? Data(contentsOf: url) {
                     Contants.shared.data = data
                 }

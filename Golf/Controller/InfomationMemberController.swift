@@ -67,6 +67,7 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
     }
     
     @IBAction func pressedChooseDate(_ sender: Any) {
+        view.endEditing(true)
         if let chooseDate = ChooseBirthDayView.instance() as? ChooseBirthDayView {
             chooseDate.show()
             chooseDate.callBackDate = {[weak self] date in
@@ -97,6 +98,10 @@ class InfomationMemberController: BaseViewController, SecondSroyBoard {
         if let vc = ChangePassViewController.instance() as? ChangePassViewController {
             navigationController?.pushViewController(vc, animated: false)
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

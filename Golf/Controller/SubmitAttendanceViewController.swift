@@ -41,7 +41,7 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
     
     func loadMember() {
         email.text = member.email
-        idUser.text = member.idCard
+        idUser.text = member.phone
         nameUser.text = member.name
     }
     
@@ -77,6 +77,10 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
             return
         }
         attendAction()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
