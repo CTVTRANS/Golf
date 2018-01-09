@@ -17,30 +17,3 @@ public enum BaseModelError: Error {
 public protocol BaseModel {
     static func decodeJSON(json: JSON) -> Self
 }
-
-/*
-public extension JSON {
-    func model<T: BaseModel>(_ klass: T.Type) -> T? {
-        guard self.type == .dictionary, self.count > 0 else {
-            return nil
-        }
-        do {
-            return try klass.decodeJSON(json: self)
-        } catch {
-            debugPrint("\(klass).decodeJSON failed with error: \(error)")
-            return nil
-        }
-    }
-    
-    public func modelArray<T: BaseModel>(_ klass: T.Type) -> [T]? {
-        guard let jsonArray = self.array else {
-            return nil
-        }
-        return jsonArray.flatMap { $0.model(klass) }
-    }
-    
-    public func modelArrayValue<T: BaseModel>(_ klass: T.Type) -> [T] {
-        return self.arrayValue.flatMap { $0.model(klass) }
-    }
-}
- */

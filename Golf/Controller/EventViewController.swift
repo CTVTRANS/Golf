@@ -36,6 +36,5 @@ class EventViewController: BaseViewController, MainStoryBoard {
             vc.typeShow = .company
             navigationController?.pushViewController(vc, animated: false)
         }
-        
     }
 }

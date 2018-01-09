@@ -9,39 +9,6 @@
 import Foundation
 import CoreData
 
-//class DataController {
-//
-//    var managedObjectContext: NSManagedObjectContext
-//
-//    init(completionClosure: @escaping () -> ()) {
-//        guard let modelURL = Bundle.main.url(forResource: "Golf", withExtension:"momd") else {
-//            fatalError("Error loading model from bundle")
-//        }
-//        guard let mom = NSManagedObjectModel(contentsOf: modelURL) else {
-//            fatalError("Error initializing mom from: \(modelURL)")
-//        }
-//
-//        let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
-//
-//        managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
-//        managedObjectContext.persistentStoreCoordinator = psc
-//
-//        let queue = DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
-//        queue.async {
-//            guard let docURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
-//                fatalError("Unable to resolve document directory")
-//            }
-//            let storeURL = docURL.appendingPathComponent("Golf.sqlite")
-//            do {
-//                try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
-//                DispatchQueue.main.sync(execute: completionClosure)
-//            } catch {
-//                fatalError("Error migrating store: \(error)")
-//            }
-//        }
-//    }
-//}
-
 class StorageManager {
     static let shared = StorageManager()
     

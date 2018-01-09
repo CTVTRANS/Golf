@@ -107,7 +107,6 @@ class SponsorViewController: BaseViewController, MainStoryBoard {
             self.titleScreen.text = sponsor.name
             self.webView.loadHTMLString(sponsor.description, baseURL: nil)
             let cacheSponsor = Cache<SponsorModel>()
-//            cacheSponsor.remove()
             cacheSponsor.save(object: sponsor)
         }) { (_) in
             

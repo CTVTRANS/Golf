@@ -17,8 +17,8 @@ class SubmitAttendanceViewController: BaseViewController, MainStoryBoard {
     @IBOutlet weak var nameUser: UILabel!
     @IBOutlet weak var memberView: UIView!
     @IBOutlet weak var spaceTopButton: NSLayoutConstraint!
-    
     @IBOutlet weak var submitButton: UIButton!
+    
     var type: TypeAttendance = .cup
     var member: MemberModel!
     var isshowMember = true

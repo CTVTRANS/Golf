@@ -72,5 +72,4 @@ extension QRMetadataManager: AVCaptureMetadataOutputObjectsDelegate {
             resultScan(metadataObjects)
         }
     }
-    
 }

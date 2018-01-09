@@ -85,5 +85,4 @@ class EventActivityViewController: BaseViewController, MainStoryBoard {
         descriptionLabel.text = event?.description
         hideLoading()
     }
-
 }

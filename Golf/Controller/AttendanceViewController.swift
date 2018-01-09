@@ -10,7 +10,6 @@ import UIKit
 
 class AttendanceViewController: BaseViewController, MainStoryBoard {
 
-//    var member: MemberModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         
